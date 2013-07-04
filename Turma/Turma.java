@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package pi.sistema;
+package br.edu.utfpr.cm.tsi.projetointegrador.turma;
 
 /**
  *
@@ -22,6 +22,10 @@ public class Turma {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
