@@ -2,6 +2,7 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.gui;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory;
+import br.edu.utfpr.cm.tsi.projetointegrador.consulta.ConsultaHorarioAula;
 import br.edu.utfpr.cm.tsi.projetointegrador.funcionarios.CadastroFuncionarios;
 import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.turma.CadastroTurmas;
@@ -47,6 +48,7 @@ public class GUI extends javax.swing.JFrame {
         btMensalidade = new javax.swing.JButton();
         btMatricula = new javax.swing.JButton();
         btFrequencia = new javax.swing.JButton();
+        btConsultaHorario = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnCadastros = new javax.swing.JMenu();
         rbmiAluno = new javax.swing.JRadioButtonMenuItem();
@@ -62,6 +64,7 @@ public class GUI extends javax.swing.JFrame {
         jRadioButtonMenuItem6 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem7 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem8 = new javax.swing.JRadioButtonMenuItem();
+        rbmiConsultaHorarios = new javax.swing.JRadioButtonMenuItem();
         mnSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -132,6 +135,18 @@ public class GUI extends javax.swing.JFrame {
         btFrequencia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btFrequencia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btFrequencia);
+
+        btConsultaHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/natação.png"))); // NOI18N
+        btConsultaHorario.setText("Consulta Horarios");
+        btConsultaHorario.setFocusable(false);
+        btConsultaHorario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btConsultaHorario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btConsultaHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConsultaHorarioActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btConsultaHorario);
 
         mnCadastros.setText("Cadastros");
 
@@ -208,22 +223,37 @@ public class GUI extends javax.swing.JFrame {
         jRadioButtonMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jRadioButtonMenuItem5.setSelected(true);
         jRadioButtonMenuItem5.setText("Alunos");
+        jRadioButtonMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user.png"))); // NOI18N
         mnConsultas.add(jRadioButtonMenuItem5);
 
         jRadioButtonMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         jRadioButtonMenuItem6.setSelected(true);
         jRadioButtonMenuItem6.setText("Turmas");
+        jRadioButtonMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Group.png"))); // NOI18N
         mnConsultas.add(jRadioButtonMenuItem6);
 
         jRadioButtonMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
         jRadioButtonMenuItem7.setSelected(true);
         jRadioButtonMenuItem7.setText("Funcionarios");
+        jRadioButtonMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/funcionario.png"))); // NOI18N
         mnConsultas.add(jRadioButtonMenuItem7);
 
         jRadioButtonMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jRadioButtonMenuItem8.setSelected(true);
         jRadioButtonMenuItem8.setText("Piscinas");
+        jRadioButtonMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Screen Saver.png"))); // NOI18N
         mnConsultas.add(jRadioButtonMenuItem8);
+
+        rbmiConsultaHorarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        rbmiConsultaHorarios.setSelected(true);
+        rbmiConsultaHorarios.setText("Consulta de Horarios");
+        rbmiConsultaHorarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/natação.png"))); // NOI18N
+        rbmiConsultaHorarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbmiConsultaHorariosActionPerformed(evt);
+            }
+        });
+        mnConsultas.add(rbmiConsultaHorarios);
 
         jMenuBar1.add(mnConsultas);
 
@@ -246,7 +276,7 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,6 +320,14 @@ public class GUI extends javax.swing.JFrame {
     private void btMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMatriculaActionPerformed
         new CadastroMatricula().setVisible(true);
     }//GEN-LAST:event_btMatriculaActionPerformed
+
+    private void rbmiConsultaHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiConsultaHorariosActionPerformed
+       new ConsultaHorarioAula().setVisible(true);
+    }//GEN-LAST:event_rbmiConsultaHorariosActionPerformed
+
+    private void btConsultaHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultaHorarioActionPerformed
+        new ConsultaHorarioAula().setVisible(true);
+    }//GEN-LAST:event_btConsultaHorarioActionPerformed
 
     public void criarBanco() {
         try {
@@ -362,6 +400,7 @@ public class GUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlunos;
+    private javax.swing.JButton btConsultaHorario;
     private javax.swing.JButton btFrequencia;
     private javax.swing.JButton btFuncionarios;
     private javax.swing.JButton btMatricula;
@@ -379,6 +418,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu mnMovimentos;
     private javax.swing.JMenu mnSair;
     private javax.swing.JRadioButtonMenuItem rbmiAluno;
+    private javax.swing.JRadioButtonMenuItem rbmiConsultaHorarios;
     private javax.swing.JRadioButtonMenuItem rbmiFuncionario;
     private javax.swing.JRadioButtonMenuItem rbmiMatricula;
     private javax.swing.JRadioButtonMenuItem rbmiMensalidade;
