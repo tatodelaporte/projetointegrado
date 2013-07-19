@@ -96,6 +96,9 @@
                   <Image iconType="3" name="/icons/Users.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbmiMatriculaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="rmbiFrequencia">
               <Properties>
@@ -282,6 +285,9 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btMatriculaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btFrequencia">
           <Properties>

@@ -3,7 +3,9 @@ package br.edu.utfpr.cm.tsi.projetointegrador.gui;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory;
 import br.edu.utfpr.cm.tsi.projetointegrador.funcionarios.CadastroFuncionarios;
+import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.turma.CadastroTurmas;
+
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -117,6 +119,11 @@ public class GUI extends javax.swing.JFrame {
         btMatricula.setFocusable(false);
         btMatricula.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btMatricula.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMatriculaActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btMatricula);
 
         btFrequencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/AOL Instant Messenger.png"))); // NOI18N
@@ -181,6 +188,11 @@ public class GUI extends javax.swing.JFrame {
         rbmiMatricula.setSelected(true);
         rbmiMatricula.setText("Matricula");
         rbmiMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Users.png"))); // NOI18N
+        rbmiMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbmiMatriculaActionPerformed(evt);
+            }
+        });
         mnMovimentos.add(rbmiMatricula);
 
         rmbiFrequencia.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F11, 0));
@@ -270,6 +282,14 @@ public class GUI extends javax.swing.JFrame {
     private void btFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFuncionariosActionPerformed
         new CadastroFuncionarios().setVisible(true);
     }//GEN-LAST:event_btFuncionariosActionPerformed
+
+    private void rbmiMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiMatriculaActionPerformed
+        new CadastroMatricula().setVisible(true);
+    }//GEN-LAST:event_rbmiMatriculaActionPerformed
+
+    private void btMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMatriculaActionPerformed
+        new CadastroMatricula().setVisible(true);
+    }//GEN-LAST:event_btMatriculaActionPerformed
 
     public void criarBanco() {
         try {
