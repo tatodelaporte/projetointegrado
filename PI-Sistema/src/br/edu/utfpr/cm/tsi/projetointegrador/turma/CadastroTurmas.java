@@ -79,7 +79,6 @@ public class CadastroTurmas extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        btGravar = new javax.swing.JButton();
         rbBuscarTurmaId = new javax.swing.JRadioButton();
         btBuscar = new javax.swing.JButton();
         cbSegundaFeira = new javax.swing.JCheckBox();
@@ -89,9 +88,11 @@ public class CadastroTurmas extends javax.swing.JFrame {
         cbSextaFeira = new javax.swing.JCheckBox();
         cbSabado = new javax.swing.JCheckBox();
         cbDomingo = new javax.swing.JCheckBox();
-        btAtualizar = new javax.swing.JButton();
-        btApagar = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
         btNovo = new javax.swing.JButton();
+        btAlterar = new javax.swing.JButton();
+        btGravar = new javax.swing.JButton();
+        btRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Turmas");
@@ -109,14 +110,6 @@ public class CadastroTurmas extends javax.swing.JFrame {
         lbhorarioInicio.setText("Inicio");
 
         lbhorarioFim.setText("Fim");
-
-        btGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Installer.png"))); // NOI18N
-        btGravar.setText("Gravar");
-        btGravar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btGravarActionPerformed(evt);
-            }
-        });
 
         rbBuscarTurmaId.setText("Codigo Turma");
         rbBuscarTurmaId.addActionListener(new java.awt.event.ActionListener() {
@@ -147,21 +140,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
 
         cbDomingo.setText("Domingo");
 
-        btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iDisk.png"))); // NOI18N
-        btAtualizar.setText("Atualizar");
-        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAtualizarActionPerformed(evt);
-            }
-        });
-
-        btApagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Trash Full.png"))); // NOI18N
-        btApagar.setText("Apagar");
-        btApagar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btApagarActionPerformed(evt);
-            }
-        });
+        jToolBar1.setRollover(true);
 
         btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/New Folder.png"))); // NOI18N
         btNovo.setText("Novo");
@@ -170,6 +149,34 @@ public class CadastroTurmas extends javax.swing.JFrame {
                 btNovoActionPerformed(evt);
             }
         });
+        jToolBar1.add(btNovo);
+
+        btAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iDisk.png"))); // NOI18N
+        btAlterar.setText("Alterar");
+        btAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAlterarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btAlterar);
+
+        btGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Installer.png"))); // NOI18N
+        btGravar.setText("Gravar");
+        btGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGravarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btGravar);
+
+        btRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Trash Full.png"))); // NOI18N
+        btRemover.setText("Remover");
+        btRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRemoverActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btRemover);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,22 +230,13 @@ public class CadastroTurmas extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbSabado)
                             .addComponent(cbQuartaFeira))))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(btNovo)
-                .addGap(47, 47, 47)
-                .addComponent(btAtualizar)
-                .addGap(32, 32, 32)
-                .addComponent(btGravar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(btApagar)
-                .addGap(20, 20, 20))
+                .addContainerGap(108, Short.MAX_VALUE))
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbcodTurma)
                     .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,13 +282,8 @@ public class CadastroTurmas extends javax.swing.JFrame {
                 .addComponent(cbDomingo)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btNovo)
-                    .addComponent(btAtualizar)
-                    .addComponent(btGravar)
-                    .addComponent(btApagar))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -429,7 +422,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btBuscarActionPerformed
 
-    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
+    private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
 
         boolean segunda = this.cbSegundaFeira.isSelected();
         boolean terca = this.cbTercaFeira.isSelected();
@@ -479,9 +472,9 @@ public class CadastroTurmas extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_btAtualizarActionPerformed
+    }//GEN-LAST:event_btAlterarActionPerformed
 
-    private void btApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btApagarActionPerformed
+    private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
 
         Turma turma = new Turma();
         turma = getTurma();
@@ -495,7 +488,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_btApagarActionPerformed
+    }//GEN-LAST:event_btRemoverActionPerformed
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
 
@@ -570,11 +563,11 @@ public class CadastroTurmas extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btApagar;
-    private javax.swing.JButton btAtualizar;
+    private javax.swing.JButton btAlterar;
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btGravar;
     private javax.swing.JButton btNovo;
+    private javax.swing.JButton btRemover;
     private javax.swing.JCheckBox cbDomingo;
     private javax.swing.JCheckBox cbQuartaFeira;
     private javax.swing.JCheckBox cbQuintaFeira;
@@ -587,6 +580,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lbDescricao;
     private javax.swing.JLabel lbHorario;
     private javax.swing.JLabel lbcodTurma;
