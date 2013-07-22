@@ -70,7 +70,10 @@ public class DaoTurma {
 
     public static void update(Turma t) throws SQLException {
 
-        PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("UPDATE Turma SET descricao = ?, professor = ?, piscina=?, horarioinicio=?, horariofim=?, diaaula=? WHERE id ="+t.getId());
+        PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("UPDATE Turma SET descricao = ?,"
+                + " professor = ?,"
+                + " piscina=?,"
+                + "horarioinicio=?, horariofim=?, diaaula=? WHERE id ="+t.getId());
         
         pst.setString(1, t.getDescricao());
         pst.setInt(2, t.getProfessor());
