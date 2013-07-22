@@ -1,6 +1,6 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
-import br.edu.utfpr.cm.tsi.projetointegrador.funcionarios.Funcionarios;
+import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.Funcionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.turma.Turma;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,19 +16,28 @@ import java.util.List;
  */
 public class DaoFuncionario {
 
-    private static Funcionarios converteRsParaFuncionarios(ResultSet rs) throws SQLException {
+    private static Funcionario converteRsParaFuncionario(ResultSet rs) throws SQLException {
 
-        Funcionarios f = new Funcionarios();
+        Funcionario f = new Funcionario();
 
         f.setId(rs.getInt("id"));
         f.setNome(rs.getString("nome"));
-
+        f.setCpf(rs.getString("cpf"));
+        f.setRg(rs.getString("rg"));
+        f.setCep(rs.getString("cep"));
+        f.setPrefixo(rs.getString("prefixo"));
+        f.setEndereco(rs.getString("endereco"));
+        f.setUf(rs.getString("uf"));
+        f.setCidade(rs.getString("cidade"));
+        f.setFoneCelular(rs.getString("fonecelular"));
+        f.setFoneResidencia(rs.getString("foneresidencia"));
+        f.setTipoFuncionario(rs.getString("tipofuncionario"));
 
         return f;
 
     }
 
-    public void persist(Funcionarios f) throws SQLException {
+    public void persist(Funcionario f) throws SQLException {
         if (f.getId() == 0) {
             insert(f);
         } else {
@@ -35,49 +45,97 @@ public class DaoFuncionario {
         }
     }
 
-    public static void insert(Funcionarios f) throws SQLException {
+    public static void insert(Funcionario f) throws SQLException {
 
-        PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("INSERT INTO Funcionarios (id,nome) VALUES(?,?)", Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("INSERT INTO funcionario (nome,cpf,rg,cep,prefixo,endereco,uf,cidade,fonecelular,foneresidencia,tipofuncionario)"
+                + " VALUES(?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         pst.setString(1, f.getNome());
+        pst.setString(2, f.getCpf());
+        pst.setString(3, f.getRg());
+        pst.setString(4, f.getCep());
+        pst.setString(5, f.getPrefixo());
+        pst.setString(6, f.getEndereco());
+        pst.setString(7, f.getUf());
+        pst.setString(8, f.getCidade());
+        pst.setString(9, f.getFoneCelular());
+        pst.setString(10, f.getFoneResidencia());
+        pst.setString(11, f.getTipoFuncionario());
 
+
+        pst.execute();
+
+        // Result set pegado o generate keys
+        ResultSet rs = pst.getGeneratedKeys();
+        int idGerado = 0;
+        if (rs.next()) {
+            idGerado = rs.getInt(1);
+        }
+        f.setId(idGerado);
+        JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso! \n"
+                + "Codigo do Funcionario " + idGerado);
 
 
 
     }
 
-    public Funcionarios retrieve(int id) throws SQLException {
+    public static Funcionario retrieve(int id) throws SQLException {
         Statement st = ConnectionFactory.prepareConnection().createStatement();
-        st.execute("SELECT * FROM Turma WHERE id =" + id);
+        st.execute("SELECT * FROM funcionario WHERE id =" + id);
         ResultSet rs = st.getResultSet();
 
         rs.next();
-        Funcionarios f = converteRsParaFuncionarios(rs);
+        Funcionario f = converteRsParaFuncionario(rs);
 
         return f;
 
     }
 
-    public void update(Funcionarios f) throws SQLException {
+    public static void update(Funcionario f) throws SQLException {
 
-        PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("UPDATE Funcionarios SET id = ?, nome = ?");
+        PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("UPDATE funcionario set "
+                + "nome = ?,"
+                + "cpf = ?,"
+                + "rg = ?,"
+                + "cep = ?,"
+                + "prefixo = ?,"
+                + "endereco = ?,"
+                + "uf = ?,"
+                + "cidade = ?,"
+                + "fonecelular = ?,"
+                + "foneresidencia = ?,"
+                + "tipofuncionario = ? where id= " + f.getId());
+
+        pst.setString(1, f.getNome());
+        pst.setString(2, f.getCpf());
+        pst.setString(3, f.getRg());
+        pst.setString(4, f.getCep());
+        pst.setString(5, f.getPrefixo());
+        pst.setString(6, f.getEndereco());
+        pst.setString(7, f.getUf());
+        pst.setString(8, f.getCidade());
+        pst.setString(9, f.getFoneCelular());
+        pst.setString(10, f.getFoneResidencia());
+        pst.setString(11, f.getTipoFuncionario());
 
         pst.execute();
+        JOptionPane.showMessageDialog(null, "Alterado com Sucesso!");
 
     }
 
-    public void delete(Turma t) throws SQLException {
+    public static void delete(Funcionario f) throws SQLException {
         Statement st = ConnectionFactory.prepareConnection().createStatement();
-        st.execute("DELETE FROM Turma WHERE id = " + t.getId());
+        st.execute("DELETE FROM funcionario WHERE id = " + f.getId());
+        JOptionPane.showMessageDialog(null, "Apagado com Sucesso!");
     }
 
-    public List<Funcionarios> list() throws SQLException {
-        List<Funcionarios> Func = new ArrayList<Funcionarios>();
+    public List<Funcionario> list() throws SQLException {
+        List<Funcionario> Func = new ArrayList<Funcionario>();
 
         Statement st = ConnectionFactory.prepareConnection().createStatement();
-        ResultSet rs = st.executeQuery("SELECT * FROM Turma");
+        ResultSet rs = st.executeQuery("SELECT * FROM funcionario");
 
         while (rs.next()) {
-            Funcionarios f = converteRsParaFuncionarios(rs);
+            Funcionario f = converteRsParaFuncionario(rs);
             Func.add(f);
         }
 
