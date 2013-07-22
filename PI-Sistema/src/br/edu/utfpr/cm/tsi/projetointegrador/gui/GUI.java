@@ -3,7 +3,7 @@ package br.edu.utfpr.cm.tsi.projetointegrador.gui;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory;
 import br.edu.utfpr.cm.tsi.projetointegrador.consulta.ConsultaHorarioAula;
-import br.edu.utfpr.cm.tsi.projetointegrador.funcionarios.CadastroFuncionarios;
+import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.CadastroFuncionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.turma.CadastroTurmas;
 
@@ -303,14 +303,14 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_rmbiTurmaActionPerformed
 
     private void rbmiFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiFuncionarioActionPerformed
-        new CadastroFuncionarios().setVisible(true);
+        new CadastroFuncionario().setVisible(true);
     }//GEN-LAST:event_rbmiFuncionarioActionPerformed
 
     private void btTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTurmasActionPerformed
         new CadastroTurmas().setVisible(true);    }//GEN-LAST:event_btTurmasActionPerformed
 
     private void btFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFuncionariosActionPerformed
-        new CadastroFuncionarios().setVisible(true);
+        new CadastroFuncionario().setVisible(true);
     }//GEN-LAST:event_btFuncionariosActionPerformed
 
     private void rbmiMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiMatriculaActionPerformed
@@ -349,12 +349,14 @@ public class GUI extends javax.swing.JFrame {
                     + "nome varchar(60) not null,"
                     + "cpf varchar(11) not null,"
                     + "rg varchar (15) not null,"
+                    + "cep varchar (15) not null,"
+                    + "prefixo varchar (30) not null,"
                     + "endereco varchar(250) not null,"
                     + "cidade varchar (50) not null,"
                     + "uf varchar (2) not null,"
-                    + "celular varchar (15),"
-                    + "residencial varchar (15),"
-                    + "tipo varchar (20) not null,"
+                    + "fonecelular varchar (15),"
+                    + "foneresidencia varchar (15),"
+                    + "tipofuncionario varchar (20) not null,"
                     + "PRIMARY KEY (id));");
 
 
