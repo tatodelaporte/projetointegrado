@@ -92,9 +92,11 @@ public class Turma {
     @Override
     public String toString() {
 
-        return "Turma {" + "id=" + id + ", descricao" + descricao + ",professor" + professor
-                + ",Horario Inicio Aula" + horarioInicio + ","
-                + " Horario Fim da Aula" + horarioFim + ","
-                + " Dias de Aula" + diaAula + '}';
+        return "Turma {" + "id=" + id + ","
+                + "descricao" + descricao + ","
+                + "professor" + professor +","
+                + "Horario Inicio Aula" + horarioInicio + ","
+                + "Horario Fim da Aula" + horarioFim + ","
+                + "Dias de Aula" + diaAula + '}';
     }
 }
