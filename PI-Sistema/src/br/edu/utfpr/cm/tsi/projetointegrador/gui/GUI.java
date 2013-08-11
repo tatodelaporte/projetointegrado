@@ -358,6 +358,14 @@ public class GUI extends javax.swing.JFrame {
                     + "foneresidencia varchar (15),"
                     + "tipofuncionario varchar (20) not null,"
                     + "PRIMARY KEY (id));");
+             st.executeUpdate("CREATE TABLE IF NOT EXISTS "
+                    + "matricula("
+                    + "id int(10) not null AUTO_INCREMENT,"
+                    + "aluno int(10) not null,"
+                    + "turma int(10) not null,"
+                    + "mensalidade int (10) not null,"
+                    + "situacao int (1) not null,"
+                    + "PRIMARY KEY (id));");
 
 
         } catch (SQLException ex) {
