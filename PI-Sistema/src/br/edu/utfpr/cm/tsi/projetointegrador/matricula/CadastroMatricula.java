@@ -4,6 +4,13 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.matricula;
 
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoTurma;
+import br.edu.utfpr.cm.tsi.projetointegrador.turma.Turma;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Daniel
@@ -21,7 +28,11 @@ public class CadastroMatricula extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         pack();
         setResizable(false);// Trava o tamanho do painel.
+        preencherTurma();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+
+
     }
 
     /**
@@ -45,12 +56,12 @@ public class CadastroMatricula extends javax.swing.JFrame {
         lbAluno = new javax.swing.JLabel();
         tfAluno = new javax.swing.JTextField();
         lbTurma = new javax.swing.JLabel();
-        tfTurma = new javax.swing.JTextField();
         lbMensalidade = new javax.swing.JLabel();
         tfMensalidade = new javax.swing.JTextField();
         rbAtivo = new javax.swing.JRadioButton();
         rbInativo = new javax.swing.JRadioButton();
         lbSituacao = new javax.swing.JLabel();
+        cbTurma = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +102,8 @@ public class CadastroMatricula extends javax.swing.JFrame {
 
         lbSituacao.setText("Situação");
 
+        cbTurma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,14 +124,14 @@ public class CadastroMatricula extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(rbInativo))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                            .addComponent(tfAluno)
-                            .addComponent(tfTurma)
-                            .addComponent(tfMensalidade, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cbTurma, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                            .addComponent(tfAluno, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfMensalidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
                         .addGap(40, 40, 40)
                         .addComponent(btBuscar)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +148,7 @@ public class CadastroMatricula extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbTurma)
-                    .addComponent(tfTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbMensalidade)
@@ -179,6 +192,8 @@ public class CadastroMatricula extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -193,6 +208,7 @@ public class CadastroMatricula extends javax.swing.JFrame {
     private javax.swing.JButton btGravar;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btRemover;
+    private javax.swing.JComboBox cbTurma;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lbAluno;
     private javax.swing.JLabel lbCodigo;
@@ -204,6 +220,23 @@ public class CadastroMatricula extends javax.swing.JFrame {
     private javax.swing.JTextField tfAluno;
     private javax.swing.JTextField tfCodigo;
     private javax.swing.JTextField tfMensalidade;
-    private javax.swing.JTextField tfTurma;
     // End of variables declaration//GEN-END:variables
+
+    public void preencherTurma() {
+
+        cbTurma.removeAllItems();
+        cbTurma.removeAll();
+
+        List<Turma> turmas = null;
+        try {
+            turmas = DaoTurma.list();
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroMatricula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        for (Turma t : turmas) {
+            cbTurma.addItem(t);
+        }
+        
+    }
 }

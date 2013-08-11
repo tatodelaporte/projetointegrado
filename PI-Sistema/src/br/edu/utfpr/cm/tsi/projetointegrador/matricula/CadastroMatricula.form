@@ -10,6 +10,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -43,12 +44,12 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="rbInativo" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="tfCodigo" pref="70" max="32767" attributes="0"/>
-                          <Component id="tfAluno" max="32767" attributes="0"/>
-                          <Component id="tfTurma" max="32767" attributes="0"/>
-                          <Component id="tfMensalidade" pref="70" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="cbTurma" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfCodigo" alignment="0" pref="70" max="32767" attributes="0"/>
+                          <Component id="tfAluno" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfMensalidade" alignment="0" pref="70" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="btBuscar" min="-2" max="-2" attributes="0"/>
@@ -75,7 +76,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbTurma" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfTurma" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbTurma" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -163,8 +164,6 @@
         <Property name="text" type="java.lang.String" value="Turma"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfTurma">
-    </Component>
     <Component class="javax.swing.JLabel" name="lbMensalidade">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mensalidade"/>
@@ -191,6 +190,18 @@
     <Component class="javax.swing.JLabel" name="lbSituacao">
       <Properties>
         <Property name="text" type="java.lang.String" value="Situa&#xe7;&#xe3;o"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbTurma">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>
