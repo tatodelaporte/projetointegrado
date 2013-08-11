@@ -365,7 +365,10 @@ public class GUI extends javax.swing.JFrame {
                     + "turma int(10) not null,"
                     + "mensalidade int (10) not null,"
                     + "situacao int (1) not null,"
-                    + "PRIMARY KEY (id));");
+                    + "PRIMARY KEY (id),"
+                    + "FOREIGN KEY (turma) REFERENCES turma(id)ON DELETE CASCADE);");
+             
+             // Nao foi feito os outros FK pois as tabelas nao estao prontas
              
              
 
