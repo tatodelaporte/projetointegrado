@@ -4,14 +4,16 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.turma;
 
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoFuncionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoTurma;
-import java.awt.event.FocusListener;
+import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.Funcionario;
+import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
 import java.sql.SQLException;
+import java.util.Date;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,6 +34,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
         pack();
+        preencherProfessor();
         setResizable(false);// Trava o tamanho do painel.
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -39,7 +42,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
         tfId.setEnabled(false);
         tfDescricao.setEnabled(false);
         tfcodPiscina.setEnabled(false);
-        tfcodProfessor.setEnabled(false);
+        cbProfessor.setEnabled(false);
         tfhorarioInicio.setEnabled(false);
         tfhorarioFim.setEnabled(false);
         cbSegundaFeira.setEnabled(false);
@@ -68,14 +71,11 @@ public class CadastroTurmas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tfcodPiscina = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        tfcodProfessor = new javax.swing.JTextField();
         lbcodTurma = new javax.swing.JLabel();
         tfId = new javax.swing.JTextField();
         lbHorario = new javax.swing.JLabel();
         lbhorarioInicio = new javax.swing.JLabel();
-        tfhorarioInicio = new javax.swing.JTextField();
         lbhorarioFim = new javax.swing.JLabel();
-        tfhorarioFim = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -93,6 +93,9 @@ public class CadastroTurmas extends javax.swing.JFrame {
         btAlterar = new javax.swing.JButton();
         btGravar = new javax.swing.JButton();
         btRemover = new javax.swing.JButton();
+        cbProfessor = new javax.swing.JComboBox();
+        tfhorarioInicio = new javax.swing.JFormattedTextField();
+        tfhorarioFim = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Turmas");
@@ -178,6 +181,12 @@ public class CadastroTurmas extends javax.swing.JFrame {
         });
         jToolBar1.add(btRemover);
 
+        cbProfessor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        tfhorarioInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+
+        tfhorarioFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -195,16 +204,16 @@ public class CadastroTurmas extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfcodProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfcodPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tfcodPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lbHorario)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbhorarioInicio)
                             .addComponent(lbhorarioFim))
-                        .addGap(18, 18, 18)
+                        .addGap(84, 84, 84)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfhorarioInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                            .addComponent(tfhorarioInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
                             .addComponent(tfhorarioFim)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbcodTurma)
@@ -252,20 +261,20 @@ public class CadastroTurmas extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfcodProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(cbProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(lbHorario)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfhorarioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbhorarioInicio))
+                    .addComponent(lbhorarioInicio)
+                    .addComponent(tfhorarioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfhorarioFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbhorarioFim))
+                    .addComponent(lbhorarioFim)
+                    .addComponent(tfhorarioFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -381,9 +390,8 @@ public class CadastroTurmas extends javax.swing.JFrame {
         tfId.setText(String.valueOf(turma.getId()));
         tfDescricao.setText(turma.getDescricao());
         tfcodPiscina.setText(String.valueOf(turma.getPiscina()));
-        tfcodProfessor.setText(String.valueOf(turma.getProfessor()));
-        tfhorarioInicio.setText(turma.getHorarioInicio());
-        tfhorarioFim.setText(turma.getHorariofim());
+        tfhorarioInicio.setText(turma.getHorarioInicio().toString());
+        tfhorarioFim.setText(turma.getHorariofim().toString());
         diasaula = turma.getDiaAula();
         //JOptionPane.showMessageDialog(rootPane, "Dias de Aula " + diasaula); // Debug da Consulta
 
@@ -495,7 +503,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
         tfId.setText(null);
         tfDescricao.setText(null);
         tfcodPiscina.setText(null);
-        tfcodProfessor.setText(null);
+
         tfhorarioInicio.setText(null);
         tfhorarioFim.setText(null);
         cbSegundaFeira.setSelected(false);
@@ -510,7 +518,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
         tfId.setEnabled(false);
         tfDescricao.setEnabled(true);
         tfcodPiscina.setEnabled(true);
-        tfcodProfessor.setEnabled(true);
+        cbProfessor.setEnabled(true);
         tfhorarioInicio.setEnabled(true);
         tfhorarioFim.setEnabled(true);
         cbSegundaFeira.setEnabled(true);
@@ -569,6 +577,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btRemover;
     private javax.swing.JCheckBox cbDomingo;
+    private javax.swing.JComboBox cbProfessor;
     private javax.swing.JCheckBox cbQuartaFeira;
     private javax.swing.JCheckBox cbQuintaFeira;
     private javax.swing.JCheckBox cbSabado;
@@ -590,9 +599,8 @@ public class CadastroTurmas extends javax.swing.JFrame {
     private javax.swing.JTextField tfDescricao;
     private javax.swing.JTextField tfId;
     private javax.swing.JTextField tfcodPiscina;
-    private javax.swing.JTextField tfcodProfessor;
-    private javax.swing.JTextField tfhorarioFim;
-    private javax.swing.JTextField tfhorarioInicio;
+    private javax.swing.JFormattedTextField tfhorarioFim;
+    private javax.swing.JFormattedTextField tfhorarioInicio;
     // End of variables declaration//GEN-END:variables
 
     public Turma getTurma() {
@@ -607,9 +615,10 @@ public class CadastroTurmas extends javax.swing.JFrame {
 
         turma.setDescricao(tfDescricao.getText().trim());
         turma.setPiscina(Integer.parseInt(tfcodPiscina.getText().trim()));
-        turma.setProfessor(Integer.parseInt(tfcodProfessor.getText().trim()));
-        turma.setHorarioInicio(tfhorarioInicio.getText().trim());
-        turma.setHorarioFim(tfhorarioFim.getText().trim());
+        //turma.setProfessor(Integer.parseInt(tfcodProfessor.getText().trim()));
+        turma.setProfessor((Funcionario) cbProfessor.getSelectedItem());
+        turma.setHorarioInicio((Date) tfhorarioInicio.getValue());
+        turma.setHorarioFim((Date) tfhorarioFim.getValue());
         turma.setDiaAula(diasaula);
 
         return turma;
@@ -621,9 +630,28 @@ public class CadastroTurmas extends javax.swing.JFrame {
         //tfId.setText("1");
         tfDescricao.setText(turma.getDescricao());
         tfcodPiscina.setText(String.valueOf(turma.getPiscina()));
-        tfcodProfessor.setText(String.valueOf(turma.getProfessor()));
-        tfhorarioInicio.setText(turma.getHorarioInicio());
-        tfhorarioFim.setText(turma.getHorariofim());
+        tfhorarioInicio.setValue(turma.getHorarioInicio());
+        tfhorarioFim.setValue(turma.getHorariofim());
 
     }
+
+    public void preencherProfessor() {
+
+        cbProfessor.removeAllItems();
+        cbProfessor.removeAll();
+
+        List<Funcionario> funcionarios = null;
+        try {
+            funcionarios = DaoFuncionario.list();
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroMatricula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        for (Funcionario f : funcionarios) {
+            if ("Professor".equals(f.getTipoFuncionario())) {
+                cbProfessor.addItem(f);
+            }
+        }
+    }
 }
+
