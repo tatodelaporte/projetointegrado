@@ -339,8 +339,8 @@ public class GUI extends javax.swing.JFrame {
                     + "descricao varchar(20) not null,"
                     + "professor varchar(10) not null,"
                     + "piscina varchar(10) not null,"
-                    + "horarioInico time not null,"
-                    + "horarioFim time not null,"
+                    + "horarioinicio time not null,"
+                    + "horariofim time not null,"
                     + "diaAula varchar(100) not null,"
                     + "PRIMARY KEY (id));");
             st.executeUpdate("CREATE TABLE IF NOT EXISTS "
