@@ -153,17 +153,9 @@ public class Funcionario {
     @Override
     public String toString() {
 
-        return "Funcionario {" + "id=" + id + ","
-                + "nome" + nome + ","
-                + "cpf" + cpf + ","
-                + "rg" + rg + ","
-                + "cep" + cep + ","
-                + "prefixo" + prefixo + ","
-                + "endereco" + endereco + ","
-                + "cidade" + cidade + ","
-                + "uf" + uf + ","
-                + "fonecelular" + foneCelular + ","
-                + "foneresidencia" + foneResidencia + ","
-                + "tipofuncionario" + TipoFuncionario + '}';
+        return this.getNome() + " - " +getId();
+                
+                
+               
     }
 }
