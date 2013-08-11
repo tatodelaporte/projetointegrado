@@ -1,7 +1,6 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.Funcionario;
-import br.edu.utfpr.cm.tsi.projetointegrador.turma.Turma;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -128,7 +127,17 @@ public class DaoFuncionario {
         JOptionPane.showMessageDialog(null, "Apagado com Sucesso!");
     }
 
-    public List<Funcionario> list() throws SQLException {
+    public static Funcionario find(int id) throws SQLException {
+
+        Statement st = ConnectionFactory.prepareConnection().createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM funcionario where id= " + id);
+        rs.next();
+
+        Funcionario f = converteRsParaFuncionario(rs);
+        return f;
+    }
+
+    public static List<Funcionario> list() throws SQLException {
         List<Funcionario> Func = new ArrayList<Funcionario>();
 
         Statement st = ConnectionFactory.prepareConnection().createStatement();

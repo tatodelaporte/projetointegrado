@@ -484,7 +484,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         Funcionario funcionario = new Funcionario();
 
-        funcionario.setId(Integer.parseInt(tfId.getText().trim()));
+        //funcionario.setId(Integer.parseInt(tfId.getText().trim()));
         funcionario.setNome(tfNome.getText().trim());
         funcionario.setCpf(tfCPF.getText().trim());
         funcionario.setRg(tfRG.getText().trim());
