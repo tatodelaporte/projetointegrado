@@ -366,6 +366,8 @@ public class GUI extends javax.swing.JFrame {
                     + "mensalidade int (10) not null,"
                     + "situacao int (1) not null,"
                     + "PRIMARY KEY (id));");
+             
+             
 
 
         } catch (SQLException ex) {
