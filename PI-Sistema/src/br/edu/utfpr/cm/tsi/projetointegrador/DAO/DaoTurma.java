@@ -1,11 +1,12 @@
-
 package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.turma.Turma;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -22,9 +23,9 @@ public class DaoTurma {
 
         t.setId(rs.getInt("id"));
         t.setDescricao(rs.getString("descricao"));
-        t.setProfessor(rs.getInt("professor"));
-        t.setHorarioInicio(rs.getString("horarioinicio"));
-        t.setHorarioFim(rs.getString("horariofim"));
+        DaoFuncionario.find(rs.getInt("professor"));
+        t.setHorarioInicio(rs.getTime("horarioinicio"));
+        t.setHorarioFim(rs.getTime("horariofim"));
         t.setDiaAula(rs.getString("diaaula"));
 
         return t;
@@ -43,10 +44,10 @@ public class DaoTurma {
 
         PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("INSERT INTO Turma (descricao, professor, piscina, horarioinicio,horariofim,diaAula) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         pst.setString(1, t.getDescricao());
-        pst.setInt(2, t.getProfessor());
+        pst.setInt(2, t.getProfessor().getId());
         pst.setInt(3, t.getPiscina());
-        pst.setString(4, t.getHorarioInicio());
-        pst.setString(5, t.getHorariofim());
+        pst.setTime(4, new java.sql.Time(t.getHorarioInicio().getTime()));
+        pst.setTime(5, new java.sql.Time(t.getHorariofim().getTime()));
         pst.setString(6, t.getDiaAula());
         //ResultSet rs = pst.getGeneratedKeys();
         pst.execute();
@@ -73,13 +74,16 @@ public class DaoTurma {
         PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("UPDATE Turma SET descricao = ?,"
                 + " professor = ?,"
                 + " piscina=?,"
-                + "horarioinicio=?, horariofim=?, diaaula=? WHERE id ="+t.getId());
-        
+                + "horarioInicio=?,"
+                + " horarioFim=?,"
+                + " diaaula=?"
+                + " WHERE id =" + t.getId());
+
         pst.setString(1, t.getDescricao());
-        pst.setInt(2, t.getProfessor());
+        pst.setInt(2, t.getProfessor().getId());
         pst.setInt(3, t.getPiscina());
-        pst.setString(4, t.getHorarioInicio());
-        pst.setString(5, t.getHorariofim());
+        pst.setTime(4, new java.sql.Time(t.getHorarioInicio().getTime()));
+        pst.setTime(5, new java.sql.Time(t.getHorariofim().getTime()));
         pst.setString(6, t.getDiaAula());
         pst.execute();
         JOptionPane.showMessageDialog(null, "Atualizado com Sucesso!");
@@ -92,11 +96,11 @@ public class DaoTurma {
         JOptionPane.showMessageDialog(null, "Apagado com Sucesso!");
     }
 
-    public List<Turma> list() throws SQLException {
+    public static List<Turma> list() throws SQLException {
         List<Turma> Turmas = new ArrayList<Turma>();
 
         Statement st = ConnectionFactory.prepareConnection().createStatement();
-        ResultSet rs = st.executeQuery("SELECT * FROM Turma");
+        ResultSet rs = st.executeQuery("SELECT * FROM turma");
 
         while (rs.next()) {
             Turma t = converteRsParaTurma(rs);
