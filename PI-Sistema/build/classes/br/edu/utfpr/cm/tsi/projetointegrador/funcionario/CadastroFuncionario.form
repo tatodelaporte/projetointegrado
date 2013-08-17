@@ -206,6 +206,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfId">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfIdActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbNome">
       <Properties>
@@ -213,6 +216,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfNome">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfNomeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbCPF">
       <Properties>

@@ -36,9 +36,9 @@ public class DaoAluno {
         return p;
     }
         
-        private DaoAluno() {}
+    //    private DaoAluno() {}
             
-      private static final String JDBC_URL = "jdbc:mysql://localhost:3306/pisistemas?user=root&password=douglas";
+  //    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/pisistemas?user=root&password=douglas";
     
       public static void insert(Aluno p) throws SQLException{   
           

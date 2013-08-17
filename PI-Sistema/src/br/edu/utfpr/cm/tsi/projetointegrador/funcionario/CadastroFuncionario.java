@@ -98,7 +98,19 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         lbCodigo.setText("Codigo");
 
+        tfId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdActionPerformed(evt);
+            }
+        });
+
         lbNome.setText("Nome");
+
+        tfNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNomeActionPerformed(evt);
+            }
+        });
 
         lbCPF.setText("CPF");
 
@@ -434,6 +446,14 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         tfFoneResidencia.setEnabled(flag);
         cbTipoFuncionario.setEnabled(flag);
     }//GEN-LAST:event_rbCodigoFuncionarioMouseClicked
+
+    private void tfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdActionPerformed
+
+    private void tfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNomeActionPerformed
 
     public static void main(String args[]) {
 
