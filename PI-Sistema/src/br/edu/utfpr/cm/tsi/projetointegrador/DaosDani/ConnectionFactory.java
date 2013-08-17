@@ -21,8 +21,7 @@ public class ConnectionFactory {
 
           Connection con = DriverManager.getConnection(JDBC_URL);
         con.setAutoCommit(true);
-        return con;
-    
+        return con; 
        
     }
 }

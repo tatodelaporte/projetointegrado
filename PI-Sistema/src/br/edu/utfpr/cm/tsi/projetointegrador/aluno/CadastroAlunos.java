@@ -266,36 +266,13 @@ public class CadastroAlunos extends javax.swing.JFrame {
     
          
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-           Aluno aluno=new Aluno();
-           aluno = getAluno();
-           
-           
-           if(jTextCodigo.isEnabled() == true){
-               jTextCodigo.setText(null);
-               try{
-                   
-                   DaoAluno.update(aluno);
-                   
-               }catch (SQLException ex) {
-                   Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-               }
-               JOptionPane.showMessageDialog(null, "Alterações salvas com sucesso!");
-           }
-           
-           if(jTextCodigo.isEnabled() == false) {
-               
-               try{
-                   
-                   DaoAluno.insert(aluno);
-                   
-               }catch (SQLException ex) {
-                   Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-               }
-               
-           }
            
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
+    
+    
+    
+    
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
         // TODO add your handling code here:
         flag=true;

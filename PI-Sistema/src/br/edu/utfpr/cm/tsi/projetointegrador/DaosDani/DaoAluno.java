@@ -64,8 +64,8 @@ public class DaoAluno {
     
     
        public static Aluno retrieve(int id) throws SQLException{
-        Statement st =  prepareConnection().createStatement();                                
-        st.execute("SELECT * FROM aluno");
+        Statement st =ConnectionFactory.prepareConnection().createStatement();
+        st.execute("SELECT * FROM aluno where id=" +id);
         ResultSet rs = st.getResultSet();
         
         rs.next();
@@ -75,26 +75,39 @@ public class DaoAluno {
     }
       
       public static void update(Aluno p) throws SQLException{
-        PreparedStatement pst =  prepareConnection().prepareStatement("UPDATE aluno SET nome = ?, cpf = ?, endereco = ?, telefone = ? WHERE id = ?");
+        PreparedStatement pst =ConnectionFactory.prepareConnection().prepareStatement("UPDATE aluno SET nome = ?, cpf = ?, endereco = ?, telefone = ? WHERE id = ?");
         pst.setString(1, p.getNome());
         pst.setString(2, p.getCpf());
         pst.setString(3, p.getEndereco());
         pst.setString(4, p.getTelefone());
         pst.setInt(5, p.getId());
         pst.execute();
+        
+        JOptionPane.showMessageDialog(null, "Alterado com sucesso");
     }
       
       
       public static void delete(Aluno p) throws SQLException{
-        Statement st =  prepareConnection().createStatement();                                
+        Statement st =  ConnectionFactory.prepareConnection().createStatement();                                
         st.execute("DELETE FROM aluno WHERE id = " + p.getId());
+        
+        JOptionPane.showMessageDialog(null, "Deletado com sucesso");
     }
+      
+      public static Aluno find(int id) throws SQLException{
+          Statement st=ConnectionFactory.prepareConnection().createStatement();
+          ResultSet rs=st.executeQuery("SELECT * FROM aluno where id=" +id);
+          rs.next();
+          
+          Aluno p = converteRsParaAluno(rs);
+          return p;
+      }
       
     
       public static List<Aluno> list() throws SQLException{
         List<Aluno> alunos = new ArrayList<Aluno>();
         
-        Statement st =  prepareConnection().createStatement();                                
+        Statement st = ConnectionFactory.prepareConnection().createStatement();                                
         ResultSet rs =  st.executeQuery("SELECT * FROM aluno");
         
         while(rs.next()){
@@ -104,14 +117,16 @@ public class DaoAluno {
         
         return alunos;
     }
-      
-      
-       private static  Connection prepareConnection() throws SQLException {
-        DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-        Connection con = DriverManager.getConnection(JDBC_URL);
-        con.setAutoCommit(true);
-        return con;
+
+    public static void insert(br.edu.utfpr.cm.tsi.projetointegrador.aluno.Aluno aluno) {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
+
+    public static void update(br.edu.utfpr.cm.tsi.projetointegrador.aluno.Aluno aluno) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+      
+      
 }
 
       
