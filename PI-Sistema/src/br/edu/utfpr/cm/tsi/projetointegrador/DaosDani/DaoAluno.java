@@ -116,16 +116,7 @@ public class DaoAluno {
         }
         
         return alunos;
-    }
-
-    public static void insert(br.edu.utfpr.cm.tsi.projetointegrador.aluno.Aluno aluno) {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-    public static void update(br.edu.utfpr.cm.tsi.projetointegrador.aluno.Aluno aluno) {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-      
+    }  
       
 }
 
