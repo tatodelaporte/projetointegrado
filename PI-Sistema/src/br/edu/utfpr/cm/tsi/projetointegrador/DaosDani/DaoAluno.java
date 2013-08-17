@@ -4,6 +4,8 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.DaosDani;
 
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory;
+import br.edu.utfpr.cm.tsi.projetointegrador.DaosDani.Aluno;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -13,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,19 +40,26 @@ public class DaoAluno {
             
       private static final String JDBC_URL = "jdbc:mysql://localhost:3306/pisistemas?user=root&password=douglas";
     
-      public static void insert(Aluno p) throws SQLException{      
-        PreparedStatement pst =prepareConnection().prepareStatement("INSERT INTO aluno (nome, cpf, endereco,telefone, dataNascimento) VALUES (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+      public static void insert(Aluno p) throws SQLException{   
+          
+        PreparedStatement pst =ConnectionFactory.prepareConnection().prepareStatement("INSERT INTO aluno (nome, cpf, endereco,telefone) VALUES (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         pst.setString(1, p.getNome());
         pst.setString(2, p.getCpf());
         pst.setString(3, p.getEndereco());
         pst.setString(4, p.getTelefone());
-        pst.setDate(5, new Date(p.getDataNascimento().getTime()));
+      //  pst.setDate(5, new Date(p.getDataNascimento().getTime()));
         
         pst.execute();
         
         ResultSet rs = pst.getGeneratedKeys();
-        rs.next();
-        p.setId(rs.getInt(1));
+        int idGerado =0;
+        if (rs.next()){
+            idGerado =rs.getInt(1);
+        }
+         
+        p.setId(idGerado);
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso \n "
+                + "Código do Aluno "+idGerado);
     } 
     
     
