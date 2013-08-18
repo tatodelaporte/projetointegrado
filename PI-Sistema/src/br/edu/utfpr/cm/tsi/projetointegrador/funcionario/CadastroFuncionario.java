@@ -140,6 +140,11 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 rbCodigoFuncionarioMouseClicked(evt);
             }
         });
+        rbCodigoFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbCodigoFuncionarioActionPerformed(evt);
+            }
+        });
 
         jToolBar1.setRollover(true);
 
@@ -454,6 +459,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private void tfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNomeActionPerformed
+
+    private void rbCodigoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCodigoFuncionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbCodigoFuncionarioActionPerformed
 
     public static void main(String args[]) {
 

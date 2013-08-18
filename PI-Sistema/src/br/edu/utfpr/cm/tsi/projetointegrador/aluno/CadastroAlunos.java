@@ -82,6 +82,11 @@ public class CadastroAlunos extends javax.swing.JFrame {
         });
 
         jRadioCodigoAluno.setText("Código Aluno");
+        jRadioCodigoAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioCodigoAlunoActionPerformed(evt);
+            }
+        });
 
         jButtonBuscar.setText("Buscar");
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -249,7 +254,26 @@ public class CadastroAlunos extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextNomeActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        // TODO add your handling code here:
+            Aluno aluno=new Aluno();
+            String buscar="";
+            
+            
+            if(jRadioCodigoAluno.isSelected()){
+                aluno.setId(Integer.parseInt(jTextCodigo.getText().trim()));
+                buscar=jTextCodigo.getText();
+            }
+            try{
+                DaoAluno.retrieve(Integer.parseInt(buscar));
+            }catch (SQLException ex){
+                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             try{
+              aluno=DaoAluno.retrieve(Integer.parseInt(buscar)) ;
+         }catch (SQLException ex){
+             Logger.getLogger(CadastroAlunos.class.getCanonicalName()).log(Level.SEVERE, null, ex);
+         }
+             
+             setAluno(aluno);
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jTextCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCPFActionPerformed
@@ -321,10 +345,22 @@ public class CadastroAlunos extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        Aluno aluno=new Aluno();
+        aluno=getAluno();
+        
+        try{
+            DaoAluno.delete(aluno);
+        }catch (SQLException ex){
+            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE,null ,ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    public void setAluno(){
-        Aluno aluno=new Aluno();
+    private void jRadioCodigoAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCodigoAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioCodigoAlunoActionPerformed
+
+    public void setAluno(Aluno aluno){
+     //   Aluno aluno=new Aluno();
         
         jTextNome.setText(aluno.getNome());
         jTextCPF.setText(aluno.getCpf());
@@ -332,6 +368,21 @@ public class CadastroAlunos extends javax.swing.JFrame {
         jTextTelefone.setText(aluno.getTelefone());
             
     }
+    
+    
+     public void setAluno(){
+     Aluno aluno=new Aluno();
+        
+        jTextNome.setText(aluno.getNome());
+        jTextCPF.setText(aluno.getCpf());
+        jTextEndereco.setText(aluno.getEndereco());
+        jTextTelefone.setText(aluno.getTelefone());
+            
+    }
+    
+    
+    
+    
     
    public Aluno getAluno(){       
     Aluno aluno =new Aluno();

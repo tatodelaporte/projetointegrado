@@ -144,6 +144,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="C&#xf3;digo Aluno"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioCodigoAlunoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonBuscar">
       <Properties>
