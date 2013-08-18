@@ -371,7 +371,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
     
     
      public void setAluno(){
-     Aluno aluno=new Aluno();
+       Aluno aluno=new Aluno();
         
         jTextNome.setText(aluno.getNome());
         jTextCPF.setText(aluno.getCpf());

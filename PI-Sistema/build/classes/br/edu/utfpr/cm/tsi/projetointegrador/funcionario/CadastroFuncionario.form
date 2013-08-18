@@ -226,6 +226,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfCPF">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCPFActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbRG">
       <Properties>
@@ -233,6 +236,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfRG">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfRGActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbEndereco">
       <Properties>
@@ -249,6 +255,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfFoneCelular">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfFoneCelularActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbFoneResidencia">
       <Properties>
@@ -256,6 +265,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfFoneResidencia">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfFoneResidenciaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbTipoFuncionario">
       <Properties>
@@ -367,6 +379,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfCEP">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCEPActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbPrefixo">
       <Properties>
@@ -385,6 +400,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfCidade">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCidadeActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

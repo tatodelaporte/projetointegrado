@@ -114,13 +114,37 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         lbCPF.setText("CPF");
 
+        tfCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCPFActionPerformed(evt);
+            }
+        });
+
         lbRG.setText("RG");
+
+        tfRG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfRGActionPerformed(evt);
+            }
+        });
 
         lbEndereco.setText("Endereço");
 
         lbFoneCelular.setText("Celular");
 
+        tfFoneCelular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfFoneCelularActionPerformed(evt);
+            }
+        });
+
         lbFoneResidencia.setText("Residencia");
+
+        tfFoneResidencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfFoneResidenciaActionPerformed(evt);
+            }
+        });
 
         cbTipoFuncionario.setModel(new javax.swing.DefaultComboBoxModel(Funcionario.TipoFuncionario.values()));
 
@@ -196,9 +220,21 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         lbCEP.setText("CEP");
 
+        tfCEP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCEPActionPerformed(evt);
+            }
+        });
+
         cbPrefixo.setModel(new javax.swing.DefaultComboBoxModel(Funcionario.Prefixo.values()));
 
         cbUF.setModel(new javax.swing.DefaultComboBoxModel(Funcionario.UF.values()));
+
+        tfCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCidadeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -463,6 +499,30 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private void rbCodigoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCodigoFuncionarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbCodigoFuncionarioActionPerformed
+
+    private void tfCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCPFActionPerformed
+
+    private void tfRGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfRGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfRGActionPerformed
+
+    private void tfCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCEPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCEPActionPerformed
+
+    private void tfCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCidadeActionPerformed
+
+    private void tfFoneCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFoneCelularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfFoneCelularActionPerformed
+
+    private void tfFoneResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFoneResidenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfFoneResidenciaActionPerformed
 
     public static void main(String args[]) {
 

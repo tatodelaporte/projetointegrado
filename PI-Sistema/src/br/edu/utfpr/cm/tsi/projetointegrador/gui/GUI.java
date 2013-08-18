@@ -6,6 +6,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.consulta.ConsultaHorarioAula;
 import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.CadastroFuncionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.turma.CadastroTurmas;
+import br.edu.utfpr.cm.tsi.projetointegrador.aluno.CadastroAlunos;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -77,6 +78,11 @@ public class GUI extends javax.swing.JFrame {
         btAlunos.setFocusable(false);
         btAlunos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btAlunos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAlunosActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btAlunos);
 
         btTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Group.png"))); // NOI18N
@@ -320,7 +326,7 @@ public class GUI extends javax.swing.JFrame {
     private void btMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMatriculaActionPerformed
         new CadastroMatricula().setVisible(true);
     }//GEN-LAST:event_btMatriculaActionPerformed
-
+        
     private void rbmiConsultaHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiConsultaHorariosActionPerformed
        new ConsultaHorarioAula().setVisible(true);
     }//GEN-LAST:event_rbmiConsultaHorariosActionPerformed
@@ -329,6 +335,13 @@ public class GUI extends javax.swing.JFrame {
         new ConsultaHorarioAula().setVisible(true);
     }//GEN-LAST:event_btConsultaHorarioActionPerformed
 
+    private void btAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlunosActionPerformed
+           new CadastroAlunos().setVisible(true);
+    }//GEN-LAST:event_btAlunosActionPerformed
+
+   
+    
+    
     public void criarBanco() {
         try {
             Statement st = ConnectionFactory.prepareConnection().createStatement();
