@@ -388,6 +388,13 @@ public class GUI extends javax.swing.JFrame {
                      +"endereco varchar (150) not null,"
                      +"telefone varchar (15),"
                      +"PRIMARY KEY (id));");
+             st.executeUpdate("CREATE TABLE IF NOT EXISTS"
+                     +"piscina("
+                     +"id int (10) not null AUTO_INCREMENT,"
+                     +"descricao varchar (60) not null,"
+                     +"tamanho varchar (10) not null,"
+                     +"capacidade de Alunos (10),"
+                     +"PRIMARY KEY (id));");
              
              // Nao foi feito os outros FK pois as tabelas nao estao prontas
              

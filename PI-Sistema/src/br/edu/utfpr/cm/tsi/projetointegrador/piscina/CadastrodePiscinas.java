@@ -4,6 +4,11 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.piscina;
 
+import br.edu.utfpr.cm.tsi.projetointegrador.DaosDani.DaoPiscina;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Daniele
@@ -207,10 +212,18 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
             piscina.setId(Integer.parseInt(jTextCodigo.getText().trim()));
             Buscar =jTextCodigo.getText();
         }try{
+            DaoPiscina.retrieve(Integer.parseInt(Buscar));
             
+        }catch (SQLException ex){
+            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE,null, ex);
+        }
+        try{
+            piscina=DaoPiscina.retrieve(Integer.parseInt(Buscar));
+        }catch(SQLException ex){
+            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE,null, ex);
         }
         
-        
+           setPiscina(piscina);
         
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
@@ -250,6 +263,21 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
+    
+    private void setPiscina(Piscina piscina){
+        jTextDescricaoPiscina.setText(piscina.getDescricao());
+        jTextTamanho.setText(piscina.getTamanho()); 
+        jTextCapacidadeAlunos.setText(piscina.getCapacidadeAlunos());
+        
+        
+        
+   }
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */

@@ -15,7 +15,6 @@ public class Aluno {
     private String nome;
     private String cpf;
     private String endereco;
-    private Date dataNascimento;
     private String telefone;
 
     public int getId() {
@@ -50,13 +49,9 @@ public class Aluno {
         this.endereco = endereco;
     }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
+   
 
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
+   
 
     public String getTelefone() {
         return telefone;
@@ -66,12 +61,7 @@ public class Aluno {
         this.telefone = telefone;
     }
 
-    @Override
-    public String toString() {
-        return "Aluno{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", dataNascimento=" + dataNascimento + ", telefone=" + telefone + '}';
-    }
-    
-    
+   
     
     
     
