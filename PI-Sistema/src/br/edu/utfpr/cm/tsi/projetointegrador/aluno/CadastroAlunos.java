@@ -384,10 +384,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
         jTextTelefone.setText(aluno.getTelefone());
             
     }
-    
-    
-    
-    
+        
     
    public Aluno getAluno(){       
     Aluno aluno =new Aluno();

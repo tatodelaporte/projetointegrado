@@ -7,6 +7,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.CadastroFuncionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.turma.CadastroTurmas;
 import br.edu.utfpr.cm.tsi.projetointegrador.aluno.CadastroAlunos;
+import br.edu.utfpr.cm.tsi.projetointegrador.piscina.CadastrodePiscinas;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -114,6 +115,11 @@ public class GUI extends javax.swing.JFrame {
         btPiscina.setFocusable(false);
         btPiscina.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btPiscina.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btPiscina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPiscinaActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btPiscina);
 
         btMensalidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Applications.png"))); // NOI18N
@@ -339,6 +345,10 @@ public class GUI extends javax.swing.JFrame {
            new CadastroAlunos().setVisible(true);
     }//GEN-LAST:event_btAlunosActionPerformed
 
+    private void btPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPiscinaActionPerformed
+         new CadastrodePiscinas().setVisible(true);
+    }//GEN-LAST:event_btPiscinaActionPerformed
+
    
     
     
@@ -388,12 +398,12 @@ public class GUI extends javax.swing.JFrame {
                      +"endereco varchar (150) not null,"
                      +"telefone varchar (15),"
                      +"PRIMARY KEY (id));");
-             st.executeUpdate("CREATE TABLE IF NOT EXISTS"
+             st.executeUpdate("CREATE TABLE IF NOT EXISTS "
                      +"piscina("
                      +"id int (10) not null AUTO_INCREMENT,"
                      +"descricao varchar (60) not null,"
                      +"tamanho varchar (10) not null,"
-                     +"capacidade de Alunos (10),"
+                     +"capacidade varchar (10) not null,"
                      +"PRIMARY KEY (id));");
              
              // Nao foi feito os outros FK pois as tabelas nao estao prontas
