@@ -8,6 +8,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.DaosDani.DaoPiscina;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,11 +16,27 @@ import java.util.logging.Logger;
  */
 public class CadastrodePiscinas extends javax.swing.JFrame {
 
+    boolean flag;
+
     /**
      * Creates new form CadastrodePiscinas
      */
     public CadastrodePiscinas() {
         initComponents();
+        setSize(500, 610);
+        setTitle("Cadastro de Piscinas");
+        setVisible(true);
+        setLocationRelativeTo(null);
+        pack();
+        setResizable(false);// Trava o tamanho do painel.
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+        flag = false;
+        jTextCodigo.setEnabled(flag);
+        jTextDescricaoPiscina.setEnabled(flag);
+        jTextTamanho.setEnabled(flag);
+        jTextCapacidadeAlunos.setEnabled(flag);
+
     }
 
     /**
@@ -153,7 +170,7 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
                         .addComponent(jTextDescricaoPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -205,26 +222,27 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        Piscina piscina=new Piscina();
-        String Buscar="";
-        
-        if(jRadioCodigoPiscina.isSelected()){
+        Piscina piscina = new Piscina();
+        String Buscar = "";
+
+        if (jRadioCodigoPiscina.isSelected()) {
             piscina.setId(Integer.parseInt(jTextCodigo.getText().trim()));
-            Buscar =jTextCodigo.getText();
-        }try{
+            Buscar = jTextCodigo.getText();
+        }
+        try {
             DaoPiscina.retrieve(Integer.parseInt(Buscar));
-            
-        }catch (SQLException ex){
-            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE,null, ex);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try{
-            piscina=DaoPiscina.retrieve(Integer.parseInt(Buscar));
-        }catch(SQLException ex){
-            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE,null, ex);
+        try {
+            piscina = DaoPiscina.retrieve(Integer.parseInt(Buscar));
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-           setPiscina(piscina);
-        
+
+        setPiscina(piscina);
+
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jTextDescricaoPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDescricaoPiscinaActionPerformed
@@ -240,7 +258,15 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextCodigoActionPerformed
 
     private void jRadioCodigoPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCodigoPiscinaActionPerformed
-        // TODO add your handling code here:
+        flag = true;
+        jTextCodigo.setEnabled(flag);
+        jTextDescricaoPiscina.setEnabled(flag);
+        jTextTamanho.setEnabled(flag);
+        jTextCapacidadeAlunos.setEnabled(flag);
+
+
+
+
     }//GEN-LAST:event_jRadioCodigoPiscinaActionPerformed
 
     private void jTextTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTamanhoActionPerformed
@@ -252,32 +278,65 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextCapacidadeAlunosActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-        // TODO add your handling code here:
+        flag = true;
+        jTextCodigo.setText(null);
+        jTextCodigo.setEnabled(false);
+
+        jTextDescricaoPiscina.setEnabled(flag);
+        jTextTamanho.setEnabled(flag);
+        jTextCapacidadeAlunos.setEnabled(flag);
+
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-        // TODO add your handling code here:
+        Piscina piscina = new Piscina();
+        piscina = getPiscina();
+         try {
+            DaoPiscina.update(piscina);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
-        // TODO add your handling code here:
+      Piscina piscina = new Piscina();
+        piscina = getPiscina();
+
+        if (jTextCodigo.isEnabled() == true) {
+            jTextCodigo.setText(null);
+        }
+        try {
+
+            DaoPiscina.(piscina);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        JOptionPane.showMessageDialog(null, "Alterado com sucesso");
+
+
+        if (jTextCodigo.isEnabled() == false) {
+            try {
+
+                DaoPiscina.insert(piscina);
+            } catch (SQLException ex) {
+
+                Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+                      
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
-    
-    private void setPiscina(Piscina piscina){
+    private void setPiscina(Piscina piscina) {
         jTextDescricaoPiscina.setText(piscina.getDescricao());
-        jTextTamanho.setText(piscina.getTamanho()); 
+        jTextTamanho.setText(piscina.getTamanho());
         jTextCapacidadeAlunos.setText(piscina.getCapacidadeAlunos());
-        
-        
-        
-   }
-    
-    
-    
-    
-    
-    
+
+
+
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -329,4 +388,31 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
     private javax.swing.JTextField jTextDescricaoPiscina;
     private javax.swing.JTextField jTextTamanho;
     // End of variables declaration//GEN-END:variables
+
+    public Piscina getPiscina() {
+
+        Piscina piscina = getPiscina();
+
+        piscina.setDescricao(jTextDescricaoPiscina.getText().trim());
+        piscina.setTamanho(jTextTamanho.getText().trim());
+        piscina.setCapacidadeAlunos(jTextCapacidadeAlunos.getText().trim());
+
+
+        return piscina;
+    }
+
+    public void setPiscina() {
+
+        Piscina piscina = new Piscina();
+
+        jTextDescricaoPiscina.setText(piscina.getDescricao());
+        jTextTamanho.setText(piscina.getTamanho());
+        jTextCapacidadeAlunos.setText(piscina.getCapacidadeAlunos());
+
+    }
+    // private void setPiscina(Piscina piscina){
+    //   jTextDescricaoPiscina.setText(piscina.getDescricao());
+    // jTextTamanho.setText(piscina.getTamanho()); 
+    // jTextCapacidadeAlunos.setText(piscina.getCapacidadeAlunos());
+    // }
 }

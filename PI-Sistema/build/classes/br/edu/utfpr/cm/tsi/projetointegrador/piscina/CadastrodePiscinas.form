@@ -42,7 +42,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextTamanho" min="-2" pref="97" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
