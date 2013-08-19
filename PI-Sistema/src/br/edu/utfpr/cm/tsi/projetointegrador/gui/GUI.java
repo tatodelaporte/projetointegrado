@@ -380,6 +380,14 @@ public class GUI extends javax.swing.JFrame {
                     + "situacao int (1) not null,"
                     + "PRIMARY KEY (id),"
                     + "FOREIGN KEY (turma) REFERENCES turma(id)ON DELETE CASCADE);");
+             st.executeUpdate("CREATE TABLE IF NOT EXISTS "
+                     +"aluno(" 
+                     +"id int (10) not null AUTO_INCREMENT,"
+                     +"nome varchar (50) not null,"
+                     +"cpf varchar (11) not null,"
+                     +"endereco varchar (150) not null,"
+                     +"telefone varchar (15),"
+                     +"PRIMARY KEY (id));");
              
              // Nao foi feito os outros FK pois as tabelas nao estao prontas
              
