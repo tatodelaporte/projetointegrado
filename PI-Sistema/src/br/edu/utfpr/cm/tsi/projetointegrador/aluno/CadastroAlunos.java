@@ -23,7 +23,7 @@ import org.jcp.xml.dsig.internal.dom.Utils;
  */
 public class CadastroAlunos extends javax.swing.JFrame {
     MaskFormatter mCPF=new MaskFormatter();
-    ValidadorAlunos valida=new ValidadorAlunos();
+ //   ValidadorAlunos valida=new ValidadorAlunos();
     
        boolean flag;
     
@@ -422,9 +422,11 @@ public class CadastroAlunos extends javax.swing.JFrame {
 
     private void jTextCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCPFFocusLost
          if(!jTextCPF.getText().contains("_")){
-             if(!ValidadorAlunos.isCPF(jTextCPF.getText())){
+             if(ValidadorAlunos.isCPF(jTextCPF.getText())){
                 jTextCPF.setForeground(Color.RED);
                 JOptionPane.showMessageDialog(this,"CPF inválido ");
+             }else{
+                 jTextCPF.setForeground(Color.BLUE);
              }
          }
     }//GEN-LAST:event_jTextCPFFocusLost
