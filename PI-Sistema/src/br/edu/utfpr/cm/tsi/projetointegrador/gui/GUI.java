@@ -8,6 +8,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.turma.CadastroTurmas;
 import br.edu.utfpr.cm.tsi.projetointegrador.aluno.CadastroAlunos;
 import br.edu.utfpr.cm.tsi.projetointegrador.piscina.CadastrodePiscinas;
+import br.edu.utfpr.cm.tsi.projetointegrador.mensalidade.CadastroMensalidades;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -127,6 +128,11 @@ public class GUI extends javax.swing.JFrame {
         btMensalidade.setFocusable(false);
         btMensalidade.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btMensalidade.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btMensalidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMensalidadeActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btMensalidade);
 
         btMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Users.png"))); // NOI18N
@@ -349,6 +355,10 @@ public class GUI extends javax.swing.JFrame {
          new CadastrodePiscinas().setVisible(true);
     }//GEN-LAST:event_btPiscinaActionPerformed
 
+    private void btMensalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMensalidadeActionPerformed
+       new CadastroMensalidades().setVisible(true);
+    }//GEN-LAST:event_btMensalidadeActionPerformed
+
    
     
     
@@ -405,8 +415,15 @@ public class GUI extends javax.swing.JFrame {
                      +"tamanho varchar (10) not null,"
                      +"capacidade varchar (10) not null,"
                      +"PRIMARY KEY (id));");
+             st.executeUpdate("CREATE TABLE IF NOT EXISTS "
+                     +"mensalidade("
+                     +"id int (15) not null AUTO_INCREMENT,"
+                     +"nome varchar (50) not null,"
+                     +"tipo varchar (20) not null,"
+                     +"valor varchar (10) not null,"
+                     +"PRIMARY KEY (id));");
              
-             // Nao foi feito os outros FK pois as tabelas nao estao prontas
+             
              
              
 
