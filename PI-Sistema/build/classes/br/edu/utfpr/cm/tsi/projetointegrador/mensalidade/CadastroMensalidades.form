@@ -34,7 +34,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextCodigo" min="-2" pref="83" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jRadioCodigoAluno" min="-2" max="-2" attributes="0"/>
+                      <Component id="jRadioCodigoMensalidade" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButtonBuscar" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -83,7 +83,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRadioCodigoAluno" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRadioCodigoMensalidade" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -132,12 +132,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextCodigoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioCodigoAluno">
+    <Component class="javax.swing.JRadioButton" name="jRadioCodigoMensalidade">
       <Properties>
-        <Property name="text" type="java.lang.String" value="C&#xf3;digo Aluno"/>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo Mensalidade"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioCodigoAlunoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioCodigoMensalidadeActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonBuscar">

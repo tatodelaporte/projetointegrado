@@ -68,7 +68,7 @@ public class DaoMensalidade {
     }
       
       public static void update(Mensalidade p) throws SQLException{
-        PreparedStatement pst =br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory.prepareConnection().prepareStatement("UPDATE aluno SET nome = ?, cpf = ?, endereco = ?, telefone = ? WHERE id = ?");
+        PreparedStatement pst =br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory.prepareConnection().prepareStatement("UPDATE mensalidade SET nome = ?, tipo = ?, valor= ? WHERE id = ?");
         pst.setString(1, p.getNome());
         pst.setString(2, p.getTipo());
         pst.setString(3, p.getValor());
@@ -76,7 +76,7 @@ public class DaoMensalidade {
         pst.setInt(4, p.getId());
         pst.execute();
         
-        JOptionPane.showMessageDialog(null, "Alterado com sucesso");
+       // JOptionPane.showMessageDialog(null, "Alterado com sucesso");
     }
       
       

@@ -49,7 +49,7 @@ public class CadastroMensalidades extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextCodigo = new javax.swing.JTextField();
-        jRadioCodigoAluno = new javax.swing.JRadioButton();
+        jRadioCodigoMensalidade = new javax.swing.JRadioButton();
         jButtonBuscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jTextNome = new javax.swing.JTextField();
@@ -75,10 +75,10 @@ public class CadastroMensalidades extends javax.swing.JDialog {
             }
         });
 
-        jRadioCodigoAluno.setText("Código Aluno");
-        jRadioCodigoAluno.addActionListener(new java.awt.event.ActionListener() {
+        jRadioCodigoMensalidade.setText("Código Mensalidade");
+        jRadioCodigoMensalidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioCodigoAlunoActionPerformed(evt);
+                jRadioCodigoMensalidadeActionPerformed(evt);
             }
         });
 
@@ -161,7 +161,7 @@ public class CadastroMensalidades extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioCodigoAluno)
+                        .addComponent(jRadioCodigoMensalidade)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonBuscar))
                     .addGroup(layout.createSequentialGroup()
@@ -200,7 +200,7 @@ public class CadastroMensalidades extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioCodigoAluno)
+                    .addComponent(jRadioCodigoMensalidade)
                     .addComponent(jButtonBuscar))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -226,9 +226,9 @@ public class CadastroMensalidades extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioCodigoAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCodigoAlunoActionPerformed
+    private void jRadioCodigoMensalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCodigoMensalidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioCodigoAlunoActionPerformed
+    }//GEN-LAST:event_jRadioCodigoMensalidadeActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
              Mensalidade mensalidade =new Mensalidade();
@@ -242,7 +242,7 @@ public class CadastroMensalidades extends javax.swing.JDialog {
                  }catch (SQLException ex){
                       Logger.getLogger(CadastroMensalidades.class.getName()).log(Level.SEVERE, null, ex);
                  }
-                 JOptionPane.showMessageDialog(null, "Alterações feitas com sucesso");
+                 JOptionPane.showMessageDialog(null, "Gravado com sucesso");
              }
              if(jTextCodigo.isEnabled()==false){
                  try{
@@ -262,7 +262,7 @@ public class CadastroMensalidades extends javax.swing.JDialog {
                Mensalidade mensalidade=new Mensalidade();
                String buscar="";
                
-               if(jRadioCodigoAluno.isSelected()){
+               if(jRadioCodigoMensalidade.isSelected()){
                    mensalidade.setId(Integer.parseInt(jTextCodigo.getText().trim()));
                    buscar=jTextCodigo.getText();
                }try{
@@ -270,16 +270,10 @@ public class CadastroMensalidades extends javax.swing.JDialog {
                    
                }catch (SQLException ex){
                     Logger.getLogger(CadastroMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-               } 
-               try {
-              mensalidade=DaoMensalidade.retrieve(Integer.parseInt(buscar)) ;
-               
-                              
-               }catch (SQLException ex){      
-                    Logger.getLogger(CadastroMensalidades.class.getCanonicalName()).log(Level.SEVERE, null, ex);
                }
                
-               setMensalidade(mensalidade);      
+               setMensalidade(mensalidade); 
+     
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jTextTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTipoActionPerformed
@@ -393,7 +387,7 @@ public class CadastroMensalidades extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JRadioButton jRadioCodigoAluno;
+    private javax.swing.JRadioButton jRadioCodigoMensalidade;
     private javax.swing.JTextField jTextCodigo;
     private javax.swing.JTextField jTextNome;
     private javax.swing.JTextField jTextTipo;

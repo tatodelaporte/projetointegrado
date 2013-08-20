@@ -427,10 +427,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         // Chama o metodo para preencher o Form com os dados da Consulta
         setFuncionario(funcionario);
-
-
-
-
     }//GEN-LAST:event_btConsultarActionPerformed
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
