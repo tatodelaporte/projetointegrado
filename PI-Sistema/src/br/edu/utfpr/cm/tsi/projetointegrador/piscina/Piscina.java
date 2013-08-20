@@ -11,16 +11,8 @@ package br.edu.utfpr.cm.tsi.projetointegrador.piscina;
 public class Piscina {
     private int id;
     private String descricao;
-
-    public String getTamanho() {
-        return tamanho;
-    }
-
-    public void setTamanho(String tamanho) {
-        this.tamanho = tamanho;
-    }
     private String tamanho;
-    private String capacidadeAlunos;
+    private String capacidade;
 
     public int getId() {
         return id;
@@ -38,20 +30,27 @@ public class Piscina {
         this.descricao = descricao;
     }
 
-    public String getCapacidadeAlunos() {
-        return capacidadeAlunos;
+    public String getTamanho() {
+        return tamanho;
     }
 
-    public void setCapacidadeAlunos(String capacidadeAlunos) {
-        this.capacidadeAlunos = capacidadeAlunos;
+    public void setTamanho(String tamanho) {
+        this.tamanho = tamanho;
+    }
+
+    public String getCapacidade() {
+        return capacidade;
+    }
+
+    public void setCapacidade(String capacidade) {
+        this.capacidade = capacidade;
     }
 
     @Override
     public String toString() {
-        return "Piscina{" + "id=" + id + ", descricao=" + descricao + ", tamanho=" + tamanho + ", capacidadeAlunos=" + capacidadeAlunos + '}';
+        return "Piscina{" + "id=" + id + ", descricao=" + descricao + ", tamanho=" + tamanho + ", capacidade=" + capacidade + '}';
     }
 
-    
     
     
 }

@@ -22,7 +22,7 @@ public class DaoPiscina {
      private static Piscina converteRsParaPiscina(ResultSet rs) throws SQLException {
         Piscina p = new Piscina();
         p.setId(rs.getInt("id"));
-        p.setDescricao(rs.getString("nome"));
+        p.setDescricao(rs.getString("descricao"));
         p.setCapacidadeAlunos("");
       
         

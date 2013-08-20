@@ -306,7 +306,7 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
             }catch (SQLException ex){
                 Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null,ex);
                 
-            } JOptionPane.showMessageDialog(null,"Gravado com sucesso");
+            } // JOptionPane.showMessageDialog(null,"Gravado com sucesso");
             
             
             if(jTextCodigo.isEnabled() == false){
