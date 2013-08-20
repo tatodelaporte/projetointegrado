@@ -30,7 +30,7 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         flag = false;
-        jTextCodigo.setEnabled(flag); 
+        CampoPiscina.setEnabled(flag); 
         jTextDescricaoPiscina.setEnabled(flag);
         jTextTamanho.setEnabled(flag);
         jTextCapacidadeAlunos.setEnabled(flag); 
@@ -48,7 +48,7 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextCodigo = new javax.swing.JTextField();
+        CampoPiscina = new javax.swing.JTextField();
         jRadioCodigoPiscina = new javax.swing.JRadioButton();
         jButtonBuscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -69,9 +69,9 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
 
         jLabel2.setText("Código ");
 
-        jTextCodigo.addActionListener(new java.awt.event.ActionListener() {
+        CampoPiscina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCodigoActionPerformed(evt);
+                CampoPiscinaActionPerformed(evt);
             }
         });
 
@@ -157,7 +157,7 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CampoPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jRadioCodigoPiscina)
                         .addGap(18, 18, 18)
@@ -192,7 +192,7 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CampoPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRadioCodigoPiscina)
                     .addComponent(jButtonBuscar))
                 .addGap(34, 34, 34)
@@ -224,8 +224,8 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
         String Buscar="";
         
         if(jRadioCodigoPiscina.isSelected()){
-            piscina.setId(Integer.parseInt(jTextCodigo.getText().trim()));
-            Buscar =jTextCodigo.getText();
+            piscina.setId(Integer.parseInt(CampoPiscina.getText().trim()));
+            Buscar =CampoPiscina.getText();
         }try{
             DaoPiscina.retrieve(Integer.parseInt(Buscar));
             
@@ -259,13 +259,13 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
   
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 
-    private void jTextCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCodigoActionPerformed
+    private void CampoPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoPiscinaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCodigoActionPerformed
+    }//GEN-LAST:event_CampoPiscinaActionPerformed
 
     private void jRadioCodigoPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCodigoPiscinaActionPerformed
                flag=true;
-               jTextCodigo.setEnabled(flag); 
+               CampoPiscina.setEnabled(flag); 
                jTextDescricaoPiscina.setEnabled(flag);
                jTextTamanho.setEnabled(flag);
                jTextCapacidadeAlunos.setEnabled(flag); 
@@ -285,8 +285,8 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
            flag=true;
-           jTextCodigo.setText(null);
-           jTextCodigo.setEnabled(false);
+           CampoPiscina.setText(null);
+           CampoPiscina.setEnabled(false);
            
            jTextDescricaoPiscina.setEnabled(flag);
            jTextTamanho.setEnabled(flag);
@@ -298,8 +298,8 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
 
             Piscina piscina = getPiscina(); 
             
-            if(jTextCodigo.isEnabled() == true){
-                jTextCodigo.setText(null);
+            if(CampoPiscina.isEnabled() == true){
+                CampoPiscina.setText(null);
             }try{
                 
                 DaoPiscina.update(piscina);
@@ -309,7 +309,7 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
             } // JOptionPane.showMessageDialog(null,"Gravado com sucesso");
             
             
-            if(jTextCodigo.isEnabled() == false){
+            if(CampoPiscina.isEnabled() == false){
                 try{
                     
                     DaoPiscina.insert(piscina);
@@ -318,7 +318,7 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
                     Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null,ex);
                 }
                         
-            }
+            } this.dispose();
                         
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
@@ -381,6 +381,7 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CampoPiscina;
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonGravar;
@@ -393,7 +394,6 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JRadioButton jRadioCodigoPiscina;
     private javax.swing.JTextField jTextCapacidadeAlunos;
-    private javax.swing.JTextField jTextCodigo;
     private javax.swing.JTextField jTextDescricaoPiscina;
     private javax.swing.JTextField jTextTamanho;
     // End of variables declaration//GEN-END:variables
@@ -401,6 +401,10 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
     public Piscina getPiscina() {
         
         Piscina piscina = new Piscina();
+        
+        if(CampoPiscina.isEnabled() == true){ //para remover te q estar aberto /p inserir nao
+            piscina.setId(Integer.parseInt(CampoPiscina.getText().trim()));
+        }
         
         piscina.setDescricao(jTextDescricaoPiscina.getText().trim());
         piscina.setTamanho(jTextTamanho.getText().trim());

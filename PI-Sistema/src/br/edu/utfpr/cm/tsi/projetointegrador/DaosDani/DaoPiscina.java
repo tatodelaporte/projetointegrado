@@ -5,6 +5,8 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.DaosDani;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.piscina.Piscina;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -63,8 +65,8 @@ public class DaoPiscina {
     }
      
        
-         public static void update(Piscina p) throws SQLException{
-        PreparedStatement pst =br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory.prepareConnection().prepareStatement("UPDATE piscina SET descricao = ?, tamanho = ?, capacidade = ? WHERE id = ?");
+     public static void update(Piscina p) throws SQLException{
+       PreparedStatement pst =ConnectionFactory.prepareConnection().prepareStatement("UPDATE piscina SET descricao = ?, tamanho = ?, capacidade = ? WHERE id = ?");
         pst.setString(1, p.getDescricao());
         pst.setString(2, p.getTamanho());
         pst.setString(3, p.getCapacidadeAlunos());
@@ -72,7 +74,7 @@ public class DaoPiscina {
         pst.setInt(4, p.getId());
         pst.execute();
         
-      //  JOptionPane.showMessageDialog(null, "Alterado com sucesso");
+      JOptionPane.showMessageDialog(null, "Alterado com sucesso");
     }
          
          

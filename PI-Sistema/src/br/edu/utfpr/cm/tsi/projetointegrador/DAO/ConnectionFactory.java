@@ -6,6 +6,7 @@ package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
@@ -23,6 +24,8 @@ public class ConnectionFactory {
         con.setAutoCommit(true);
         return con;
     }
+
+   
     
 
 }
