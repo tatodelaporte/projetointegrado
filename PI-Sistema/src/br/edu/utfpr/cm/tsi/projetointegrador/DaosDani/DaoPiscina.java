@@ -74,7 +74,7 @@ public class DaoPiscina {
         pst.setInt(4, p.getId());
         pst.execute();
         
-      JOptionPane.showMessageDialog(null, "Alterado com sucesso");
+    JOptionPane.showMessageDialog(null, "Alterado com sucesso");
     }
          
          

@@ -255,8 +255,8 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
             }catch (SQLException ex){
                 Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null,ex);
     }                                              
-
-  
+                 this.dispose();
+              
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 
     private void CampoPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoPiscinaActionPerformed
@@ -295,20 +295,20 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-
-            Piscina piscina = getPiscina(); 
+          Piscina piscina=new Piscina();
+             piscina = getPiscina(); 
             
             if(CampoPiscina.isEnabled() == true){
                 CampoPiscina.setText(null);
-            }try{
+             try{
                 
                 DaoPiscina.update(piscina);
             }catch (SQLException ex){
                 Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null,ex);
                 
-            } // JOptionPane.showMessageDialog(null,"Gravado com sucesso");
+            }//  JOptionPane.showMessageDialog(null,"Alteracões feita com sucesso");
             
-            
+            }   
             if(CampoPiscina.isEnabled() == false){
                 try{
                     
@@ -319,7 +319,7 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
                 }
                         
             } this.dispose();
-                        
+                         
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
@@ -331,7 +331,7 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
             }catch (SQLException ex){
                 Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null,ex);
     }//GEN-LAST:event_jButtonAlterarActionPerformed
-
+          this.dispose();
   }
     private void setPiscina(Piscina piscina){
         jTextDescricaoPiscina.setText(piscina.getDescricao());

@@ -312,7 +312,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
               }catch (SQLException ex){
                   Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
               }
-              JOptionPane.showMessageDialog(null, "Alterações feitas com sucesso");
+             // JOptionPane.showMessageDialog(null, "Alterações feitas com sucesso");
          }
          if(CampoCodigo.isEnabled() == false){
               try{
@@ -354,7 +354,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
         }catch (SQLException ex) {
             Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null,ex);
         }
-        
+        this.dispose();
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -367,6 +367,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
         }catch (SQLException ex){
             Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE,null ,ex);
         }
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jRadioCodigoAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCodigoAlunoActionPerformed
