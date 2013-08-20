@@ -12,7 +12,7 @@ public class Piscina {
     private int id;
     private String descricao;
     private String tamanho;
-    private String capacidade;
+    private String capacidadeAlunos;
 
     public int getId() {
         return id;
@@ -38,19 +38,21 @@ public class Piscina {
         this.tamanho = tamanho;
     }
 
-    public String getCapacidade() {
-        return capacidade;
+    public String getCapacidadeAlunos() {
+        return capacidadeAlunos;
     }
 
-    public void setCapacidade(String capacidade) {
-        this.capacidade = capacidade;
+    public void setCapacidadeAlunos(String capacidadeAlunos) {
+        this.capacidadeAlunos = capacidadeAlunos;
     }
 
     @Override
     public String toString() {
-        return "Piscina{" + "id=" + id + ", descricao=" + descricao + ", tamanho=" + tamanho + ", capacidade=" + capacidade + '}';
+        return "Piscina{" + "id=" + id + ", descricao=" + descricao + ", tamanho=" + tamanho + ", capacidadeAlunos=" + capacidadeAlunos + '}';
     }
-
     
+    
+    
+
     
 }
