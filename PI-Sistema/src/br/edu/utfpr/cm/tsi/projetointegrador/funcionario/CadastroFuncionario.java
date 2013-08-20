@@ -35,7 +35,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
 
         flag = false;
-        tfId.setEnabled(flag);
+        CampoCodigo.setEnabled(flag);
         tfNome.setEnabled(flag);
         tfCPF.setEnabled(flag);
         tfRG.setEnabled(flag);
@@ -61,7 +61,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private void initComponents() {
 
         lbCodigo = new javax.swing.JLabel();
-        tfId = new javax.swing.JTextField();
+        CampoCodigo = new javax.swing.JTextField();
         lbNome = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
         lbCPF = new javax.swing.JLabel();
@@ -98,9 +98,9 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         lbCodigo.setText("Codigo");
 
-        tfId.addActionListener(new java.awt.event.ActionListener() {
+        CampoCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfIdActionPerformed(evt);
+                CampoCodigoActionPerformed(evt);
             }
         });
 
@@ -262,7 +262,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(lbCodigo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CampoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -321,7 +321,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCodigo)
-                    .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CampoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btConsultar)
                     .addComponent(rbCodigoFuncionario))
                 .addGap(15, 15, 15)
@@ -382,8 +382,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         Funcionario funcionario = new Funcionario();
         funcionario = getFuncionario();
 
-        if (tfId.isEnabled()== true) {
-            tfId.setText(null);
+        if (CampoCodigo.isEnabled()== true) {
+            CampoCodigo.setText(null);
             try {
 
                 DaoFuncionario.update(funcionario);
@@ -392,7 +392,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(null, "Esse Item Foi Alterado com Sucesso");
         }
-        if (tfId.isEnabled() == false) {
+        if (CampoCodigo.isEnabled() == false) {
 
 
             try {
@@ -411,8 +411,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         String codprocurado = " ";
 
         if (rbCodigoFuncionario.isSelected()) {
-            funcionario.setId(Integer.parseInt(tfId.getText().trim()));
-            codprocurado = tfId.getText();
+            funcionario.setId(Integer.parseInt(CampoCodigo.getText().trim()));
+            codprocurado = CampoCodigo.getText();
         }
         try {
             DaoFuncionario.retrieve(Integer.parseInt(codprocurado));
@@ -440,10 +440,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btAlterarActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-        Funcionario funcionario = new Funcionario();
-        funcionario = getFuncionario();
+       //Funcionario funcionario = new Funcionario();
+       // funcionario = getFuncionario();
         try {
-            DaoFuncionario.delete(funcionario);
+            DaoFuncionario.delete(getFuncionario());
         } catch (SQLException ex) {
             Logger.getLogger(CadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -452,8 +452,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
         flag = true;
-        tfId.setText(null);
-        tfId.setEnabled(false);
+        CampoCodigo.setText(null);
+        CampoCodigo.setEnabled(false);
         
         tfNome.setEnabled(flag);
         tfCPF.setEnabled(flag);
@@ -470,7 +470,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     private void rbCodigoFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbCodigoFuncionarioMouseClicked
         flag = true;
-        tfId.setEnabled(flag);
+        CampoCodigo.setEnabled(flag);
         tfNome.setEnabled(flag);
         tfCPF.setEnabled(flag);
         tfRG.setEnabled(flag);
@@ -484,9 +484,9 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         cbTipoFuncionario.setEnabled(flag);
     }//GEN-LAST:event_rbCodigoFuncionarioMouseClicked
 
-    private void tfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdActionPerformed
+    private void CampoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfIdActionPerformed
+    }//GEN-LAST:event_CampoCodigoActionPerformed
 
     private void tfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeActionPerformed
         // TODO add your handling code here:
@@ -530,6 +530,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CampoCodigo;
     private javax.swing.JButton btAlterar;
     private javax.swing.JButton btConsultar;
     private javax.swing.JButton btGravar;
@@ -560,7 +561,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField tfEndereco;
     private javax.swing.JTextField tfFoneCelular;
     private javax.swing.JTextField tfFoneResidencia;
-    private javax.swing.JTextField tfId;
     private javax.swing.JTextField tfNome;
     private javax.swing.JTextField tfRG;
     // End of variables declaration//GEN-END:variables
@@ -568,8 +568,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     public Funcionario getFuncionario() {
 
         Funcionario funcionario = new Funcionario();
-
-        //funcionario.setId(Integer.parseInt(tfId.getText().trim()));
+        if (CampoCodigo.isEnabled() == true) { //para remover tem que estar aberto/para inserir nao precisa ESTAR ABERTA SO QUANDO VAI REMOVER PARA PUXAR PELO ID
+            funcionario.setId(Integer.parseInt(CampoCodigo.getText().trim()));
+        }
+        
         funcionario.setNome(tfNome.getText().trim());
         funcionario.setCpf(tfCPF.getText().trim());
         funcionario.setRg(tfRG.getText().trim());
