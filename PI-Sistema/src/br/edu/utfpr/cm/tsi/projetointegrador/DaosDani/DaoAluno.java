@@ -47,8 +47,7 @@ public class DaoAluno {
         pst.setString(2, p.getCpf());
         pst.setString(3, p.getEndereco());
         pst.setString(4, p.getTelefone());
-      //  pst.setDate(5, new Date(p.getDataNascimento().getTime()));
-        
+     
         pst.execute();
         
         ResultSet rs = pst.getGeneratedKeys();

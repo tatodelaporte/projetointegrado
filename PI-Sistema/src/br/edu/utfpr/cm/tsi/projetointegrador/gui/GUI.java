@@ -434,7 +434,7 @@ public class GUI extends javax.swing.JFrame {
                      +"aluno(" 
                      +"id int (10) not null AUTO_INCREMENT,"
                      +"nome varchar (50) not null,"
-                     +"cpf varchar (11) not null,"
+                     +"cpf varchar (16) not null,"
                      +"endereco varchar (150) not null,"
                      +"telefone varchar (15),"
                      +"PRIMARY KEY (id));");

@@ -58,15 +58,15 @@ public class CadastroAlunos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextNome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextCPF = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextEndereco = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextTelefone = new javax.swing.JTextField();
         jButtonNovo = new javax.swing.JButton();
         jButtonGravar = new javax.swing.JButton();
         jButtonAlterar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jTextTelefone = new javax.swing.JFormattedTextField();
+        jTextCPF = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +78,11 @@ public class CadastroAlunos extends javax.swing.JFrame {
         CampoCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoCodigoActionPerformed(evt);
+            }
+        });
+        CampoCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoCodigoKeyTyped(evt);
             }
         });
 
@@ -108,14 +113,13 @@ public class CadastroAlunos extends javax.swing.JFrame {
                 jTextNomeActionPerformed(evt);
             }
         });
-
-        jLabel4.setText("CPF");
-
-        jTextCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCPFActionPerformed(evt);
+        jTextNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextNomeKeyTyped(evt);
             }
         });
+
+        jLabel4.setText("CPF");
 
         jLabel5.setText("Endereço");
 
@@ -126,12 +130,6 @@ public class CadastroAlunos extends javax.swing.JFrame {
         });
 
         jLabel6.setText("Telefone");
-
-        jTextTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextTelefoneActionPerformed(evt);
-            }
-        });
 
         jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/New Folder.png"))); // NOI18N
         jButtonNovo.setText("Novo");
@@ -165,6 +163,18 @@ public class CadastroAlunos extends javax.swing.JFrame {
             }
         });
 
+        try {
+            jTextTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-#######")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            jTextCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#.##.###.###.##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -191,8 +201,8 @@ public class CadastroAlunos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel5)
@@ -201,8 +211,8 @@ public class CadastroAlunos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButtonNovo)
@@ -286,17 +296,9 @@ public class CadastroAlunos extends javax.swing.JFrame {
              setAluno(aluno);
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    private void jTextCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCPFActionPerformed
-
     private void jTextEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEnderecoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextEnderecoActionPerformed
-
-    private void jTextTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextTelefoneActionPerformed
 
     
          
@@ -382,6 +384,19 @@ public class CadastroAlunos extends javax.swing.JFrame {
              jTextEndereco.setEnabled(flag);
              jTextTelefone.setEnabled(flag);
     }//GEN-LAST:event_jRadioCodigoAlunoMouseClicked
+
+    private void CampoCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoCodigoKeyTyped
+         
+        int c=evt.getKeyCode();
+        
+        if(c <0 || c > 9)evt.consume();
+          
+          
+    }//GEN-LAST:event_CampoCodigoKeyTyped
+
+    private void jTextNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNomeKeyTyped
+      
+    }//GEN-LAST:event_jTextNomeKeyTyped
 
     public void setAluno(Aluno aluno){
      //   Aluno aluno=new Aluno();
@@ -482,9 +497,9 @@ public class CadastroAlunos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JRadioButton jRadioCodigoAluno;
-    private javax.swing.JTextField jTextCPF;
+    private javax.swing.JFormattedTextField jTextCPF;
     private javax.swing.JTextField jTextEndereco;
     private javax.swing.JTextField jTextNome;
-    private javax.swing.JTextField jTextTelefone;
+    private javax.swing.JFormattedTextField jTextTelefone;
     // End of variables declaration//GEN-END:variables
 }
