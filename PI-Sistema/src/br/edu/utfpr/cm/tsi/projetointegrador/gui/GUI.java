@@ -52,6 +52,7 @@ public class GUI extends javax.swing.JFrame {
         btMatricula = new javax.swing.JButton();
         btFrequencia = new javax.swing.JButton();
         btConsultaHorario = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnCadastros = new javax.swing.JMenu();
         rbmiAluno = new javax.swing.JRadioButtonMenuItem();
@@ -71,6 +72,8 @@ public class GUI extends javax.swing.JFrame {
         mnSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema para Escola Natação");
+        setForeground(new java.awt.Color(51, 0, 204));
         setPreferredSize(new java.awt.Dimension(800, 600));
 
         jToolBar1.setRollover(true);
@@ -166,6 +169,8 @@ public class GUI extends javax.swing.JFrame {
         });
         jToolBar1.add(btConsultaHorario);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/golfinho.jpg"))); // NOI18N
+
         mnCadastros.setText("Cadastros");
 
         rbmiAluno.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
@@ -205,12 +210,22 @@ public class GUI extends javax.swing.JFrame {
         rbmiPiscina.setSelected(true);
         rbmiPiscina.setText("Piscina");
         rbmiPiscina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Screen Saver.png"))); // NOI18N
+        rbmiPiscina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbmiPiscinaActionPerformed(evt);
+            }
+        });
         mnCadastros.add(rbmiPiscina);
 
         rbmiMensalidade.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
         rbmiMensalidade.setSelected(true);
         rbmiMensalidade.setText("Mensalidade");
         rbmiMensalidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Applications.png"))); // NOI18N
+        rbmiMensalidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbmiMensalidadeActionPerformed(evt);
+            }
+        });
         mnCadastros.add(rbmiMensalidade);
 
         jMenuBar1.add(mnCadastros);
@@ -294,19 +309,26 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 225, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbmiAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiAlunoActionPerformed
+     new CadastroAlunos().setVisible(true);
     }//GEN-LAST:event_rbmiAlunoActionPerformed
 
     private void mnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSairActionPerformed
@@ -358,6 +380,14 @@ public class GUI extends javax.swing.JFrame {
     private void btMensalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMensalidadeActionPerformed
        new CadastroMensalidades().setVisible(true);
     }//GEN-LAST:event_btMensalidadeActionPerformed
+
+    private void rbmiPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiPiscinaActionPerformed
+     new CadastrodePiscinas().setVisible(true);
+    }//GEN-LAST:event_rbmiPiscinaActionPerformed
+
+    private void rbmiMensalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiMensalidadeActionPerformed
+       new CadastroMensalidades().setVisible(true);
+    }//GEN-LAST:event_rbmiMensalidadeActionPerformed
 
    
     
@@ -477,6 +507,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btMensalidade;
     private javax.swing.JButton btPiscina;
     private javax.swing.JButton btTurmas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem5;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem6;
