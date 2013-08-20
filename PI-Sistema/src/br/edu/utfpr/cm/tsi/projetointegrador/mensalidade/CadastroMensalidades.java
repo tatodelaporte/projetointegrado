@@ -9,6 +9,8 @@ import br.edu.utfpr.cm.tsi.projetointegrador.aluno.CadastroAlunos;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -229,7 +231,27 @@ public class CadastroMensalidades extends javax.swing.JDialog {
     }//GEN-LAST:event_jRadioCodigoAlunoActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-        // TODO add your handling code here:
+             Mensalidade mensalidade =new Mensalidade();
+             mensalidade=getMensalidade();
+             
+             
+             if(jTextCodigo.isEnabled() == true){
+                 jTextCodigo.setText(null);
+                 try{
+                     DaoMensalidade.update(mensalidade);
+                 }catch (SQLException ex){
+                      Logger.getLogger(CadastroMensalidades.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+                 JOptionPane.showMessageDialog(null, "Alterações feitas com sucesso");
+             }
+             if(jTextCodigo.isEnabled()==false){
+                 try{
+                     
+                     DaoMensalidade.insert(mensalidade);
+                 }catch (SQLException ex){
+                     Logger.getLogger(CadastroMensalidades.class.getName()).log(Level.SEVERE, null,ex);
+                 }
+             } 
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void jTextCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCodigoActionPerformed
@@ -366,6 +388,17 @@ public class CadastroMensalidades extends javax.swing.JDialog {
         jTextTipo.setText(mensalidade.getTipo());
         jTextValor.setText(mensalidade.getValor()); 
         
+    }
+
+    private Mensalidade getMensalidade() {
+        Mensalidade mensalidade=new Mensalidade();
+        
+        mensalidade.setNome(jTextNome.getText().trim());
+        mensalidade.setTipo(jTextTipo.getText().trim());
+        mensalidade.setValor(jTextValor.getText().trim());
+        
+        
+        return mensalidade;
     }
     
     
