@@ -30,13 +30,13 @@ public class DaoAluno {
         p.setCpf(rs.getString("cpf"));
         p.setEndereco(rs.getString("endereco"));
         p.setTelefone("telefone");
-        p.setDataNascimento(rs.getDate("dataNascimento"));
-      //  p.setDataNascimento(null);
+
+
         
         return p;
     }
         
-    //    private DaoAluno() {}
+
             
   //    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/pisistemas?user=root&password=douglas";
     

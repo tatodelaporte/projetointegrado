@@ -33,7 +33,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         flag=false;
-        jTextCodigo.setEnabled(flag);
+        CampoCodigo.setEnabled(flag);
         jTextNome.setEnabled(flag); 
         jTextCPF.setEnabled(flag);
         jTextEndereco.setEnabled(flag);
@@ -52,7 +52,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextCodigo = new javax.swing.JTextField();
+        CampoCodigo = new javax.swing.JTextField();
         jRadioCodigoAluno = new javax.swing.JRadioButton();
         jButtonBuscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -75,13 +75,18 @@ public class CadastroAlunos extends javax.swing.JFrame {
 
         jLabel2.setText("Código");
 
-        jTextCodigo.addActionListener(new java.awt.event.ActionListener() {
+        CampoCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCodigoActionPerformed(evt);
+                CampoCodigoActionPerformed(evt);
             }
         });
 
         jRadioCodigoAluno.setText("Código Aluno");
+        jRadioCodigoAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioCodigoAlunoMouseClicked(evt);
+            }
+        });
         jRadioCodigoAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioCodigoAlunoActionPerformed(evt);
@@ -173,7 +178,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CampoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jRadioCodigoAluno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -217,7 +222,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CampoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRadioCodigoAluno)
                     .addComponent(jButtonBuscar))
                 .addGap(18, 18, 18)
@@ -249,9 +254,9 @@ public class CadastroAlunos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
  
-    private void jTextCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCodigoActionPerformed
+    private void CampoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCodigoActionPerformed
+    }//GEN-LAST:event_CampoCodigoActionPerformed
 
     
     private void jTextNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeActionPerformed
@@ -264,8 +269,8 @@ public class CadastroAlunos extends javax.swing.JFrame {
             
             
             if(jRadioCodigoAluno.isSelected()){
-                aluno.setId(Integer.parseInt(jTextCodigo.getText().trim()));
-                buscar=jTextCodigo.getText();
+                aluno.setId(Integer.parseInt(CampoCodigo.getText().trim()));
+                buscar=CampoCodigo.getText();
             }
             try{
                 DaoAluno.retrieve(Integer.parseInt(buscar));
@@ -299,8 +304,8 @@ public class CadastroAlunos extends javax.swing.JFrame {
          Aluno aluno = new Aluno();
          aluno = getAluno();
          
-         if(jTextCodigo.isEnabled() == true){
-             jTextCodigo.setText(null);
+         if(CampoCodigo.isEnabled() == true){
+             CampoCodigo.setText(null);
               try{
                   
                 DaoAluno.update(aluno);                
@@ -309,7 +314,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
               }
               JOptionPane.showMessageDialog(null, "Alterações feitas com sucesso");
          }
-         if(jTextCodigo.isEnabled() == false){
+         if(CampoCodigo.isEnabled() == false){
               try{
                   
                   DaoAluno.insert(aluno);
@@ -326,8 +331,8 @@ public class CadastroAlunos extends javax.swing.JFrame {
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
         // TODO add your handling code here:
         flag=true;
-        jTextCodigo.setText(null);
-        jTextCodigo.setEnabled(false);
+        CampoCodigo.setText(null);
+        CampoCodigo.setEnabled(false);
         
         
         jTextNome.setEnabled(flag); 
@@ -366,6 +371,15 @@ public class CadastroAlunos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioCodigoAlunoActionPerformed
 
+    private void jRadioCodigoAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioCodigoAlunoMouseClicked
+             flag=true;
+             CampoCodigo.setEnabled(flag);
+             jTextNome.setEnabled(flag);
+             jTextCPF.setEnabled(flag);
+             jTextEndereco.setEnabled(flag);
+             jTextTelefone.setEnabled(flag);
+    }//GEN-LAST:event_jRadioCodigoAlunoMouseClicked
+
     public void setAluno(Aluno aluno){
      //   Aluno aluno=new Aluno();
         
@@ -388,8 +402,12 @@ public class CadastroAlunos extends javax.swing.JFrame {
     }
         
     
-   public Aluno getAluno(){       
+   public Aluno getAluno(){         
     Aluno aluno =new Aluno();
+    
+    if(CampoCodigo.isEnabled() == true){ //para remover tem q estar aberto /p novo nao
+        aluno.setId(Integer.parseInt(CampoCodigo.getText().trim()));
+    }
     
     aluno.setNome(jTextNome.getText().trim());
     aluno.setCpf(jTextCPF.getText().trim());
@@ -448,6 +466,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CampoCodigo;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonBuscar;
@@ -461,7 +480,6 @@ public class CadastroAlunos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JRadioButton jRadioCodigoAluno;
     private javax.swing.JTextField jTextCPF;
-    private javax.swing.JTextField jTextCodigo;
     private javax.swing.JTextField jTextEndereco;
     private javax.swing.JTextField jTextNome;
     private javax.swing.JTextField jTextTelefone;
