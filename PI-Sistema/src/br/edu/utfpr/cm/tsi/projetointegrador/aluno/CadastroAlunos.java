@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author Daniele
  */
 public class CadastroAlunos extends javax.swing.JFrame {
- boolean flag;
+       boolean flag;
     
     
     /**
@@ -328,6 +328,8 @@ public class CadastroAlunos extends javax.swing.JFrame {
         flag=true;
         jTextCodigo.setText(null);
         jTextCodigo.setEnabled(false);
+        
+        
         jTextNome.setEnabled(flag); 
         jTextCPF.setEnabled(flag);
         jTextEndereco.setEnabled(flag);

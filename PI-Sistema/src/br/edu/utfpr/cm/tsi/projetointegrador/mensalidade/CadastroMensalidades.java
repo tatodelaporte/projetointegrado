@@ -303,11 +303,38 @@ public class CadastroMensalidades extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
-        // TODO add your handling code here:
+                 Mensalidade mensalidade=new Mensalidade();
+                 mensalidade=getMensalidade();
+                 
+                 
+                 try{
+                     DaoMensalidade.update(mensalidade);
+                     
+                 }catch (SQLException ex){
+                      Logger.getLogger(CadastroMensalidades.class.getName()).log(Level.SEVERE, null,ex);
+                 }                 
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
-        // TODO add your handling code here:
+             Mensalidade mensalidade=new Mensalidade();
+             mensalidade=getMensalidade();
+             
+             try{
+                 DaoMensalidade.delete(mensalidade);
+                 
+             }catch (SQLException ex){
+                  Logger.getLogger(CadastroMensalidades.class.getName()).log(Level.SEVERE,null ,ex);
+             }
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 
     private void jTextNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeActionPerformed
