@@ -322,6 +322,8 @@ public class CadastroAlunos extends javax.swing.JFrame {
                   Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
               }
          }
+         this.dispose();
+         //System.exit(0);
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     

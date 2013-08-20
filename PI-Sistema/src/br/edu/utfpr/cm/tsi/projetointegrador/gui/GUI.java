@@ -31,7 +31,7 @@ public class GUI extends javax.swing.JFrame {
         pack();
         setResizable(false);// Trava o tamanho do painel.
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
+        
     }
 
     /**
@@ -313,7 +313,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_mnSairActionPerformed
 
     private void mnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnSairMouseClicked
-        System.exit(0);
+    
     }//GEN-LAST:event_mnSairMouseClicked
 
     private void rmbiTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmbiTurmaActionPerformed
