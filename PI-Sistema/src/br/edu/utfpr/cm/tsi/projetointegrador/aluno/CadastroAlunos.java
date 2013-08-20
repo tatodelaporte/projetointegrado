@@ -6,16 +6,25 @@ package br.edu.utfpr.cm.tsi.projetointegrador.aluno;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.DaosDani.Aluno;
 import br.edu.utfpr.cm.tsi.projetointegrador.DaosDani.DaoAluno;
+import com.mysql.jdbc.Util;
+import java.awt.Color;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
+import org.jcp.xml.dsig.internal.dom.Utils;
 
 /**
  *
  * @author Daniele
  */
 public class CadastroAlunos extends javax.swing.JFrame {
+    MaskFormatter mCPF=new MaskFormatter();
+    ValidadorAlunos valida=new ValidadorAlunos();
+    
        boolean flag;
     
     
@@ -24,6 +33,15 @@ public class CadastroAlunos extends javax.swing.JFrame {
      */
     public CadastroAlunos() {
         initComponents();
+        
+        try{
+            
+            mCPF.setMask("###.###.###-##");
+            mCPF.setPlaceholderCharacter('_');
+            
+            }catch (ParseException ex){}   
+        
+        
         setSize(500, 610);
         setTitle("Cadastro de Alunos");
         setVisible(true);
@@ -38,8 +56,8 @@ public class CadastroAlunos extends javax.swing.JFrame {
         jTextCPF.setEnabled(flag);
         jTextEndereco.setEnabled(flag);
         jTextTelefone.setEnabled(flag);
-         
-    }
+    }     
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,7 +84,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
         jButtonAlterar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jTextTelefone = new javax.swing.JFormattedTextField();
-        jTextCPF = new javax.swing.JFormattedTextField();
+        jTextCPF = new JFormattedTextField(mCPF);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,11 +187,11 @@ public class CadastroAlunos extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        try {
-            jTextCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#.##.###.###.##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        jTextCPF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextCPFFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -202,7 +220,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel5)
@@ -270,7 +288,11 @@ public class CadastroAlunos extends javax.swing.JFrame {
 
     
     private void jTextNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeActionPerformed
-        // TODO add your handling code here:
+             if(jTextNome.getText().equals("")){
+                 JOptionPane.showMessageDialog(null, "Por favor coloque seu nome");
+             
+                 
+             }
     }//GEN-LAST:event_jTextNomeActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
@@ -398,6 +420,15 @@ public class CadastroAlunos extends javax.swing.JFrame {
       
     }//GEN-LAST:event_jTextNomeKeyTyped
 
+    private void jTextCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCPFFocusLost
+         if(!jTextCPF.getText().contains("_")){
+             if(!ValidadorAlunos.isCPF(jTextCPF.getText())){
+                jTextCPF.setForeground(Color.RED);
+                JOptionPane.showMessageDialog(this,"CPF inválido ");
+             }
+         }
+    }//GEN-LAST:event_jTextCPFFocusLost
+
     public void setAluno(Aluno aluno){
      //   Aluno aluno=new Aluno();
         
@@ -497,7 +528,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JRadioButton jRadioCodigoAluno;
-    private javax.swing.JFormattedTextField jTextCPF;
+    private javax.swing.JTextField jTextCPF;
     private javax.swing.JTextField jTextEndereco;
     private javax.swing.JTextField jTextNome;
     private javax.swing.JFormattedTextField jTextTelefone;

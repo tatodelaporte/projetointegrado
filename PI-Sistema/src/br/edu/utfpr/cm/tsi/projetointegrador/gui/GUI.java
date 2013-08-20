@@ -18,7 +18,7 @@ import java.sql.Statement;
  * @author Daniel
  */
 public class GUI extends javax.swing.JFrame {
-
+        
     /**
      * Creates new form GUI
      */
