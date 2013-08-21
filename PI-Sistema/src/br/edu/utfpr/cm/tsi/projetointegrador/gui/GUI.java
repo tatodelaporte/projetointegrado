@@ -6,11 +6,11 @@ import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.CadastroFuncionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.turma.CadastroTurmas;
 import br.edu.utfpr.cm.tsi.projetointegrador.aluno.CadastroAlunos;
-<<<<<<< 632d9d357680232a072bb5e27cfdc0e9d0a016ef
+
 import br.edu.utfpr.cm.tsi.projetointegrador.piscina.CadastrodePiscinas;
 import br.edu.utfpr.cm.tsi.projetointegrador.mensalidade.CadastroMensalidades;
-=======
->>>>>>> fcc5bee2042e2b6564a79b7126e6aadb5007a777
+
+
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  * @author Daniel
  */
 public class GUI extends javax.swing.JFrame {
-        
+
     /**
      * Creates new form GUI
      */
@@ -34,7 +34,7 @@ public class GUI extends javax.swing.JFrame {
         pack();
         setResizable(false);// Trava o tamanho do painel.
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+
     }
 
     /**
@@ -331,7 +331,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,14 +346,14 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbmiAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiAlunoActionPerformed
-     new CadastroAlunos().setVisible(true);
+        new CadastroAlunos().setVisible(true);
     }//GEN-LAST:event_rbmiAlunoActionPerformed
 
     private void mnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSairActionPerformed
     }//GEN-LAST:event_mnSairActionPerformed
 
     private void mnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnSairMouseClicked
-    
+        System.exit(0);
     }//GEN-LAST:event_mnSairMouseClicked
 
     private void rmbiTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmbiTurmaActionPerformed
@@ -378,7 +378,7 @@ public class GUI extends javax.swing.JFrame {
     private void btMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMatriculaActionPerformed
         new CadastroMatricula().setVisible(true);
     }//GEN-LAST:event_btMatriculaActionPerformed
-        
+
     private void rbmiConsultaHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiConsultaHorariosActionPerformed
         new ConsultaHorarioAula().setVisible(true);
     }//GEN-LAST:event_rbmiConsultaHorariosActionPerformed
@@ -388,38 +388,35 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btConsultaHorarioActionPerformed
 
     private void btAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlunosActionPerformed
-<<<<<<< 632d9d357680232a072bb5e27cfdc0e9d0a016ef
+         
            new CadastroAlunos().setVisible(true);
     }//GEN-LAST:event_btAlunosActionPerformed
 
     private void btPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPiscinaActionPerformed
-         new CadastrodePiscinas().setVisible(true);
+        new CadastrodePiscinas().setVisible(true);
     }//GEN-LAST:event_btPiscinaActionPerformed
 
     private void btMensalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMensalidadeActionPerformed
-       new CadastroMensalidades().setVisible(true);
+        new CadastroMensalidades().setVisible(true);
     }//GEN-LAST:event_btMensalidadeActionPerformed
 
     private void rbmiPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiPiscinaActionPerformed
-     new CadastrodePiscinas().setVisible(true);
+        new CadastrodePiscinas().setVisible(true);
     }//GEN-LAST:event_rbmiPiscinaActionPerformed
 
     private void rbmiMensalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiMensalidadeActionPerformed
-       new CadastroMensalidades().setVisible(true);
+        new CadastroMensalidades().setVisible(true);
     }//GEN-LAST:event_rbmiMensalidadeActionPerformed
 
-   
-    
-    
-=======
-        new CadastroAlunos().setVisible(true);
-    }//GEN-LAST:event_btAlunosActionPerformed
+  
+      
+                                           
 
     private void jRadioButtonMenuCriarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuCriarBancoActionPerformed
         criarBanco();
     }//GEN-LAST:event_jRadioButtonMenuCriarBancoActionPerformed
 
->>>>>>> fcc5bee2042e2b6564a79b7126e6aadb5007a777
+
     public void criarBanco() {
         try {
             Statement st = ConnectionFactory.prepareConnection().createStatement();
@@ -458,7 +455,7 @@ public class GUI extends javax.swing.JFrame {
                     + "situacao int (1) not null,"
                     + "PRIMARY KEY (id),"
                     + "FOREIGN KEY (turma) REFERENCES turma(id)ON DELETE CASCADE);");
-<<<<<<< 632d9d357680232a072bb5e27cfdc0e9d0a016ef
+
              st.executeUpdate("CREATE TABLE IF NOT EXISTS "
                      +"aluno(" 
                      +"id int (10) not null AUTO_INCREMENT,"
@@ -485,13 +482,13 @@ public class GUI extends javax.swing.JFrame {
              
              
              
-=======
+
             JOptionPane.showMessageDialog(rootPane,"Banco Criado");
 
             // Nao foi feito os outros FK pois as tabelas nao estao prontas
 
 
->>>>>>> fcc5bee2042e2b6564a79b7126e6aadb5007a777
+
 
 
         } catch (SQLException ex) {
@@ -514,16 +511,32 @@ public class GUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -543,11 +556,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btMensalidade;
     private javax.swing.JButton btPiscina;
     private javax.swing.JButton btTurmas;
-<<<<<<< 632d9d357680232a072bb5e27cfdc0e9d0a016ef
     private javax.swing.JLabel jLabel1;
-=======
     private javax.swing.JMenu jMenu1;
->>>>>>> fcc5bee2042e2b6564a79b7126e6aadb5007a777
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuCriarBanco;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem5;

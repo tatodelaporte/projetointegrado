@@ -51,10 +51,6 @@ public class Aluno implements Serializable {
         this.endereco = endereco;
     }
 
-   
-
-   
-
     public String getTelefone() {
         return telefone;
     }
@@ -63,15 +59,8 @@ public class Aluno implements Serializable {
         this.telefone = telefone;
     }
 
-<<<<<<< 632d9d357680232a072bb5e27cfdc0e9d0a016ef
-   
-    
-    
-    
-=======
     @Override
     public String toString() {
-        return "Aluno{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", dataNascimento=" + dataNascimento + ", telefone=" + telefone + '}';
+        return "Aluno{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", dataNascimento=" + ", telefone=" + telefone + '}';
     }
->>>>>>> fcc5bee2042e2b6564a79b7126e6aadb5007a777
 }
