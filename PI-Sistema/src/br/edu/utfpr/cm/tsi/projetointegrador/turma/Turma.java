@@ -5,38 +5,38 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.turma;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.Funcionario;
+import java.io.Serializable;
 
-import java.sql.Time;
 import java.util.Date;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author Daniel
  */
-public class Turma {
+@Entity
+public class Turma implements Serializable {
 
+    @Id
+    @GeneratedValue
     private int id;
+    @Column(length = 100)
     private String descricao;
-    //private int professor;
     private int piscina;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date horarioInicio;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date horarioFim;
+    @Column(length = 100)
     private String diaAula;
-    private List diasAula;
+    @ManyToOne
     private Funcionario professor;
-
-    public Turma() {
-        this.professor = new Funcionario();
-    }
-
-    public List getDiasAula() {
-        return diasAula;
-    }
-
-    public void setDiasAula(List diasAula) {
-        this.diasAula = diasAula;
-    }
 
     public int getId() {
         return id;
@@ -58,11 +58,6 @@ public class Turma {
         this.descricao = descricao;
     }
 
-    //public int getProfessor() {
-    //  return professor;
-    //}
-    //public void setProfessor(int professor) {
-    //  this.professor = professor;
     public Funcionario getProfessor() {
         return professor;
     }
@@ -70,7 +65,6 @@ public class Turma {
     public void setProfessor(Funcionario professor) {
         this.professor = professor;
     }
-    // }
 
     public int getPiscina() {
         return piscina;
@@ -107,7 +101,7 @@ public class Turma {
     @Override
     public String toString() {
 
-        return getDescricao()+" - "+getId();
+        return getDescricao() + " - " + getId();
         //return "Turma {" + "id=" + id + ","
         //     + "descricao" + descricao + ","
         //     + "professor" + professor + ","

@@ -4,13 +4,15 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.aluno;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Daniele
  */
-public class Aluno {
+public class Aluno implements Serializable {
+
     private int id;
     private String nome;
     private String cpf;
@@ -61,8 +63,15 @@ public class Aluno {
         this.telefone = telefone;
     }
 
+<<<<<<< 632d9d357680232a072bb5e27cfdc0e9d0a016ef
    
     
     
     
+=======
+    @Override
+    public String toString() {
+        return "Aluno{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", dataNascimento=" + dataNascimento + ", telefone=" + telefone + '}';
+    }
+>>>>>>> fcc5bee2042e2b6564a79b7126e6aadb5007a777
 }

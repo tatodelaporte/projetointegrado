@@ -4,20 +4,38 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.funcionario;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author Daniel
  */
+@Entity
 public class Funcionario {
 
+    @Id
+    @GeneratedValue
     private int id;
+    @Column(length = 100)
     private String nome;
+    @Column(length = 11)
     private String cpf;
+    @Column(length = 11)
     private String rg;
+    @Column(length = 8)
     private String cep;
+    @Column(length = 20)
     private String prefixo;
+    @Column(length = 200)
     private String endereco;
+    @Column(length = 5)
     private String numero;
+    @Column(length = 50)
     private String cidade;
 
     public int getId() {
@@ -133,7 +151,8 @@ public class Funcionario {
         AC, AL, AP, AM, BA, CE, DF,
         ES, GO, MA, MT, MS, MG, PA,
         PB, PR, PE, PI, RJ, RN, RS,
-        RO, RR, SC, SP, SE, TO,}
+        RO, RR, SC, SP, SE, TO,
+    }
 
     public enum Prefixo {
 
@@ -142,20 +161,22 @@ public class Funcionario {
         FAVELA, FAZENDA, FERROVIA, ILHA, JARDIM, LADEIRA, LAGO,
         LAGOA, LOTEAMENTO, MORRO, PATIO, PONTE, PORTO, PRACA, PROLONGAMENTO,
         QUADRA, RAMAL, RAMPA, RECANDO, RODOVIA, RUA, SITIO, TERMINAL, TRAVESSA,
-        TREVO, TUNEL, UNIDADE, VALA, VIA, VIADUTO, VIELA, VILA,}
+        TREVO, TUNEL, UNIDADE, VALA, VIA, VIADUTO, VIELA, VILA,
+    }
 
     public enum TipoFuncionario {
 
         Atendente,
         Professor,
-        Gerente,}
+        Gerente,
+    }
 
     @Override
     public String toString() {
 
-        return this.getNome() + " - " +getId();
-                
-                
-               
+        return this.getNome() + " - " + getId();
+
+
+
     }
 }

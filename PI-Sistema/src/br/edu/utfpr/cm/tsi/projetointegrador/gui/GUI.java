@@ -1,4 +1,3 @@
-
 package br.edu.utfpr.cm.tsi.projetointegrador.gui;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory;
@@ -7,11 +6,15 @@ import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.CadastroFuncionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.turma.CadastroTurmas;
 import br.edu.utfpr.cm.tsi.projetointegrador.aluno.CadastroAlunos;
+<<<<<<< 632d9d357680232a072bb5e27cfdc0e9d0a016ef
 import br.edu.utfpr.cm.tsi.projetointegrador.piscina.CadastrodePiscinas;
 import br.edu.utfpr.cm.tsi.projetointegrador.mensalidade.CadastroMensalidades;
+=======
+>>>>>>> fcc5bee2042e2b6564a79b7126e6aadb5007a777
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,7 +27,7 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
-        criarBanco();
+        //criarBanco();
         setSize(800, 600);
         setTitle("Sistema SwinSystem");
         setLocationRelativeTo(null);
@@ -69,6 +72,8 @@ public class GUI extends javax.swing.JFrame {
         jRadioButtonMenuItem7 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem8 = new javax.swing.JRadioButtonMenuItem();
         rbmiConsultaHorarios = new javax.swing.JRadioButtonMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jRadioButtonMenuCriarBanco = new javax.swing.JRadioButtonMenuItem();
         mnSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -290,6 +295,19 @@ public class GUI extends javax.swing.JFrame {
 
         jMenuBar1.add(mnConsultas);
 
+        jMenu1.setText("Configurações");
+
+        jRadioButtonMenuCriarBanco.setSelected(true);
+        jRadioButtonMenuCriarBanco.setText("Criar Banco");
+        jRadioButtonMenuCriarBanco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuCriarBancoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jRadioButtonMenuCriarBanco);
+
+        jMenuBar1.add(jMenu1);
+
         mnSair.setText("Sair");
         mnSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -362,7 +380,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btMatriculaActionPerformed
         
     private void rbmiConsultaHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiConsultaHorariosActionPerformed
-       new ConsultaHorarioAula().setVisible(true);
+        new ConsultaHorarioAula().setVisible(true);
     }//GEN-LAST:event_rbmiConsultaHorariosActionPerformed
 
     private void btConsultaHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultaHorarioActionPerformed
@@ -370,6 +388,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btConsultaHorarioActionPerformed
 
     private void btAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlunosActionPerformed
+<<<<<<< 632d9d357680232a072bb5e27cfdc0e9d0a016ef
            new CadastroAlunos().setVisible(true);
     }//GEN-LAST:event_btAlunosActionPerformed
 
@@ -392,6 +411,15 @@ public class GUI extends javax.swing.JFrame {
    
     
     
+=======
+        new CadastroAlunos().setVisible(true);
+    }//GEN-LAST:event_btAlunosActionPerformed
+
+    private void jRadioButtonMenuCriarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuCriarBancoActionPerformed
+        criarBanco();
+    }//GEN-LAST:event_jRadioButtonMenuCriarBancoActionPerformed
+
+>>>>>>> fcc5bee2042e2b6564a79b7126e6aadb5007a777
     public void criarBanco() {
         try {
             Statement st = ConnectionFactory.prepareConnection().createStatement();
@@ -421,7 +449,7 @@ public class GUI extends javax.swing.JFrame {
                     + "foneresidencia varchar (15),"
                     + "tipofuncionario varchar (20) not null,"
                     + "PRIMARY KEY (id));");
-             st.executeUpdate("CREATE TABLE IF NOT EXISTS "
+            st.executeUpdate("CREATE TABLE IF NOT EXISTS "
                     + "matricula("
                     + "id int(10) not null AUTO_INCREMENT,"
                     + "aluno int(10) not null,"
@@ -430,6 +458,7 @@ public class GUI extends javax.swing.JFrame {
                     + "situacao int (1) not null,"
                     + "PRIMARY KEY (id),"
                     + "FOREIGN KEY (turma) REFERENCES turma(id)ON DELETE CASCADE);");
+<<<<<<< 632d9d357680232a072bb5e27cfdc0e9d0a016ef
              st.executeUpdate("CREATE TABLE IF NOT EXISTS "
                      +"aluno(" 
                      +"id int (10) not null AUTO_INCREMENT,"
@@ -456,6 +485,13 @@ public class GUI extends javax.swing.JFrame {
              
              
              
+=======
+            JOptionPane.showMessageDialog(rootPane,"Banco Criado");
+
+            // Nao foi feito os outros FK pois as tabelas nao estao prontas
+
+
+>>>>>>> fcc5bee2042e2b6564a79b7126e6aadb5007a777
 
 
         } catch (SQLException ex) {
@@ -507,8 +543,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btMensalidade;
     private javax.swing.JButton btPiscina;
     private javax.swing.JButton btTurmas;
+<<<<<<< 632d9d357680232a072bb5e27cfdc0e9d0a016ef
     private javax.swing.JLabel jLabel1;
+=======
+    private javax.swing.JMenu jMenu1;
+>>>>>>> fcc5bee2042e2b6564a79b7126e6aadb5007a777
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuCriarBanco;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem5;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem6;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem7;

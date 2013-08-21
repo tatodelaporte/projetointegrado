@@ -31,7 +31,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
     /**
      * Creates new form CadastroAlunos
      */
-    public CadastroAlunos() {
+    public  CadastroAlunos() {
         initComponents();
         
         try{

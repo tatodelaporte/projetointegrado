@@ -1,5 +1,6 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
+
 import java.util.List;
 
 /**
@@ -12,7 +13,15 @@ public interface Dao<T> {
 
     void delete(T o) throws Exception;
 
-    T retrieve(int id) throws Exception;
+    /**
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    T retrieve(T o) throws Exception;
 
-    List<T> list() throws Exception;
+    List<T> list(T o) throws Exception;
+
+   
 }

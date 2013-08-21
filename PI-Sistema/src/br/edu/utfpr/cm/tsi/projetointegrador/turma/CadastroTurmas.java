@@ -6,6 +6,7 @@ package br.edu.utfpr.cm.tsi.projetointegrador.turma;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoFuncionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoTurma;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.HibernateDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.Funcionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
 import java.sql.SQLException;
@@ -341,15 +342,21 @@ public class CadastroTurmas extends javax.swing.JFrame {
 
         Turma turma = new Turma();
         turma = getTurma();
-
         try {
-
-            DaoTurma.insert(turma);
-
-        } catch (SQLException ex) {
+            new HibernateDao().persist(turma);
+        } catch (Exception ex) {
             Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex);
         }
+
+        //  try {
+
+        //      DaoTurma.insert(turma);
+
+
+        //   } catch (SQLException ex) {
+        //       Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
+        //   JOptionPane.showMessageDialog(null, ex);
+        //  }
 
     }//GEN-LAST:event_btGravarActionPerformed
 
@@ -363,28 +370,23 @@ public class CadastroTurmas extends javax.swing.JFrame {
             turma.setId(Integer.parseInt(tfId.getText().trim()));
             codprocurado = tfId.getText();
         }
-        /*if (rbBuscarTurmaId.isSelected()) {
-         if (rb.isSelected()) {
-         // turma.setDescricao(tfDescricao.getText().trim());
-         codprocurado = tfDescricao.getText();
-         tfDescricao.setEnabled(true);
-         } else {
-         //turma.setId(Integer.parseInt(tfId.getText().trim()));
-         codprocurado = tfId.getText();
-         tfId.setEnabled(true);
-         }
-          
-         */
         try {
-            DaoTurma.retrieve(Integer.parseInt(codprocurado));
-        } catch (SQLException ex) {
+            new HibernateDao().retrieve(codprocurado);
+        } catch (Exception ex) {
             Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try {
-            turma = DaoTurma.retrieve(Integer.parseInt(codprocurado));
-        } catch (SQLException ex) {
-            Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        
+   //     try {
+     //       DaoTurma.retrieve(Integer.parseInt(codprocurado));
+       // } catch (SQLException ex) {
+           // Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
+        // }
+        //try {
+//            turma = DaoTurma.retrieve(Integer.parseInt(codprocurado));
+  //      } catch (SQLException ex) {
+    //        Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
+      //  }
 
 
         tfId.setText(String.valueOf(turma.getId()));
@@ -486,6 +488,8 @@ public class CadastroTurmas extends javax.swing.JFrame {
 
         Turma turma = new Turma();
         turma = getTurma();
+
+
         try {
 
             DaoTurma.delete(turma);
@@ -609,7 +613,8 @@ public class CadastroTurmas extends javax.swing.JFrame {
         if (tfId.isEnabled()) {
             turma.setId(Integer.parseInt(tfId.getText().trim()));
         } else {
-            turma.setId(Integer.parseInt("1"));
+            turma.setId(0);
+//            turma.setId(Integer.parseInt("0"));
         }
 
 
@@ -654,4 +659,3 @@ public class CadastroTurmas extends javax.swing.JFrame {
         }
     }
 }
-
