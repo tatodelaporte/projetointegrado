@@ -1,0 +1,48 @@
+
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Swin System - Sistema de Natação.</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style type="text/css">
+
+        </style>
+        <link rel="stylesheet" type="text/css" href="estilo.css"/>
+
+        <script type="text/javascript">
+            function validaMatricula() {
+
+                var valor = document.formulario.matricula.value;
+                if (valor == "") {
+                    alert("Informe o Codigo da Sua Matricula");
+                    return false;
+                }
+            }
+        </script>
+
+
+    </head>
+    <body>
+
+        <h1>
+            Swin <br/>
+            System
+        </h1>
+        <ul id="menubv" style="background:transparent; border:0; margin-bottom:20px;">
+            <li><a href="index.xhtml" title="Pagina Inicial">Home</a></li>
+        </ul>
+
+
+        <Form name="formulario" action="Script.jsp" method="POST" onsubmit="return validaMatricula();">
+            <input type="text" name="matricula" value="Informe Sua Matricula"/><br/>
+            <input type="submit" value="Consultar"/>
+        </Form>        
+
+
+    </body>
+</html>
