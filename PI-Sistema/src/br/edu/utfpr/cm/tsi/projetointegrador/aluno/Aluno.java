@@ -4,19 +4,38 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.aluno;
 
+import br.edu.utfpr.cm.tsi.projetointegrador.matricula.Matricula;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Daniele
  */
+@Entity
 public class Aluno implements Serializable {
+    @OneToMany(mappedBy = "aluno")
+    private List<Matricula> matriculas;
+    @OneToOne(mappedBy = "aluno")
+    private Matricula matricula;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(length = 100)
     private String nome;
+    @Column(length = 100)
     private String cpf;
+    @Column(length = 100)
     private String endereco;
+    @Column(length = 100)
     private String telefone;
 
     public int getId() {
