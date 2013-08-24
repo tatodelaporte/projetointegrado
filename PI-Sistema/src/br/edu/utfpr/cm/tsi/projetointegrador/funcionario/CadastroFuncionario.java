@@ -4,11 +4,19 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.funcionario;
 
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.Dao;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoFuncionario;
+import br.edu.utfpr.cm.tsi.projetointegrador.hibernate.DaoGenerics;
+import br.edu.utfpr.cm.tsi.projetointegrador.hibernate.TransactionManager;
+import br.edu.utfpr.cm.tsi.projetointegrador.util.ValidadorCPF;
+import java.awt.Color;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -16,6 +24,7 @@ import javax.swing.JOptionPane;
  */
 public class CadastroFuncionario extends javax.swing.JFrame {
 
+    MaskFormatter mCPF = new MaskFormatter();
     boolean flag;
 
     /**
@@ -23,6 +32,14 @@ public class CadastroFuncionario extends javax.swing.JFrame {
      */
     public CadastroFuncionario() {
         initComponents();
+
+        try {
+
+            mCPF.setMask("###.###.###-##");
+            mCPF.setPlaceholderCharacter('_');
+
+        } catch (ParseException ex) {
+        }
         setSize(500, 610);
         setTitle("Cadastro de Funcionarios");
         setVisible(true);
@@ -65,7 +82,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         lbNome = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
         lbCPF = new javax.swing.JLabel();
-        tfCPF = new javax.swing.JTextField();
+        tfCPF = new JFormattedTextField(mCPF);
         lbRG = new javax.swing.JLabel();
         tfRG = new javax.swing.JTextField();
         lbEndereco = new javax.swing.JLabel();
@@ -117,6 +134,11 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         tfCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfCPFActionPerformed(evt);
+            }
+        });
+        tfCPF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfCPFFocusLost(evt);
             }
         });
 
@@ -382,27 +404,31 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         Funcionario funcionario = new Funcionario();
         funcionario = getFuncionario();
 
-        if (CampoCodigo.isEnabled()== true) {
+        if (CampoCodigo.isEnabled() == true) {
             CampoCodigo.setText(null);
             try {
 
-                DaoFuncionario.update(funcionario);
-            } catch (SQLException ex) {
+
+                new DaoGenerics<Funcionario>(Funcionario.class).persist(getFuncionario());
+            } catch (Exception ex) {
                 Logger.getLogger(CadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
             }
-            JOptionPane.showMessageDialog(null, "Esse Item Foi Alterado com Sucesso");
+
+            JOptionPane.showMessageDialog(null, "Esse Item Foi Alterado com Sucesso!");
         }
         if (CampoCodigo.isEnabled() == false) {
-
-
             try {
 
-                DaoFuncionario.insert(funcionario);
+                new DaoGenerics<Funcionario>(Funcionario.class).persist(getFuncionario());
 
-            } catch (SQLException ex) {
 
+                JOptionPane.showMessageDialog(null, "Funcionario Cadastrado");
+                // DaoFuncionario.insert(funcionario);
+            } catch (Exception ex) {
                 Logger.getLogger(CadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+
         }
     }//GEN-LAST:event_btGravarActionPerformed
 
@@ -440,8 +466,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btAlterarActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-       //Funcionario funcionario = new Funcionario();
-       // funcionario = getFuncionario();
+        //Funcionario funcionario = new Funcionario();
+        // funcionario = getFuncionario();
         try {
             DaoFuncionario.delete(getFuncionario());
         } catch (SQLException ex) {
@@ -454,7 +480,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         flag = true;
         CampoCodigo.setText(null);
         CampoCodigo.setEnabled(false);
-        
+
         tfNome.setEnabled(flag);
         tfCPF.setEnabled(flag);
         tfRG.setEnabled(flag);
@@ -520,6 +546,17 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfFoneResidenciaActionPerformed
 
+    private void tfCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCPFFocusLost
+        if (!tfCPF.getText().contains("_")) {
+            if (ValidadorCPF.isCPF(tfCPF.getText())) {
+                tfCPF.setForeground(Color.RED);
+                JOptionPane.showMessageDialog(this, "CPF inválido ");
+            } else {
+                tfCPF.setForeground(Color.BLUE);
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCPFFocusLost
+
     public static void main(String args[]) {
 
         /* Create and display the form */
@@ -571,7 +608,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         if (CampoCodigo.isEnabled() == true) { //para remover tem que estar aberto/para inserir nao precisa ESTAR ABERTA SO QUANDO VAI REMOVER PARA PUXAR PELO ID
             funcionario.setId(Integer.parseInt(CampoCodigo.getText().trim()));
         }
-        
+
         funcionario.setNome(tfNome.getText().trim());
         funcionario.setCpf(tfCPF.getText().trim());
         funcionario.setRg(tfRG.getText().trim());

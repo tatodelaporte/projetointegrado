@@ -4,22 +4,22 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.funcionario;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author Daniel
  */
 @Entity
-public class Funcionario {
+public class Funcionario implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(length = 100)
     private String nome;

@@ -6,6 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -48,7 +49,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lbCodigo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="tfId" min="-2" pref="76" max="-2" attributes="0"/>
+                              <Component id="CampoCodigo" min="-2" pref="76" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
@@ -129,7 +130,7 @@
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfId" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CampoCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btConsultar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="rbCodigoFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -205,9 +206,9 @@
         <Property name="text" type="java.lang.String" value="Codigo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfId">
+    <Component class="javax.swing.JTextField" name="CampoCodigo">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfIdActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoCodigoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbNome">
@@ -228,7 +229,11 @@
     <Component class="javax.swing.JTextField" name="tfCPF">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCPFActionPerformed"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCPFFocusLost"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JFormattedTextField(mCPF)"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="lbRG">
       <Properties>
