@@ -5,15 +5,16 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.turma;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.Funcionario;
+import br.edu.utfpr.cm.tsi.projetointegrador.piscina.Piscina;
 import java.io.Serializable;
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -23,12 +24,15 @@ import javax.persistence.Temporal;
 @Entity
 public class Turma implements Serializable {
 
+    // @OneToMany
+    //private List<Matricula> matriculas;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(length = 100)
     private String descricao;
-    private int piscina;
+    @ManyToOne
+    private Piscina piscina;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date horarioInicio;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -37,6 +41,14 @@ public class Turma implements Serializable {
     private String diaAula;
     @ManyToOne
     private Funcionario professor;
+
+    public Piscina getPiscina() {
+        return piscina;
+    }
+
+    public void setPiscina(Piscina piscina) {
+        this.piscina = piscina;
+    }
 
     public int getId() {
         return id;
@@ -64,14 +76,6 @@ public class Turma implements Serializable {
 
     public void setProfessor(Funcionario professor) {
         this.professor = professor;
-    }
-
-    public int getPiscina() {
-        return piscina;
-    }
-
-    public void setPiscina(int piscina) {
-        this.piscina = piscina;
     }
 
     public Date getHorarioInicio() {
