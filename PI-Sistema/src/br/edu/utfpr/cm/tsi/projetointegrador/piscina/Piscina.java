@@ -4,14 +4,28 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.piscina;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author Daniele
  */
-public class Piscina {
+@Entity
+public class Piscina implements Serializable{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(length = 100)
     private String descricao;
+    @Column(length = 100)
     private String tamanho;
+    @Column(length = 100)
     private String capacidadeAlunos;
 
     public int getId() {
@@ -50,9 +64,4 @@ public class Piscina {
     public String toString() {
         return "Piscina{" + "id=" + id + ", descricao=" + descricao + ", tamanho=" + tamanho + ", capacidadeAlunos=" + capacidadeAlunos + '}';
     }
-    
-    
-    
-
-    
 }
