@@ -5,10 +5,13 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.turma;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoFuncionario;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoPiscina;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoTurma;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.HibernateDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.Funcionario;
+import br.edu.utfpr.cm.tsi.projetointegrador.hibernate.HibernateConfiguration;
 import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
+import br.edu.utfpr.cm.tsi.projetointegrador.piscina.Piscina;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -97,6 +100,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
         cbProfessor = new javax.swing.JComboBox();
         tfhorarioInicio = new javax.swing.JFormattedTextField();
         tfhorarioFim = new javax.swing.JFormattedTextField();
+        cbPiscina = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Turmas");
@@ -188,6 +192,8 @@ public class CadastroTurmas extends javax.swing.JFrame {
 
         tfhorarioFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
 
+        cbPiscina.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -205,7 +211,10 @@ public class CadastroTurmas extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfcodPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tfcodPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cbProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lbHorario)
                     .addGroup(layout.createSequentialGroup()
@@ -259,7 +268,8 @@ public class CadastroTurmas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfcodPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(cbPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -375,18 +385,18 @@ public class CadastroTurmas extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-   //     try {
-     //       DaoTurma.retrieve(Integer.parseInt(codprocurado));
-       // } catch (SQLException ex) {
-           // Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
+
+
+        //     try {
+        //       DaoTurma.retrieve(Integer.parseInt(codprocurado));
+        // } catch (SQLException ex) {
+        // Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
         // }
         //try {
 //            turma = DaoTurma.retrieve(Integer.parseInt(codprocurado));
-  //      } catch (SQLException ex) {
-    //        Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
-      //  }
+        //      } catch (SQLException ex) {
+        //        Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
+        //  }
 
 
         tfId.setText(String.valueOf(turma.getId()));
@@ -581,6 +591,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btRemover;
     private javax.swing.JCheckBox cbDomingo;
+    private javax.swing.JComboBox cbPiscina;
     private javax.swing.JComboBox cbProfessor;
     private javax.swing.JCheckBox cbQuartaFeira;
     private javax.swing.JCheckBox cbQuintaFeira;
@@ -619,7 +630,8 @@ public class CadastroTurmas extends javax.swing.JFrame {
 
 
         turma.setDescricao(tfDescricao.getText().trim());
-        turma.setPiscina(Integer.parseInt(tfcodPiscina.getText().trim()));
+        //turma.setPiscina(Integer.parseInt(tfcodPiscina.getText().trim()));
+
         //turma.setProfessor(Integer.parseInt(tfcodProfessor.getText().trim()));
         turma.setProfessor((Funcionario) cbProfessor.getSelectedItem());
         turma.setHorarioInicio((Date) tfhorarioInicio.getValue());
@@ -656,6 +668,21 @@ public class CadastroTurmas extends javax.swing.JFrame {
             if ("Professor".equals(f.getTipoFuncionario())) {
                 cbProfessor.addItem(f);
             }
+        }
+    }
+
+    public void preencherPiscina() throws SQLException {
+
+        cbPiscina.removeAllItems();
+        cbPiscina.removeAll();
+
+        List<Piscina> piscinas = null;
+
+        piscinas = DaoPiscina.list();
+
+        for (Piscina p : piscinas) {
+
+            cbPiscina.addItem(p);
         }
     }
 }

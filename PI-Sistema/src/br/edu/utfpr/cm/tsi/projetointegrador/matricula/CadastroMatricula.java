@@ -5,6 +5,8 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.matricula;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoTurma;
+import br.edu.utfpr.cm.tsi.projetointegrador.DaosDani.Aluno;
+import br.edu.utfpr.cm.tsi.projetointegrador.DaosDani.DaoAluno;
 import br.edu.utfpr.cm.tsi.projetointegrador.turma.Turma;
 import java.sql.SQLException;
 import java.util.List;
@@ -30,9 +32,9 @@ public class CadastroMatricula extends javax.swing.JFrame {
         setResizable(false);// Trava o tamanho do painel.
         preencherTurma();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
-
-
+        
+        
+        
     }
 
     /**
@@ -62,6 +64,7 @@ public class CadastroMatricula extends javax.swing.JFrame {
         rbInativo = new javax.swing.JRadioButton();
         lbSituacao = new javax.swing.JLabel();
         cbTurma = new javax.swing.JComboBox();
+        cbAluno = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,6 +107,8 @@ public class CadastroMatricula extends javax.swing.JFrame {
 
         cbTurma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        cbAluno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,8 +134,13 @@ public class CadastroMatricula extends javax.swing.JFrame {
                             .addComponent(tfCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                             .addComponent(tfAluno, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfMensalidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
-                        .addGap(40, 40, 40)
-                        .addComponent(btBuscar)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(btBuscar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(cbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,7 +154,8 @@ public class CadastroMatricula extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbAluno)
-                    .addComponent(tfAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbTurma)
@@ -208,6 +219,7 @@ public class CadastroMatricula extends javax.swing.JFrame {
     private javax.swing.JButton btGravar;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btRemover;
+    private javax.swing.JComboBox cbAluno;
     private javax.swing.JComboBox cbTurma;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lbAluno;
@@ -223,10 +235,10 @@ public class CadastroMatricula extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void preencherTurma() {
-
+        
         cbTurma.removeAllItems();
         cbTurma.removeAll();
-
+        
         List<Turma> turmas = null;
         try {
             turmas = DaoTurma.list();
@@ -236,6 +248,22 @@ public class CadastroMatricula extends javax.swing.JFrame {
         
         for (Turma t : turmas) {
             cbTurma.addItem(t);
+        }
+        
+    }
+    
+    public void preecherAluno() {
+        cbAluno.removeAll();
+        cbAluno.removeAllItems();
+      
+        List<Aluno> alunos = null;
+        try {
+            alunos = DaoAluno.list();
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroMatricula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (Aluno a : alunos) {
+            cbAluno.addItem(a);
         }
         
     }
