@@ -7,7 +7,7 @@
  *
  * @author Daniele
  */
-public class Pessoa {
+public class Pessoa TesteGithub {
     private int id;
     private String nome;
     private String cpf;
