@@ -5,7 +5,6 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.aluno;
 
 import java.util.InputMismatchException;
-import javax.swing.JFormattedTextField;
 
 /**
  *

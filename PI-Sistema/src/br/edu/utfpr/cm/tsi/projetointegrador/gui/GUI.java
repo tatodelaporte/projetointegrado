@@ -6,6 +6,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.CadastroFuncionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.turma.CadastroTurmas;
 import br.edu.utfpr.cm.tsi.projetointegrador.aluno.CadastroAlunos;
+import br.edu.utfpr.cm.tsi.projetointegrador.hibernate.HibernateConfiguration;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.piscina.CadastrodePiscinas;
 import br.edu.utfpr.cm.tsi.projetointegrador.mensalidade.CadastroMensalidades;
@@ -413,7 +414,7 @@ public class GUI extends javax.swing.JFrame {
                                            
 
     private void jRadioButtonMenuCriarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuCriarBancoActionPerformed
-        criarBanco();
+       HibernateConfiguration.createSchema();
     }//GEN-LAST:event_jRadioButtonMenuCriarBancoActionPerformed
 
 
@@ -425,7 +426,7 @@ public class GUI extends javax.swing.JFrame {
                     + "turma("
                     + "id int(10) not null AUTO_INCREMENT,"
                     + "descricao varchar(20) not null,"
-                    + "professor varchar(10) not null,"
+                    + "professor_id int(11) not null,"
                     + "piscina varchar(10) not null,"
                     + "horarioinicio time not null,"
                     + "horariofim time not null,"
