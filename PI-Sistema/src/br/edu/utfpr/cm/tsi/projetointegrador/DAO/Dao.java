@@ -1,6 +1,5 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
-
 import java.util.List;
 
 /**
@@ -22,6 +21,4 @@ public interface Dao<T> {
     T retrieve(T o) throws Exception;
 
     List<T> list(T o) throws Exception;
-
-   
 }

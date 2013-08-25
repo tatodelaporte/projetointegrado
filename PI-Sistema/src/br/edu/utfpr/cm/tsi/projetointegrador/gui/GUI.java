@@ -332,7 +332,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,7 +486,7 @@ public class GUI extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(rootPane,"Banco Criado");
 
-            // Nao foi feito os outros FK pois as tabelas nao estao prontas
+  
 
 
 

@@ -7,6 +7,18 @@ package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 import java.lang.reflect.Field;
 import java.util.List;
 import javassist.bytecode.annotation.Annotation;
+import java.sql.Connection;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
+
 
 import javax.persistence.EntityManager;
 

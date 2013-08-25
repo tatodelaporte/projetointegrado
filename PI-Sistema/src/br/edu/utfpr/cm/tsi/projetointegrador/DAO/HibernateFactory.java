@@ -22,11 +22,11 @@ public class HibernateFactory {
         if (entityManager == null) {
             Map<String, String> map = new HashMap<String, String>();
             map.put("hibernate.connection.driver", "com.mysql.jdbc.Driver");
-            map.put("hibernate.connection.url", "jdbc:mysql://localhost/swin");
+            map.put("hibernate.connection.url", "jdbc:mysql://localhost/pisistemas");
             map.put("hibernate.connection.user", "root");
-            map.put("hibernate.connection.password", "tato1234");
+            map.put("hibernate.connection.password", "douglas");
 
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("swin", map);
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("pisistemas", map);
 
             entityManager = emf.createEntityManager();
 
