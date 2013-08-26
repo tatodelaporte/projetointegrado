@@ -31,9 +31,9 @@ public class HibernateConfiguration {
             cfg.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
             cfg.setProperty("hibernate.connection.username", "root");
             cfg.setProperty("hibernate.connection.password", "douglas");
-            cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/pisistemas");
+            cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/swin");
             cfg.setProperty("hibernate.show_sql", "true");
-            cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
+            cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");       
             cfg.setProperty("hibernate.connection.autocommit", "true");
             cfg.addAnnotatedClass(Aluno.class); // classes para serem mapeadas
             cfg.addAnnotatedClass(Funcionario.class); // classes para serem mapeadas
@@ -50,7 +50,7 @@ public class HibernateConfiguration {
     //podemos setar o autocomit como true e nao precisa usar begin tansaction
 
     public static void createSchema() {
-        getSessionFactory().close();
+        getSessionFactory();
         org.hibernate.tool.hbm2ddl.SchemaExport schemaEx = new SchemaExport(cfg);
         schemaEx.create(true, true);
     }

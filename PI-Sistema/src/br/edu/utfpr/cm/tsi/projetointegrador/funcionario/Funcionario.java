@@ -23,7 +23,7 @@ public class Funcionario implements Serializable {
     private int id;
     @Column(length = 100)
     private String nome;
-    @Column(length = 11)
+    @Column(length = 17)
     private String cpf;
     @Column(length = 11)
     private String rg;
