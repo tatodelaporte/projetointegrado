@@ -84,8 +84,8 @@ public class CadastroAlunos extends javax.swing.JFrame {
         jButtonAlterar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jTextTelefone = new javax.swing.JFormattedTextField();
-        jTextCPF = new JFormattedTextField(mCPF);
         jLabel7 = new javax.swing.JLabel();
+        jTextCPF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,19 +188,14 @@ public class CadastroAlunos extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jTextCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCPFActionPerformed(evt);
-            }
-        });
+        jLabel7.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel7.setText("*");
+
         jTextCPF.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextCPFFocusLost(evt);
             }
         });
-
-        jLabel7.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel7.setText("*");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -241,13 +236,13 @@ public class CadastroAlunos extends javax.swing.JFrame {
                         .addComponent(jButton3))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -272,8 +267,8 @@ public class CadastroAlunos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -427,40 +422,19 @@ public class CadastroAlunos extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextNomeKeyTyped
 
     private void jTextCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCPFFocusLost
-        //     if(!evt.isTemporary())         
-        if (!jTextCPF.getText().contains("_")) {
-            if (ValidadorAlunos.isCPF(jTextCPF.getText())) {
-                jTextCPF.setForeground(Color.RED);
-                JOptionPane.showMessageDialog(this, "CPF inválido ");
-            } else {
-                jTextCPF.setForeground(Color.BLUE);
-                jTextCPF.isFocusOwner();
-            }
-        }
-    }//GEN-LAST:event_jTextCPFFocusLost
-
-    private void jTextCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCPFActionPerformed
-        // TODO add your handling code here:
-        int flag=0;
-        String validacao="Campos Obrigatorios";
-       if (!jTextCPF.getText().isEmpty()) {
-           validacao=validacao+"\n*Campo CPF deve ser preenchido";
-           flag=1;{
-           if(flag==1){
-               JOptionPane.showMessageDialog(null, validacao);
-           }
-       }
+            if (!jTextCPF.getText().contains("_")) {
             if (!ValidadorAlunos.isCPF(jTextCPF.getText())) {
                 jTextCPF.setForeground(Color.RED);
                 JOptionPane.showMessageDialog(this, "CPF inválido ");
+                jTextCPF.requestFocus();
+                
+              //  jTextCPF.isFocusOwner();
             } else {
                 jTextCPF.setForeground(Color.BLUE);
-                jTextCPF.isFocusOwner();
+                
             }
         }
-        
-        
-    }//GEN-LAST:event_jTextCPFActionPerformed
+    }//GEN-LAST:event_jTextCPFFocusLost
 
     public void setAluno(Aluno aluno) {
         //   Aluno aluno=new Aluno();
