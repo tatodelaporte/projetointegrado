@@ -422,14 +422,12 @@ public class CadastroAlunos extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextNomeKeyTyped
 
     private void jTextCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCPFFocusLost
-            if (!jTextCPF.getText().contains("_")) {
+              if (!jTextCPF.getText().contains("_")) {
             if (!ValidadorAlunos.isCPF(jTextCPF.getText())) {
                 jTextCPF.setForeground(Color.RED);
                 JOptionPane.showMessageDialog(this, "CPF inválido ");
                 jTextCPF.requestFocus();
-                
-              //  jTextCPF.isFocusOwner();
-            } else {
+               } else {
                 jTextCPF.setForeground(Color.BLUE);
                 
             }
