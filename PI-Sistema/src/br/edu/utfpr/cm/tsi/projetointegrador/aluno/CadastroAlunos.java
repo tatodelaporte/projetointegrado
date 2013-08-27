@@ -22,26 +22,26 @@ import org.jcp.xml.dsig.internal.dom.Utils;
  * @author Daniele
  */
 public class CadastroAlunos extends javax.swing.JFrame {
-    MaskFormatter mCPF=new MaskFormatter();
- //   ValidadorAlunos valida=new ValidadorAlunos();
-    
-       boolean flag;
-    
-    
+
+    MaskFormatter mCPF = new MaskFormatter();
+    //   ValidadorAlunos valida=new ValidadorAlunos();
+    boolean flag;
+
     /**
      * Creates new form CadastroAlunos
      */
-    public  CadastroAlunos() {
+    public CadastroAlunos() {
         initComponents();
-        
-        try{
-            
+
+        try {
+
             mCPF.setMask("###.###.###-##");
             mCPF.setPlaceholderCharacter('_');
-            
-            }catch (ParseException ex){}   
-        
-        
+
+        } catch (ParseException ex) {
+        }
+
+
         setSize(500, 610);
         setTitle("Cadastro de Alunos");
         setVisible(true);
@@ -49,15 +49,14 @@ public class CadastroAlunos extends javax.swing.JFrame {
         pack();
         setResizable(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
-        flag=false;
+
+        flag = false;
         CampoCodigo.setEnabled(flag);
-        jTextNome.setEnabled(flag); 
+        jTextNome.setEnabled(flag);
         jTextCPF.setEnabled(flag);
         jTextEndereco.setEnabled(flag);
         jTextTelefone.setEnabled(flag);
-    }     
-    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,6 +67,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jColorChooser1 = new javax.swing.JColorChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         CampoCodigo = new javax.swing.JTextField();
@@ -85,6 +85,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jTextTelefone = new javax.swing.JFormattedTextField();
         jTextCPF = new JFormattedTextField(mCPF);
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,6 +199,9 @@ public class CadastroAlunos extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel7.setText("*");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -218,16 +222,6 @@ public class CadastroAlunos extends javax.swing.JFrame {
                         .addComponent(jButtonBuscar))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -244,7 +238,20 @@ public class CadastroAlunos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonAlterar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -265,7 +272,8 @@ public class CadastroAlunos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -286,115 +294,107 @@ public class CadastroAlunos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
- 
     private void CampoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoCodigoActionPerformed
 
-    
     private void jTextNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeActionPerformed
-             if(jTextNome.getText().equals("")){
-                 JOptionPane.showMessageDialog(null, "Por favor coloque seu nome");
-             
-                 
-             }
+        if (jTextNome.getText().equals("   ")) {
+            JOptionPane.showMessageDialog(null, "Por favor coloque seu nome");
+
+
+        }
     }//GEN-LAST:event_jTextNomeActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-            Aluno aluno=new Aluno();
-            String buscar="";
-            
-            
-            if(jRadioCodigoAluno.isSelected()){
-                aluno.setId(Integer.parseInt(CampoCodigo.getText().trim()));
-                buscar=CampoCodigo.getText();
-            }
-            try{
-                DaoAluno.retrieve(Integer.parseInt(buscar));
-            }catch (SQLException ex){
-                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-             try{
-              aluno=DaoAluno.retrieve(Integer.parseInt(buscar)) ;
-         }catch (SQLException ex){
-             Logger.getLogger(CadastroAlunos.class.getCanonicalName()).log(Level.SEVERE, null, ex);
-         }
-             
-             setAluno(aluno);
+        Aluno aluno = new Aluno();
+        String buscar = "";
+
+
+        if (jRadioCodigoAluno.isSelected()) {
+            aluno.setId(Integer.parseInt(CampoCodigo.getText().trim()));
+            buscar = CampoCodigo.getText();
+        }
+        try {
+            DaoAluno.retrieve(Integer.parseInt(buscar));
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            aluno = DaoAluno.retrieve(Integer.parseInt(buscar));
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroAlunos.class.getCanonicalName()).log(Level.SEVERE, null, ex);
+        }
+
+        setAluno(aluno);
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jTextEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEnderecoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextEnderecoActionPerformed
 
-    
-         
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-         Aluno aluno = new Aluno();
-         aluno = getAluno();
-         
-         if(CampoCodigo.isEnabled() == true){
-             CampoCodigo.setText(null);
-              try{
-                  
-                DaoAluno.update(aluno);                
-              }catch (SQLException ex){
-                  Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-              }
-             // JOptionPane.showMessageDialog(null, "Alterações feitas com sucesso");
-         }
-         if(CampoCodigo.isEnabled() == false){
-              try{
-                  
-                  DaoAluno.insert(aluno);
-              }catch  (SQLException ex){
-                  Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-              }
-         }
-         this.dispose();
-         //System.exit(0);
+        Aluno aluno = new Aluno();
+        aluno = getAluno();
+
+        if (CampoCodigo.isEnabled() == true) {
+            CampoCodigo.setText(null);
+            try {
+
+                DaoAluno.update(aluno);
+            } catch (SQLException ex) {
+                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            // JOptionPane.showMessageDialog(null, "Alterações feitas com sucesso");
+        }
+        if (CampoCodigo.isEnabled() == false) {
+            try {
+
+                DaoAluno.insert(aluno);
+            } catch (SQLException ex) {
+                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        this.dispose();
+        //System.exit(0);
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
-    
-    
-    
-    
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
         // TODO add your handling code here:
-        flag=true;
+        flag = true;
         CampoCodigo.setText(null);
         CampoCodigo.setEnabled(false);
-        
-        
-        jTextNome.setEnabled(flag); 
+
+
+        jTextNome.setEnabled(flag);
         jTextCPF.setEnabled(flag);
         jTextEndereco.setEnabled(flag);
         jTextTelefone.setEnabled(flag);
-        
+
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
         Aluno aluno = new Aluno();
-        aluno=getAluno();
-        
-        try{
+        aluno = getAluno();
+
+        try {
             DaoAluno.update(aluno);
-        }catch (SQLException ex) {
-            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null,ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Aluno aluno=new Aluno();
-        aluno=getAluno();
-        
-        try{
+        Aluno aluno = new Aluno();
+        aluno = getAluno();
+
+        try {
             DaoAluno.delete(aluno);
-        }catch (SQLException ex){
-            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE,null ,ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -404,95 +404,101 @@ public class CadastroAlunos extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioCodigoAlunoActionPerformed
 
     private void jRadioCodigoAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioCodigoAlunoMouseClicked
-             flag=true;
-             CampoCodigo.setEnabled(flag);
-             jTextNome.setEnabled(flag);
-             jTextCPF.setEnabled(flag);
-             jTextEndereco.setEnabled(flag);
-             jTextTelefone.setEnabled(flag);
+        flag = true;
+        CampoCodigo.setEnabled(flag);
+        jTextNome.setEnabled(flag);
+        jTextCPF.setEnabled(flag);
+        jTextEndereco.setEnabled(flag);
+        jTextTelefone.setEnabled(flag);
     }//GEN-LAST:event_jRadioCodigoAlunoMouseClicked
 
     private void CampoCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoCodigoKeyTyped
-         
-        int c=evt.getKeyCode();
-        
-        if(c <0 || c > 9)evt.consume();
-          
-          
+
+        int c = evt.getKeyCode();
+
+        if (c < 0 || c > 9) {
+            evt.consume();
+        }
+
+
     }//GEN-LAST:event_CampoCodigoKeyTyped
 
     private void jTextNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNomeKeyTyped
-      
     }//GEN-LAST:event_jTextNomeKeyTyped
 
     private void jTextCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCPFFocusLost
-         //     if(!evt.isTemporary())         
-        if(!jTextCPF.getText().contains("_")){
-             if(ValidadorAlunos.isCPF(jTextCPF.getText())){
+        //     if(!evt.isTemporary())         
+        if (!jTextCPF.getText().contains("_")) {
+            if (ValidadorAlunos.isCPF(jTextCPF.getText())) {
                 jTextCPF.setForeground(Color.RED);
-                JOptionPane.showMessageDialog(this,"CPF inválido ");
-             }else{
-                 jTextCPF.setForeground(Color.BLUE);
-                 jTextCPF.isFocusOwner();
-             }
-         }
+                JOptionPane.showMessageDialog(this, "CPF inválido ");
+            } else {
+                jTextCPF.setForeground(Color.BLUE);
+                jTextCPF.isFocusOwner();
+            }
+        }
     }//GEN-LAST:event_jTextCPFFocusLost
 
     private void jTextCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCPFActionPerformed
         // TODO add your handling code here:
+        int flag=0;
+        String validacao="Campos Obrigatorios";
+       if (!jTextCPF.getText().isEmpty()) {
+           validacao=validacao+"\n*Campo CPF deve ser preenchido";
+           flag=1;{
+           if(flag==1){
+               JOptionPane.showMessageDialog(null, validacao);
+           }
+       }
+            if (!ValidadorAlunos.isCPF(jTextCPF.getText())) {
+                jTextCPF.setForeground(Color.RED);
+                JOptionPane.showMessageDialog(this, "CPF inválido ");
+            } else {
+                jTextCPF.setForeground(Color.BLUE);
+                jTextCPF.isFocusOwner();
+            }
+        }
+        
+        
     }//GEN-LAST:event_jTextCPFActionPerformed
 
-    public void setAluno(Aluno aluno){
-     //   Aluno aluno=new Aluno();
-        
+    public void setAluno(Aluno aluno) {
+        //   Aluno aluno=new Aluno();
+
         jTextNome.setText(aluno.getNome());
         jTextCPF.setText(aluno.getCpf());
         jTextEndereco.setText(aluno.getEndereco());
         jTextTelefone.setText(aluno.getTelefone());
-            
+
     }
-    
-    
-     public void setAluno(){
-       Aluno aluno=new Aluno();
-        
+
+    public void setAluno() {
+        Aluno aluno = new Aluno();
+
         jTextNome.setText(aluno.getNome());
         jTextCPF.setText(aluno.getCpf());
         jTextEndereco.setText(aluno.getEndereco());
         jTextTelefone.setText(aluno.getTelefone());
-            
+
     }
-        
-    
-   public Aluno getAluno(){         
-    Aluno aluno =new Aluno();
-    
-    if(CampoCodigo.isEnabled() == true){ //para remover tem q estar aberto /p novo nao
-        aluno.setId(Integer.parseInt(CampoCodigo.getText().trim()));
+
+    public Aluno getAluno() {
+        Aluno aluno = new Aluno();
+
+        if (CampoCodigo.isEnabled() == true) { //para remover tem q estar aberto /p novo nao
+            aluno.setId(Integer.parseInt(CampoCodigo.getText().trim()));
+        }
+
+        aluno.setNome(jTextNome.getText().trim());
+        aluno.setCpf(jTextCPF.getText().trim());
+        aluno.setEndereco(jTextEndereco.getText().trim());
+        aluno.setTelefone(jTextTelefone.getText().trim());
+
+
+        return aluno;
+
     }
-    
-    aluno.setNome(jTextNome.getText().trim());
-    aluno.setCpf(jTextCPF.getText().trim());
-    aluno.setEndereco(jTextEndereco.getText().trim());
-    aluno.setTelefone(jTextTelefone.getText().trim());
-    
-    
-    return aluno;
-    
-   }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -534,12 +540,14 @@ public class CadastroAlunos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovo;
+    private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JRadioButton jRadioCodigoAluno;
     private javax.swing.JTextField jTextCPF;
     private javax.swing.JTextField jTextEndereco;
