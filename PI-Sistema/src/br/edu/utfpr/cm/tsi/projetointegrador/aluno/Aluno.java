@@ -31,11 +31,11 @@ public class Aluno implements Serializable {
     private int id;
     @Column(length = 100)
     private String nome;
-    @Column(length = 100)
+    @Column(length = 18)
     private String cpf;
-    @Column(length = 100)
+    @Column(length = 60)
     private String endereco;
-    @Column(length = 100)
+    @Column(length = 18)
     private String telefone;
 
     public int getId() {

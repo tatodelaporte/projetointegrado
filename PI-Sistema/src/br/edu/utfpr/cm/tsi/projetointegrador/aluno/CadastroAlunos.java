@@ -187,6 +187,11 @@ public class CadastroAlunos extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jTextCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCPFActionPerformed(evt);
+            }
+        });
         jTextCPF.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextCPFFocusLost(evt);
@@ -421,15 +426,21 @@ public class CadastroAlunos extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextNomeKeyTyped
 
     private void jTextCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCPFFocusLost
-         if(!jTextCPF.getText().contains("_")){
+         //     if(!evt.isTemporary())         
+        if(!jTextCPF.getText().contains("_")){
              if(ValidadorAlunos.isCPF(jTextCPF.getText())){
                 jTextCPF.setForeground(Color.RED);
                 JOptionPane.showMessageDialog(this,"CPF inválido ");
              }else{
                  jTextCPF.setForeground(Color.BLUE);
+                 jTextCPF.isFocusOwner();
              }
          }
     }//GEN-LAST:event_jTextCPFFocusLost
+
+    private void jTextCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextCPFActionPerformed
 
     public void setAluno(Aluno aluno){
      //   Aluno aluno=new Aluno();
