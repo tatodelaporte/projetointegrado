@@ -8,6 +8,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.DaosDani.Aluno;
 import br.edu.utfpr.cm.tsi.projetointegrador.DaosDani.DaoAluno;
 import com.mysql.jdbc.Util;
 import java.awt.Color;
+import java.awt.KeyboardFocusManager;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -132,6 +133,11 @@ public class CadastroAlunos extends javax.swing.JFrame {
                 jTextNomeActionPerformed(evt);
             }
         });
+        jTextNome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextNomeFocusLost(evt);
+            }
+        });
         jTextNome.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextNomeKeyTyped(evt);
@@ -187,10 +193,20 @@ public class CadastroAlunos extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jTextTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextTelefoneFocusLost(evt);
+            }
+        });
 
         jLabel7.setForeground(new java.awt.Color(255, 51, 0));
         jLabel7.setText("*");
 
+        jTextCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCPFActionPerformed(evt);
+            }
+        });
         jTextCPF.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextCPFFocusLost(evt);
@@ -294,11 +310,22 @@ public class CadastroAlunos extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoCodigoActionPerformed
 
     private void jTextNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeActionPerformed
-        if (jTextNome.getText().equals("   ")) {
-            JOptionPane.showMessageDialog(null, "Por favor coloque seu nome");
+        //if (jTextNome.getText().equals("   ")) {
+          //  JOptionPane.showMessageDialog(null, "Por favor coloque seu nome");
+        //jTextNom
+      // jTextNome.addActionListener(new ActionListener(){  
+    //    public void ActionPerformed(ActionEvent e){  
+    //    if(jtextfield.getText().isEmpty()){  
+    //        JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);  
+     //   } else {  
+            //Passou na validação  
+            //Faz algo aqui  
+      //  }  
+  //  }  
+//});  
 
 
-        }
+        
     }//GEN-LAST:event_jTextNomeActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
@@ -418,7 +445,12 @@ public class CadastroAlunos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CampoCodigoKeyTyped
 
+
     private void jTextNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNomeKeyTyped
+      
+       
+
+
     }//GEN-LAST:event_jTextNomeKeyTyped
 
     private void jTextCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCPFFocusLost
@@ -433,6 +465,24 @@ public class CadastroAlunos extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jTextCPFFocusLost
+
+    private void jTextTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextTelefoneFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextTelefoneFocusLost
+
+    private void jTextCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextCPFActionPerformed
+
+    private void jTextNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNomeFocusLost
+           if(jTextNome.getText().isEmpty()){
+          JOptionPane.showMessageDialog(null, "Campo \n nome esta em branco!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+            jTextNome.requestFocus();
+       }else{
+           KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();  
+            manager.focusNextComponent();  
+       }
+    }//GEN-LAST:event_jTextNomeFocusLost
 
     public void setAluno(Aluno aluno) {
         //   Aluno aluno=new Aluno();
