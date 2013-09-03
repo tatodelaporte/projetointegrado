@@ -27,7 +27,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
     MaskFormatter mCPF = new MaskFormatter();
     //   ValidadorAlunos valida=new ValidadorAlunos();
     boolean flag;
-
+    
     /**
      * Creates new form CadastroAlunos
      */
