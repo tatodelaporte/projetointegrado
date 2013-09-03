@@ -463,6 +463,7 @@ public class GUI extends javax.swing.JFrame {
                      +"nome varchar (50) not null,"
                      +"cpf varchar (16) not null,"
                      +"endereco varchar (150) not null,"
+                     +"numero varchar (7) not nulk,"
                      +"telefone varchar (15),"
                      +"PRIMARY KEY (id));");
              st.executeUpdate("CREATE TABLE IF NOT EXISTS "

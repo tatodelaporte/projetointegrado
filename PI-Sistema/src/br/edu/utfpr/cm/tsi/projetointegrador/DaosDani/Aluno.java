@@ -17,6 +17,7 @@ public class Aluno {
     private String nome;
     private String cpf;
     private String endereco;
+    private String numero;
     private String telefone;
     private Date dataNascimento=Calendar.getInstance().getTime();
 
@@ -56,6 +57,20 @@ public class Aluno {
         return telefone;
     }
 
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+    
+    
+    
+    
+    
+    
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
@@ -73,12 +88,16 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return "Aluno{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + '}';
+        return "Aluno{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", numero=" + numero + ", telefone=" + telefone + ", dataNascimento=" + dataNascimento + '}';
+    }
+
+    
+    
     }
 
  
     
     
-}   
+   
     
 

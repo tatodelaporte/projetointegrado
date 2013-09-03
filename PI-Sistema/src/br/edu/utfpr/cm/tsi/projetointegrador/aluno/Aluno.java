@@ -35,6 +35,8 @@ public class Aluno implements Serializable {
     private String cpf;
     @Column(length = 60)
     private String endereco;
+    @Column (length = 7)
+    private String numero;
     @Column(length = 18)
     private String telefone;
 
@@ -70,6 +72,18 @@ public class Aluno implements Serializable {
         this.endereco = endereco;
     }
 
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+    
+    
+    
+    
+
     public String getTelefone() {
         return telefone;
     }
@@ -80,6 +94,8 @@ public class Aluno implements Serializable {
 
     @Override
     public String toString() {
-        return "Aluno{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", dataNascimento=" + ", telefone=" + telefone + '}';
+        return "Aluno{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", numero=" + numero + ", telefone=" + telefone + '}';
     }
+
+    
 }
