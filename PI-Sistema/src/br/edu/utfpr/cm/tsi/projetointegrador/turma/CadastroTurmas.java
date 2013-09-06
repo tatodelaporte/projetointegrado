@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
  *
  * @author Daniel
  */
-public class CadastroTurmas extends javax.swing.JFrame {
+public class CadastroTurmas extends javax.swing.JDialog {
 
     private String diasaula = "";
 
@@ -104,7 +104,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
         tfhorarioFim = new javax.swing.JFormattedTextField();
         cbPiscina = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Cadastro de Turmas");
 
         lbDescricao.setText("Descrição");
