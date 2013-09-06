@@ -25,7 +25,7 @@ public class DaoPiscina {
         Piscina p = new Piscina();
         p.setId(rs.getInt("id"));
         p.setDescricao(rs.getString("descricao"));
-        p.setCapacidadeAlunos("");
+        p.setCapacidadeAlunos("capacidadeAlunos");
       
         
         return p;
@@ -33,7 +33,7 @@ public class DaoPiscina {
      
       public static void insert(Piscina p) throws SQLException{   
           
-        PreparedStatement pst =br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory.prepareConnection().prepareStatement("INSERT INTO piscina (descricao,tamanho,capacidade) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement pst =br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory.prepareConnection().prepareStatement("INSERT INTO piscina (descricao,tamanho,capacidadeAlunos) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
         pst.setString(1, p.getDescricao());
         pst.setString(2, p.getTamanho());
         pst.setString(3, p.getCapacidadeAlunos());

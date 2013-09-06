@@ -5,19 +5,22 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.util;
 
 import java.util.InputMismatchException;
+import java.util.List;
+import javax.swing.JComboBox;
 
 /**
  *
  * @author Daniel
  */
-public class ValidadorCPF {
-    public static boolean isCPF (String CPF){
-        
-     if(CPF.equals("00000000000"))   {
-         return true;
-     }
-        
-     if (CPF.equals("00000000000") || CPF.equals("11111111111")
+public class Utilitarios {
+
+    public static boolean isCPF(String CPF) {
+
+        if (CPF.equals("00000000000")) {
+            return true;
+        }
+
+        if (CPF.equals("00000000000") || CPF.equals("11111111111")
                 || CPF.equals("22222222222") || CPF.equals("33333333333")
                 || CPF.equals("44444444444") || CPF.equals("55555555555")
                 || CPF.equals("66666666666") || CPF.equals("77777777777")
@@ -150,7 +153,6 @@ public class ValidadorCPF {
 
     }
 
-   
     public static boolean isData(String data) {
         data = data.replace("/", "");
         data = data.replace("/", "");
@@ -160,7 +162,7 @@ public class ValidadorCPF {
             int dia = Integer.parseInt(data.substring(0, 2));
             int mes = Integer.parseInt(data.substring(2, 4));
             int ano = Integer.parseInt(data.substring(4, 8));
-                boolean bissesto;
+            boolean bissesto;
             int f4 = 0;
             int f100 = 0;
             int f400 = 0;
@@ -263,10 +265,11 @@ public class ValidadorCPF {
         }
     }
 
-    
+    public static void montaCombobox(JComboBox comboBox, List lista) {
+        // adicionando entidades ao combobox
+        comboBox.removeAllItems();
+        for (Object entidade : lista) {
+            comboBox.addItem(entidade);
+        }
+    }
 }
-
-     
-    
-    
-

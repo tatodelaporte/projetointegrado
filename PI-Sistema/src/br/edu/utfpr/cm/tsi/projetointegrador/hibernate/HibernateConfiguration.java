@@ -30,10 +30,10 @@ public class HibernateConfiguration {
             cfg = new AnnotationConfiguration();
             cfg.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
             cfg.setProperty("hibernate.connection.username", "root");
-            cfg.setProperty("hibernate.connection.password", "douglas");
+            cfg.setProperty("hibernate.connection.password", "tato1234");
             cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/swin");
             cfg.setProperty("hibernate.show_sql", "true");
-            cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");       
+            cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
             cfg.setProperty("hibernate.connection.autocommit", "true");
             cfg.addAnnotatedClass(Aluno.class); // classes para serem mapeadas
             cfg.addAnnotatedClass(Funcionario.class); // classes para serem mapeadas
@@ -58,6 +58,6 @@ public class HibernateConfiguration {
     public static Connection getConnection() {
         Session session = TransactionManager.getCurrentSession();
         return session.close();
-        
+
     }
 }

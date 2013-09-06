@@ -24,7 +24,7 @@ public class DaoPiscina {
         Piscina p = new Piscina();
         p.setId(rs.getInt("id"));
         p.setDescricao(rs.getString("descricao"));
-        p.setCapacidadeAlunos("");
+        p.setCapacidadeAlunos("capacidadeAlunos");
       
         
         return p;
@@ -99,7 +99,7 @@ public class DaoPiscina {
       public static List<Piscina> list() throws SQLException{
         List<Piscina> piscinas = new ArrayList<Piscina>();
         
-        Statement st = br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory.prepareConnection().createStatement();                                
+        Statement st = ConnectionFactory.prepareConnection().createStatement();                                
         ResultSet rs =  st.executeQuery("SELECT * FROM piscina");
         
         while(rs.next()){

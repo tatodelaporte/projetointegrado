@@ -209,6 +209,8 @@ public class CadastroMatricula extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CadastroMatricula().setVisible(true);
+                
+                
             }
         });
     }

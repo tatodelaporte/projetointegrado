@@ -15,6 +15,8 @@ import br.edu.utfpr.cm.tsi.projetointegrador.mensalidade.CadastroMensalidades;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,10 +51,10 @@ public class GUI extends javax.swing.JFrame {
 
         jToolBar1 = new javax.swing.JToolBar();
         btAlunos = new javax.swing.JButton();
-        btTurmas = new javax.swing.JButton();
         btFuncionarios = new javax.swing.JButton();
         btPiscina = new javax.swing.JButton();
         btMensalidade = new javax.swing.JButton();
+        btTurmas = new javax.swing.JButton();
         btMatricula = new javax.swing.JButton();
         btFrequencia = new javax.swing.JButton();
         btConsultaHorario = new javax.swing.JButton();
@@ -60,10 +62,10 @@ public class GUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mnCadastros = new javax.swing.JMenu();
         rbmiAluno = new javax.swing.JRadioButtonMenuItem();
-        rmbiTurma = new javax.swing.JRadioButtonMenuItem();
         rbmiFuncionario = new javax.swing.JRadioButtonMenuItem();
         rbmiPiscina = new javax.swing.JRadioButtonMenuItem();
         rbmiMensalidade = new javax.swing.JRadioButtonMenuItem();
+        rmbiTurma = new javax.swing.JRadioButtonMenuItem();
         mnMovimentos = new javax.swing.JMenu();
         rbmiMatricula = new javax.swing.JRadioButtonMenuItem();
         rmbiFrequencia = new javax.swing.JRadioButtonMenuItem();
@@ -95,18 +97,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btAlunos);
-
-        btTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Group.png"))); // NOI18N
-        btTurmas.setText("Turmas");
-        btTurmas.setFocusable(false);
-        btTurmas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btTurmas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btTurmas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btTurmasActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btTurmas);
 
         btFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/funcionario.png"))); // NOI18N
         btFuncionarios.setText("Funcionarios");
@@ -143,6 +133,18 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btMensalidade);
+
+        btTurmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Group.png"))); // NOI18N
+        btTurmas.setText("Turmas");
+        btTurmas.setFocusable(false);
+        btTurmas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btTurmas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btTurmas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTurmasActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btTurmas);
 
         btMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Users.png"))); // NOI18N
         btMatricula.setText("Matricula");
@@ -190,18 +192,7 @@ public class GUI extends javax.swing.JFrame {
         });
         mnCadastros.add(rbmiAluno);
 
-        rmbiTurma.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
-        rmbiTurma.setSelected(true);
-        rmbiTurma.setText("Turma");
-        rmbiTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Group.png"))); // NOI18N
-        rmbiTurma.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rmbiTurmaActionPerformed(evt);
-            }
-        });
-        mnCadastros.add(rmbiTurma);
-
-        rbmiFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+        rbmiFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         rbmiFuncionario.setSelected(true);
         rbmiFuncionario.setText("Funcionario");
         rbmiFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/funcionario.png"))); // NOI18N
@@ -212,7 +203,7 @@ public class GUI extends javax.swing.JFrame {
         });
         mnCadastros.add(rbmiFuncionario);
 
-        rbmiPiscina.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        rbmiPiscina.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
         rbmiPiscina.setSelected(true);
         rbmiPiscina.setText("Piscina");
         rbmiPiscina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Screen Saver.png"))); // NOI18N
@@ -223,7 +214,7 @@ public class GUI extends javax.swing.JFrame {
         });
         mnCadastros.add(rbmiPiscina);
 
-        rbmiMensalidade.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        rbmiMensalidade.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         rbmiMensalidade.setSelected(true);
         rbmiMensalidade.setText("Mensalidade");
         rbmiMensalidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Applications.png"))); // NOI18N
@@ -233,6 +224,17 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         mnCadastros.add(rbmiMensalidade);
+
+        rmbiTurma.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        rmbiTurma.setSelected(true);
+        rmbiTurma.setText("Turma");
+        rmbiTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Group.png"))); // NOI18N
+        rmbiTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rmbiTurmaActionPerformed(evt);
+            }
+        });
+        mnCadastros.add(rmbiTurma);
 
         jMenuBar1.add(mnCadastros);
 
@@ -332,7 +334,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,15 +360,16 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_mnSairMouseClicked
 
     private void rmbiTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmbiTurmaActionPerformed
-        new CadastroTurmas().setVisible(true);
+        try {
+            new CadastroTurmas().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_rmbiTurmaActionPerformed
 
     private void rbmiFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiFuncionarioActionPerformed
         new CadastroFuncionario().setVisible(true);
     }//GEN-LAST:event_rbmiFuncionarioActionPerformed
-
-    private void btTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTurmasActionPerformed
-        new CadastroTurmas().setVisible(true);    }//GEN-LAST:event_btTurmasActionPerformed
 
     private void btFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFuncionariosActionPerformed
         new CadastroFuncionario().setVisible(true);
@@ -389,8 +392,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btConsultaHorarioActionPerformed
 
     private void btAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlunosActionPerformed
-         
-           new CadastroAlunos().setVisible(true);
+
+        new CadastroAlunos().setVisible(true);
     }//GEN-LAST:event_btAlunosActionPerformed
 
     private void btPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPiscinaActionPerformed
@@ -409,14 +412,17 @@ public class GUI extends javax.swing.JFrame {
         new CadastroMensalidades().setVisible(true);
     }//GEN-LAST:event_rbmiMensalidadeActionPerformed
 
-  
-      
-                                           
-
     private void jRadioButtonMenuCriarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuCriarBancoActionPerformed
-       HibernateConfiguration.createSchema();
+        HibernateConfiguration.createSchema();
     }//GEN-LAST:event_jRadioButtonMenuCriarBancoActionPerformed
 
+    private void btTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTurmasActionPerformed
+        try {
+            new CadastroTurmas().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btTurmasActionPerformed
 
     public void criarBanco() {
         try {
@@ -457,6 +463,7 @@ public class GUI extends javax.swing.JFrame {
                     + "PRIMARY KEY (id),"
                     + "FOREIGN KEY (turma) REFERENCES turma(id)ON DELETE CASCADE);");
 
+
              st.executeUpdate("CREATE TABLE IF NOT EXISTS "
                      +"aluno(" 
                      +"id int (10) not null AUTO_INCREMENT,"
@@ -494,6 +501,31 @@ public class GUI extends javax.swing.JFrame {
 
 
 
+            st.executeUpdate("CREATE TABLE IF NOT EXISTS "
+                    + "aluno("
+                    + "id int (10) not null AUTO_INCREMENT,"
+                    + "nome varchar (50) not null,"
+                    + "cpf varchar (16) not null,"
+                    + "endereco varchar (150) not null,"
+                    + "telefone varchar (15),"
+                    + "PRIMARY KEY (id));");
+            st.executeUpdate("CREATE TABLE IF NOT EXISTS "
+                    + "piscina("
+                    + "id int (10) not null AUTO_INCREMENT,"
+                    + "descricao varchar (60) not null,"
+                    + "tamanho varchar (10) not null,"
+                    + "capacidade varchar (10) not null,"
+                    + "PRIMARY KEY (id));");
+            st.executeUpdate("CREATE TABLE IF NOT EXISTS "
+                    + "mensalidade("
+                    + "id int (15) not null AUTO_INCREMENT,"
+                    + "nome varchar (50) not null,"
+                    + "tipo varchar (20) not null,"
+                    + "valor varchar (10) not null,"
+                    + "PRIMARY KEY (id));");
+
+
+            JOptionPane.showMessageDialog(rootPane, "Banco Criado");
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -515,32 +547,22 @@ public class GUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                
 
-}
+
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
-
-catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
-
-catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
-
-catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

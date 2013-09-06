@@ -62,6 +62,7 @@ public class Piscina implements Serializable{
 
     @Override
     public String toString() {
-        return "Piscina{" + "id=" + id + ", descricao=" + descricao + ", tamanho=" + tamanho + ", capacidadeAlunos=" + capacidadeAlunos + '}';
+       return this.getDescricao() + " - " + getId();
+        // return "Piscina{" + "id=" + id + ", descricao=" + descricao + ", tamanho=" + tamanho + ", capacidadeAlunos=" + capacidadeAlunos + '}';
     }
 }

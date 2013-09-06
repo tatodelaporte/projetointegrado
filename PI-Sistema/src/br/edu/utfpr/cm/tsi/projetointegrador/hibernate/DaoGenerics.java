@@ -96,4 +96,7 @@ public class DaoGenerics<T> implements Dao<T> {
 
         return lista;
     }
+    
+    
+    
 }

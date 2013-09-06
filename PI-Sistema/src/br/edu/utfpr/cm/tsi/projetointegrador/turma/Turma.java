@@ -24,8 +24,6 @@ import javax.persistence.Temporal;
 @Entity
 public class Turma implements Serializable {
 
-    // @OneToMany
-    //private List<Matricula> matriculas;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -33,9 +31,9 @@ public class Turma implements Serializable {
     private String descricao;
     @ManyToOne
     private Piscina piscina;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIME)
     private Date horarioInicio;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIME)
     private Date horarioFim;
     @Column(length = 100)
     private String diaAula;

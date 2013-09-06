@@ -9,6 +9,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoPiscina;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoTurma;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.HibernateDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.Funcionario;
+import br.edu.utfpr.cm.tsi.projetointegrador.hibernate.DaoGenerics;
 import br.edu.utfpr.cm.tsi.projetointegrador.hibernate.HibernateConfiguration;
 import br.edu.utfpr.cm.tsi.projetointegrador.matricula.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.piscina.Piscina;
@@ -31,21 +32,23 @@ public class CadastroTurmas extends javax.swing.JFrame {
     /**
      * Creates new form CadastroTurmas
      */
-    public CadastroTurmas() {
+    public CadastroTurmas() throws SQLException {
         initComponents();
         setSize(500, 610);
         setTitle("Cadastro de Turmas");
         setVisible(true);
         setLocationRelativeTo(null);
         pack();
+        preencherPiscina();
         preencherProfessor();
+
         setResizable(false);// Trava o tamanho do painel.
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         // Setando os campos todos desabilitados
         tfId.setEnabled(false);
         tfDescricao.setEnabled(false);
-        tfcodPiscina.setEnabled(false);
+
         cbProfessor.setEnabled(false);
         tfhorarioInicio.setEnabled(false);
         tfhorarioFim.setEnabled(false);
@@ -73,7 +76,6 @@ public class CadastroTurmas extends javax.swing.JFrame {
         lbDescricao = new javax.swing.JLabel();
         tfDescricao = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        tfcodPiscina = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         lbcodTurma = new javax.swing.JLabel();
         tfId = new javax.swing.JTextField();
@@ -211,11 +213,8 @@ public class CadastroTurmas extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfcodPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cbProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lbHorario)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,7 +266,6 @@ public class CadastroTurmas extends javax.swing.JFrame {
                     .addComponent(lbDescricao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfcodPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(cbPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -350,23 +348,14 @@ public class CadastroTurmas extends javax.swing.JFrame {
         }
 
 
-        Turma turma = new Turma();
-        turma = getTurma();
         try {
-            new HibernateDao().persist(turma);
+
+            new DaoGenerics<Turma>(Turma.class).persist(getTurma());
+            JOptionPane.showMessageDialog(null, "Turma Cadastrado");
         } catch (Exception ex) {
             Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        //  try {
-
-        //      DaoTurma.insert(turma);
-
-
-        //   } catch (SQLException ex) {
-        //       Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
-        //   JOptionPane.showMessageDialog(null, ex);
-        //  }
 
     }//GEN-LAST:event_btGravarActionPerformed
 
@@ -387,25 +376,13 @@ public class CadastroTurmas extends javax.swing.JFrame {
         }
 
 
-        //     try {
-        //       DaoTurma.retrieve(Integer.parseInt(codprocurado));
-        // } catch (SQLException ex) {
-        // Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
-        // }
-        //try {
-//            turma = DaoTurma.retrieve(Integer.parseInt(codprocurado));
-        //      } catch (SQLException ex) {
-        //        Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
-        //  }
-
 
         tfId.setText(String.valueOf(turma.getId()));
         tfDescricao.setText(turma.getDescricao());
-        tfcodPiscina.setText(String.valueOf(turma.getPiscina()));
         tfhorarioInicio.setText(turma.getHorarioInicio().toString());
         tfhorarioFim.setText(turma.getHorariofim().toString());
         diasaula = turma.getDiaAula();
-        //JOptionPane.showMessageDialog(rootPane, "Dias de Aula " + diasaula); // Debug da Consulta
+
 
         if (diasaula.indexOf("Segunda") >= 0) {
             cbSegundaFeira.setSelected(true);
@@ -516,8 +493,6 @@ public class CadastroTurmas extends javax.swing.JFrame {
 
         tfId.setText(null);
         tfDescricao.setText(null);
-        tfcodPiscina.setText(null);
-
         tfhorarioInicio.setText(null);
         tfhorarioFim.setText(null);
         cbSegundaFeira.setSelected(false);
@@ -531,8 +506,8 @@ public class CadastroTurmas extends javax.swing.JFrame {
 
         tfId.setEnabled(false);
         tfDescricao.setEnabled(true);
-        tfcodPiscina.setEnabled(true);
         cbProfessor.setEnabled(true);
+        cbPiscina.setEnabled(true);
         tfhorarioInicio.setEnabled(true);
         tfhorarioFim.setEnabled(true);
         cbSegundaFeira.setEnabled(true);
@@ -580,7 +555,11 @@ public class CadastroTurmas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroTurmas().setVisible(true);
+                try {
+                    new CadastroTurmas().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -613,7 +592,6 @@ public class CadastroTurmas extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbBuscarTurmaId;
     private javax.swing.JTextField tfDescricao;
     private javax.swing.JTextField tfId;
-    private javax.swing.JTextField tfcodPiscina;
     private javax.swing.JFormattedTextField tfhorarioFim;
     private javax.swing.JFormattedTextField tfhorarioInicio;
     // End of variables declaration//GEN-END:variables
@@ -625,14 +603,12 @@ public class CadastroTurmas extends javax.swing.JFrame {
             turma.setId(Integer.parseInt(tfId.getText().trim()));
         } else {
             turma.setId(0);
-//            turma.setId(Integer.parseInt("0"));
+
         }
 
 
         turma.setDescricao(tfDescricao.getText().trim());
-        //turma.setPiscina(Integer.parseInt(tfcodPiscina.getText().trim()));
-
-        //turma.setProfessor(Integer.parseInt(tfcodProfessor.getText().trim()));
+        turma.setPiscina((Piscina) cbPiscina.getSelectedItem());
         turma.setProfessor((Funcionario) cbProfessor.getSelectedItem());
         turma.setHorarioInicio((Date) tfhorarioInicio.getValue());
         turma.setHorarioFim((Date) tfhorarioFim.getValue());
@@ -646,7 +622,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
 
         //tfId.setText("1");
         tfDescricao.setText(turma.getDescricao());
-        tfcodPiscina.setText(String.valueOf(turma.getPiscina()));
+
         tfhorarioInicio.setValue(turma.getHorarioInicio());
         tfhorarioFim.setValue(turma.getHorariofim());
 

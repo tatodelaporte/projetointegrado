@@ -8,12 +8,14 @@
     <class>br.edu.utfpr.cm.tsi.projetointegrador.matricula.Matricula</class>
     <class>br.edu.utfpr.cm.tsi.projetointegrador.funcionario.Funcionario</class>
     <class>br.edu.utfpr.cm.tsi.projetointegrador.aluno.Aluno</class>
+    <class>br.edu.utfpr.cm.tsi.projetointegrador.mensalidade.Mensalidade</class>
+    <class>br.edu.utfpr.cm.tsi.projetointegrador.piscina.Piscina</class>
     <properties>
       <!-- dados da conexao -->
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/pisistemas"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/swin"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.password" value="douglas"/>
+      <property name="javax.persistence.jdbc.password" value="tato1234"/>
       <!--  propriedades do hibernate -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
       <property name="hibernate.show_sql" value="true"/>

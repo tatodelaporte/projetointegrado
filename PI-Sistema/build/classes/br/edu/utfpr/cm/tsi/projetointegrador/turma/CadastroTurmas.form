@@ -38,12 +38,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="tfcodPiscina" min="-2" pref="46" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cbPiscina" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="cbProfessor" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbProfessor" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbPiscina" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="lbHorario" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -111,7 +107,6 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tfcodPiscina" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbPiscina" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -170,8 +165,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Codigo Piscina"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="tfcodPiscina">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
