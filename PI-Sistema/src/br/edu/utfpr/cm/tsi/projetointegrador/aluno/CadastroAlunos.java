@@ -22,7 +22,7 @@ import org.jcp.xml.dsig.internal.dom.Utils;
  *
  * @author Daniele
  */
-public class CadastroAlunos extends javax.swing.JFrame {
+public class CadastroAlunos extends javax.swing.JDialog {
 
     MaskFormatter mCPF = new MaskFormatter();
     //   ValidadorAlunos valida=new ValidadorAlunos();
@@ -91,7 +91,7 @@ public class CadastroAlunos extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTextNumero = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Cadastro de Alunos");
@@ -397,8 +397,11 @@ public class CadastroAlunos extends javax.swing.JFrame {
                 Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        this.dispose();
+        this.limparCampos();
+        //this.dispose();
         //System.exit(0);
+        
+       
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
@@ -549,6 +552,16 @@ public class CadastroAlunos extends javax.swing.JFrame {
         return aluno;
 
     }
+    
+   private void limparCampos(){
+       jTextNome.setText(null);
+       jTextCPF.setText(null);
+       jTextEndereco.setText(null);
+       jTextNumero.setText(null);
+       jTextTelefone.setText(null);
+   }
+    
+    
 
     /**
      * @param args the command line arguments

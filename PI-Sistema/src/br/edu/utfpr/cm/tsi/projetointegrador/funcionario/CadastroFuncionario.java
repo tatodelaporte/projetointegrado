@@ -22,7 +22,7 @@ import javax.swing.text.MaskFormatter;
  *
  * @author Daniel
  */
-public class CadastroFuncionario extends javax.swing.JFrame {
+public class CadastroFuncionario extends javax.swing.JDialog {
 
     MaskFormatter mCPF = new MaskFormatter();
     boolean flag;
@@ -111,7 +111,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         cbUF = new javax.swing.JComboBox();
         tfCidade = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         lbCodigo.setText("Codigo");
 
