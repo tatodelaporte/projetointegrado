@@ -8,7 +8,7 @@ package br.edu.utfpr.cm.tsi.projetointegrador.consulta;
  *
  * @author Daniel
  */
-public class ConsultaHorarioAula extends javax.swing.JFrame {
+public class ConsultaHorarioAula extends javax.swing.JDialog {
 
     /**
      * Creates new form ConsultaHorarioAula
@@ -43,7 +43,7 @@ public class ConsultaHorarioAula extends javax.swing.JFrame {
         lbDiasAula = new javax.swing.JLabel();
         btBuscar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         lbCodigo.setText("Codigo Aluno");
 

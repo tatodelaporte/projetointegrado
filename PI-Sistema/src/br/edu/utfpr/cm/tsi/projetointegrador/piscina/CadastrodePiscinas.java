@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author Daniele
  */
-public class CadastrodePiscinas extends javax.swing.JFrame {
+public class CadastrodePiscinas extends javax.swing.JDialog {
     boolean flag;
     /**
      * Creates new form CadastrodePiscinas
@@ -62,7 +62,7 @@ public class CadastrodePiscinas extends javax.swing.JFrame {
         jButtonAlterar = new javax.swing.JButton();
         jButtonRemover = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Cadastro de Piscinas");

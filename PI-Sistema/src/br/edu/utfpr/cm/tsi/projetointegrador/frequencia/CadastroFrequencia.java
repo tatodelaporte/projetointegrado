@@ -8,7 +8,7 @@ package br.edu.utfpr.cm.tsi.projetointegrador.frequencia;
  *
  * @author a1113836
  */
-public class CadastroFrequencia extends javax.swing.JFrame {
+public class CadastroFrequencia extends javax.swing.JDialog {
 
     /**
      * Creates new form CadastroFrequencia
@@ -30,7 +30,7 @@ public class CadastroFrequencia extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
         jLabel1.setText("Cadastro de Frequencia");

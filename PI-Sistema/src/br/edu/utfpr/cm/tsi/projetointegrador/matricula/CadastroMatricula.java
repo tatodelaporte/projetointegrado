@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Daniel
  */
-public class CadastroMatricula extends javax.swing.JFrame {
+public class CadastroMatricula extends javax.swing.JDialog {
 
     /**
      * Creates new form Matricula
@@ -66,7 +66,7 @@ public class CadastroMatricula extends javax.swing.JFrame {
         cbTurma = new javax.swing.JComboBox();
         cbAluno = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Sherlock.png"))); // NOI18N
         btBuscar.setText("Buscar");
@@ -141,7 +141,7 @@ public class CadastroMatricula extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(cbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

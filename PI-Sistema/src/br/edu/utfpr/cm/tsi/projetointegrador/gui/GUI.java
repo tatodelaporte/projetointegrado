@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  *
  * @author Daniel
  */
-public class GUI extends javax.swing.JFrame {
+public class GUI extends javax.swing.JDialog {
 
     /**
      * Creates new form GUI
@@ -77,10 +77,9 @@ public class GUI extends javax.swing.JFrame {
         jRadioButtonMenuCriarBanco = new javax.swing.JRadioButtonMenuItem();
         mnSair = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Sistema para Escola Natação");
         setForeground(new java.awt.Color(51, 0, 204));
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jToolBar1.setRollover(true);
 
@@ -328,7 +327,7 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
