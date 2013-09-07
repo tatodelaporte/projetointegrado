@@ -4,12 +4,11 @@
     <!-- provedor/implementacao do JPA -->
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <!-- entidade mapaeada -->
-    <class>br.edu.utfpr.cm.tsi.projetointegrador.turma.Turma</class>
-    <class>br.edu.utfpr.cm.tsi.projetointegrador.matricula.Matricula</class>
-    <class>br.edu.utfpr.cm.tsi.projetointegrador.funcionario.Funcionario</class>
-    <class>br.edu.utfpr.cm.tsi.projetointegrador.aluno.Aluno</class>
-    <class>br.edu.utfpr.cm.tsi.projetointegrador.mensalidade.Mensalidade</class>
-    <class>br.edu.utfpr.cm.tsi.projetointegrador.piscina.Piscina</class>
+    <class>br.edu.utfpr.cm.tsi.projetointegrador.entidade.Aluno</class>
+    <class>br.edu.utfpr.cm.tsi.projetointegrador.entidade.Funcionario</class>
+    <class>br.edu.utfpr.cm.tsi.projetointegrador.entidade.Matricula</class>
+    <class>br.edu.utfpr.cm.tsi.projetointegrador.entidade.Piscina</class>
+    <class>br.edu.utfpr.cm.tsi.projetointegrador.entidade.Turma</class>
     <properties>
       <!-- dados da conexao -->
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

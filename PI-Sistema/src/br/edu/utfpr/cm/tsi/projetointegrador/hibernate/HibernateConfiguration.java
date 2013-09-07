@@ -4,12 +4,12 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.hibernate;
 
-import br.edu.utfpr.cm.tsi.projetointegrador.aluno.Aluno;
-import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.Funcionario;
-import br.edu.utfpr.cm.tsi.projetointegrador.matricula.Matricula;
-import br.edu.utfpr.cm.tsi.projetointegrador.mensalidade.Mensalidade;
-import br.edu.utfpr.cm.tsi.projetointegrador.piscina.Piscina;
-import br.edu.utfpr.cm.tsi.projetointegrador.turma.Turma;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Aluno;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Funcionario;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Matricula;
+//import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Mensalidade;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Piscina;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Turma;
 import java.sql.Connection;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -38,7 +38,7 @@ public class HibernateConfiguration {
             cfg.addAnnotatedClass(Aluno.class); // classes para serem mapeadas
             cfg.addAnnotatedClass(Funcionario.class); // classes para serem mapeadas
             cfg.addAnnotatedClass(Matricula.class); // classes para serem mapeadas
-            cfg.addAnnotatedClass(Mensalidade.class); // classes para serem mapeadas
+     
             cfg.addAnnotatedClass(Piscina.class); // classes para serem mapeadas
             cfg.addAnnotatedClass(Turma.class); // classes para serem mapeadas
             factory = cfg.buildSessionFactory();// construindo uma fabrica de sessão

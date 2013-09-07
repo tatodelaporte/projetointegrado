@@ -4,10 +4,12 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
-import br.edu.utfpr.cm.tsi.projetointegrador.DaosDani.Aluno;
-import br.edu.utfpr.cm.tsi.projetointegrador.funcionario.Funcionario;
-import br.edu.utfpr.cm.tsi.projetointegrador.matricula.Matricula;
-import br.edu.utfpr.cm.tsi.projetointegrador.turma.Turma;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Aluno;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Funcionario;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Matricula;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Piscina;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Turma;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 /**
@@ -28,13 +30,16 @@ public class HibernateConexao {
         cfg.setProperty("hibernate.connection.driver", "com.mysql.jdbc.Driver");
         cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/swin");
         cfg.setProperty("hibernate.connection.user", "root");
-        cfg.setProperty("hibernate.connection.password", "tato1234");
+        cfg.setProperty("hibernate.connection.password", "douglas");
         cfg.setProperty("hibernate.connection.autocommit", "false");
 
         cfg.addAnnotatedClass(Turma.class);
         cfg.addAnnotatedClass(Matricula.class);
         cfg.addAnnotatedClass(Funcionario.class);
         cfg.addAnnotatedClass(Aluno.class);
+        cfg.addAnnotatedClass(Endereco.class);
+        cfg.addAnnotatedClass(Piscina.class);
+        
 
 
     }

@@ -30,13 +30,14 @@ public class HibernateDao implements Dao<Object> {
 
     @Override
     public void persist(Object o) throws Exception {
-
-        
+        EntityManager em = HibernateFactory.getEntityManager();
+        em.persist(o);
     }
 
     @Override
     public void delete(Object o) throws Exception {
         EntityManager em = HibernateFactory.getEntityManager();
+        
         em.getTransaction().begin();
         em.remove(o);
         em.getTransaction().commit();
