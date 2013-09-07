@@ -5,7 +5,6 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.mensalidade;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.DaosDani.DaoMensalidade;
-import br.edu.utfpr.cm.tsi.projetointegrador.aluno.CadastroAlunos;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
