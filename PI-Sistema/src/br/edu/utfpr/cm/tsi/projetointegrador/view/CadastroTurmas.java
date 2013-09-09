@@ -4,14 +4,14 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.view;
 
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.HibernateConfiguration;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Turma;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.FuncionarioDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.PiscinaDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.TurmaDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.HibernateDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Funcionario;
-import br.edu.utfpr.cm.tsi.projetointegrador.hibernate.DaoGenerics;
-import br.edu.utfpr.cm.tsi.projetointegrador.hibernate.HibernateConfiguration;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoGenerics;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Piscina;
 import java.sql.SQLException;
 import java.util.Date;

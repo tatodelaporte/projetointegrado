@@ -44,18 +44,27 @@ public class HibernateDao implements Dao<Object> {
     }
 
     @Override
-    public List<Object> list(Object o) throws Exception {
+    public List<Object> list() throws Exception {
 
 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object retrieve(Object o) throws Exception {
+    public Object retrieve(int i) throws Exception {
         EntityManager em = HibernateFactory.getEntityManager();
         Field field;
         field = em.getEntityManagerFactory().getClass().getField("id");
 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Object> list(Filter... filters) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void retrieve(String codprocurado) {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }

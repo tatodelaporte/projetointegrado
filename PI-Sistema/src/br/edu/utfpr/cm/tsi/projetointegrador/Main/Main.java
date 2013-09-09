@@ -1,12 +1,13 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.Main;
 
+
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.HibernateConfiguration;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.ConsultaHorarioAula;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroFuncionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroTurmas;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroAlunos;
-import br.edu.utfpr.cm.tsi.projetointegrador.hibernate.HibernateConfiguration;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastrodePiscinas;
 

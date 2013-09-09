@@ -1,24 +1,19 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
 import java.util.List;
 
 /**
  *
- * @author Daniel
+ * @author  Daniel
  */
 public interface Dao<T> {
-
-    void persist(T o) throws Exception;
-
-    void delete(T o) throws Exception;
-
-    /**
-     *
-     * @param id
-     * @return
-     * @throws Exception
-     */
-    T retrieve(T o) throws Exception;
-
-    List<T> list(T o) throws Exception;
+    void persist(T o)  throws Exception;
+    void delete(T o)  throws Exception;
+    T retrieve(int id)  throws Exception;
+    List<T> list()  throws Exception;
+    List<T> list(Filter... filters)  throws Exception;
 }

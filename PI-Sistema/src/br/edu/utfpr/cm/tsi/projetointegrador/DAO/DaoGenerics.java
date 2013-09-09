@@ -2,13 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.utfpr.cm.tsi.projetointegrador.hibernate;
+package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
-import static br.edu.utfpr.cm.tsi.projetointegrador.hibernate.Operator.EQUAL;
-import static br.edu.utfpr.cm.tsi.projetointegrador.hibernate.Operator.IS_NOT_NULL;
-import static br.edu.utfpr.cm.tsi.projetointegrador.hibernate.Operator.IS_NULL;
-import static br.edu.utfpr.cm.tsi.projetointegrador.hibernate.Operator.LIKE;
-import static br.edu.utfpr.cm.tsi.projetointegrador.hibernate.Operator.MORE_THAN;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.Dao;
+import static br.edu.utfpr.cm.tsi.projetointegrador.DAO.Operator.EQUAL;
+import static br.edu.utfpr.cm.tsi.projetointegrador.DAO.Operator.IS_NOT_NULL;
+import static br.edu.utfpr.cm.tsi.projetointegrador.DAO.Operator.IS_NULL;
+import static br.edu.utfpr.cm.tsi.projetointegrador.DAO.Operator.LIKE;
+import static br.edu.utfpr.cm.tsi.projetointegrador.DAO.Operator.MORE_THAN;
 
 import java.util.ArrayList;
 import java.util.List;
