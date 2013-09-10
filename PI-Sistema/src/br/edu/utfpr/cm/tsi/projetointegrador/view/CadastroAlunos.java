@@ -370,28 +370,28 @@ public class CadastroAlunos extends javax.swing.JDialog {
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
         
 
-        if (CampoCodigo.isEnabled() == true) {
-           CampoCodigo.setText(null);
-            try {
-
-                hibernateDao.persist(getAluno());
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            // JOptionPane.showMessageDialog(null, "Alterações feitas com sucesso");
-        }
-        if (CampoCodigo.isEnabled() == false) {
-            try {
-                try {
-                    hibernateDao.persist(getAluno());
-                } catch (Exception ex) {
-                    Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        this.limparCampos();
+//        if (CampoCodigo.isEnabled() == true) {
+//           CampoCodigo.setText(null);
+//            try {
+//
+//                hibernateDao.persist(getAluno());
+//            } catch (Exception ex) {
+//                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            // JOptionPane.showMessageDialog(null, "Alterações feitas com sucesso");
+//        }
+//        if (CampoCodigo.isEnabled() == false) {
+//            try {
+//                try {
+//                    hibernateDao.persist(getAluno());
+//                } catch (Exception ex) {
+//                    Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            } catch (Exception ex) {
+//                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        this.limparCampos();
         //this.dispose();
         //System.exit(0);
         
@@ -474,9 +474,9 @@ public class CadastroAlunos extends javax.swing.JDialog {
     public Aluno getAluno() {
         Aluno aluno = new Aluno();
 
-        if (CampoCodigo.isEnabled() == true) { //para remover tem q estar aberto /p novo nao
-            aluno.setId(Integer.parseInt(CampoCodigo.getText().trim()));
-        }
+//        if (CampoCodigo.isEnabled() == true) { //para remover tem q estar aberto /p novo nao
+//            aluno.setId(Integer.parseInt(CampoCodigo.getText().trim()));
+//        }
 
         aluno.setNome(jTextNome.getText().trim());
         aluno.setCpf(jTextCPF.getText().trim());

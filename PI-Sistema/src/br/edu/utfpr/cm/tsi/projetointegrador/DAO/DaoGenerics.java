@@ -4,7 +4,6 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
-import br.edu.utfpr.cm.tsi.projetointegrador.DAO.Dao;
 import static br.edu.utfpr.cm.tsi.projetointegrador.DAO.Operator.EQUAL;
 import static br.edu.utfpr.cm.tsi.projetointegrador.DAO.Operator.IS_NOT_NULL;
 import static br.edu.utfpr.cm.tsi.projetointegrador.DAO.Operator.IS_NULL;
@@ -25,7 +24,7 @@ public class DaoGenerics<T> implements Dao<T> {
     Session session = null;
     Class classe = null;
 
-    public  DaoGenerics(Class classe) {
+    public DaoGenerics(Class classe) {
         this.classe = classe;
     }
 
@@ -34,20 +33,20 @@ public class DaoGenerics<T> implements Dao<T> {
     }
 
     @Override
-        public void persist(T o) throws Exception {
+    public void persist(T o) throws Exception {
         session = TransactionManager.getCurrentSession();
         session.saveOrUpdate(o);
-        
+
     }
 
     @Override
-        public void delete(T o) throws Exception {
+    public void delete(T o) throws Exception {
         session = TransactionManager.getCurrentSession();
         session.delete(o);
     }
 
     @Override
-        public T retrieve(int id) throws Exception {
+    public T retrieve(int id) throws Exception {
         T objeto = null;
         if (id > 0) {
             session = TransactionManager.getCurrentSession();
@@ -58,15 +57,14 @@ public class DaoGenerics<T> implements Dao<T> {
     }
 
     @Override
-        public List<T> list() throws Exception {
+    public List<T> list() throws Exception {
         session = TransactionManager.getCurrentSession();
         List<T> lista = session.createQuery("FROM " + classe.getSimpleName()).list();
         return lista;
     }
 
-    
     @Override
-        public List<T> list(Filter... filters) throws Exception {
+    public List<T> list(Filter... filters) throws Exception {
         List<T> lista = new ArrayList<>();
         String sql = " where ";
         for (Filter f : filters) {
@@ -97,7 +95,4 @@ public class DaoGenerics<T> implements Dao<T> {
 
         return lista;
     }
-    
-    
-    
 }

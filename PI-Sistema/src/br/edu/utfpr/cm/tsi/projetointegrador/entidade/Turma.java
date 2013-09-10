@@ -34,7 +34,7 @@ public class Turma implements Serializable {
     @Column(length = 100)
     private String descricao;
     
-    @OneToMany(cascade= CascadeType.ALL,fetch= FetchType.EAGER) 
+    @ManyToOne(cascade= CascadeType.ALL,fetch= FetchType.EAGER) 
     private Piscina piscina;
     
     @Temporal(javax.persistence.TemporalType.TIME)

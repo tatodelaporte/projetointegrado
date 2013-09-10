@@ -12,44 +12,44 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import sun.security.util.Length;
 
 /**
  *
  * @author Daniele
- * 
+ *
  */
 @Entity
-@Table (name="endereco")
+@Table
 public class Endereco {
-    
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
-    
-    @Column(name="endereco", length=100)
+    @Column(name = "endereco", length = 100)
     private String nomeEndereco;
-    
-    @Column(name="numero",length=8)
+    @Column(name = "numero", length = 8)
     private int numero;
-    
-    @Column(name="complemento",length=60)
+    @Column(name = "complemento", length = 60)
     private String complemento;
-    
-    @Column(name="bairro",length=100)
+    @Column(name = "bairro", length = 100)
     private String bairro;
-    
-    @Column(name="municipio",length=60)
+    @Column(name = "municipio", length = 60)
     private String municipio;
-    
-    @Column(name="estado")
+    @Column(name = "estado")
     @Enumerated(EnumType.STRING)
     private EstadoEnum estado;
-    
-    @Column(name="cep",length=8)
+    @Column(name = "cep", length = 8)
     private String cep;
+    
+    @ManyToMany
+    @Column(length = 8)
+    private Aluno aluno;
 
     public long getId() {
         return id;
@@ -59,7 +59,6 @@ public class Endereco {
         this.id = id;
     }
 
-    
     public String getNomeEndereco() {
         return nomeEndereco;
     }
@@ -115,7 +114,4 @@ public class Endereco {
     public void setCep(String cep) {
         this.cep = cep;
     }
-    
-    
-    
 }

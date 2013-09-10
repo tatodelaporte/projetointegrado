@@ -9,6 +9,7 @@ package br.edu.utfpr.cm.tsi.projetointegrador.enums;
  * @author Daniele
  */
 public enum EstadoEnum {
+
     SELECIONE("Selecione"),
     AC("Acre"), // 
     AL("Alagoas"), // 
@@ -37,25 +38,25 @@ public enum EstadoEnum {
     SP("São Paulo"), // 
     SE("Sergipe"), // 
     TO("Tocantins"); //    
-    
     private String uf;
-    private EstadoEnum(String uf){
+
+    private EstadoEnum(String uf) {
         this.uf = uf;
     }
-    
-    public String getUf(){
+
+    public String getUf() {
         return this.uf;
     }
-    
-    public static String[] getUfs() {  
-        String[] estado = new String[EstadoEnum.values().length];  
-        for (EstadoEnum estadoEnum : EstadoEnum.values()) {  
-            estado[estadoEnum.ordinal()] = estadoEnum.getUf();  
-        }  
-        return estado ;  
-    } 
-    
-    public static EstadoEnum getEnum(String string){
+
+    public static String[] getUfs() {
+        String[] estado = new String[EstadoEnum.values().length];
+        for (EstadoEnum estadoEnum : EstadoEnum.values()) {
+            estado[estadoEnum.ordinal()] = estadoEnum.getUf();
+        }
+        return estado;
+    }
+
+    public static EstadoEnum getEnum(String string) {
         switch (string) {
             case "Selecione":
                 return SELECIONE;
@@ -82,9 +83,9 @@ public enum EstadoEnum {
             case "Mato Grosso":
                 return MT;
             case "Mato Grosso do Sul":
-                return MS;     
+                return MS;
             case "Minas Gerais":
-                return MG;  
+                return MG;
             case "Pará":
                 return PA;
             case "Paraíba":
@@ -115,5 +116,5 @@ public enum EstadoEnum {
                 return TO;
         }
         return null;
-     }  
+    }
 }
