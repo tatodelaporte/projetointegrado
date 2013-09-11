@@ -9,6 +9,7 @@
     <class>br.edu.utfpr.cm.tsi.projetointegrador.entidade.Matricula</class>
     <class>br.edu.utfpr.cm.tsi.projetointegrador.entidade.Piscina</class>
     <class>br.edu.utfpr.cm.tsi.projetointegrador.entidade.Turma</class>
+    <class>br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco</class>
     <properties>
       <!-- dados da conexao -->
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
