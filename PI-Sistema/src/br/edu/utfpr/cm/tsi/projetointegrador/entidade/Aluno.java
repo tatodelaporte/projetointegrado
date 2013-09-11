@@ -25,32 +25,24 @@ import javax.persistence.Temporal;
 @Entity
 public class Aluno implements Serializable {
     //@OneToMany(mappedBy = "aluno")
-  //  private List<Matricula> matriculas;
+    //  private List<Matricula> matriculas;
     //@OneToOne(mappedBy = "aluno")
-  //  private Matricula matricula;
+    //  private Matricula matricula;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-    @Column(length = 100,nullable=false)
+    @Column(length = 100, nullable = false)
     private String nome;
-         
     @Column(length = 11) //unique true
     private String cpf;
-    
-    
     @Column(length = 9)
     private String rg;
-    
-    @Column(name="dataNascimento",length=8 ) 
+    @Column(name = "dataNascimento", length = 8)
     @Temporal(javax.persistence.TemporalType.DATE)//
     private Date dataNascimento;
-    
-    @OneToOne(cascade= CascadeType.ALL,fetch= FetchType.EAGER) //deletar junto 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER) //deletar junto 
     private Endereco endereco;
-    
-   
     @Column(length = 18)
     private String telefone;
 
@@ -102,8 +94,6 @@ public class Aluno implements Serializable {
         this.endereco = endereco;
     }
 
-   
-
     public String getTelefone() {
         return telefone;
     }
@@ -111,10 +101,4 @@ public class Aluno implements Serializable {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
-    
-    
-    
-
-    
 }

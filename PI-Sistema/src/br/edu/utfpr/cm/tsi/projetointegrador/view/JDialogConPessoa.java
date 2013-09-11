@@ -59,8 +59,17 @@ public class JDialogConPessoa extends javax.swing.JDialog {
             new String [] {
                 "Código", "Nome", "CPF", "Endereco", "Numero", "Telefone"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(10);
 
         jButton1.setText("Ok");
 

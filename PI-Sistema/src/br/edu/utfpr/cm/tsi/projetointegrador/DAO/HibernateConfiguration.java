@@ -5,6 +5,7 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Aluno;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Funcionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Matricula;
 //import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Mensalidade;
@@ -40,6 +41,7 @@ public class HibernateConfiguration {
             cfg.addAnnotatedClass(Matricula.class); // classes para serem mapeadas
             cfg.addAnnotatedClass(Piscina.class); // classes para serem mapeadas
             cfg.addAnnotatedClass(Turma.class); // classes para serem mapeadas
+            cfg.addAnnotatedClass(Endereco.class); // classes para serem mapeadas
             factory = cfg.buildSessionFactory();// construindo uma fabrica de sessão
 
         }

@@ -24,19 +24,13 @@ public class Matricula implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
-    
     @ManyToOne
     private Aluno aluno;
-    
-    
     @OneToOne
     private Turma turma;
-    
     @Column(length = 1)
     private int situação;
-    
-    @OneToOne
-    private double mensalidade;
+   
 
     public int getId() {
         return id;

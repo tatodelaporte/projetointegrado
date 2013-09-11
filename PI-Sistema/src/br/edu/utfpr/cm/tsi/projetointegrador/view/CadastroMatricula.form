@@ -10,6 +10,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -30,13 +31,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbMensalidade" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="lbTurma" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="lbAluno" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="lbCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="lbSituacao" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="rbAtivo" min="-2" max="-2" attributes="0"/>
@@ -48,7 +48,6 @@
                           <Component id="cbTurma" alignment="0" max="32767" attributes="0"/>
                           <Component id="tfCodigo" alignment="0" pref="70" max="32767" attributes="0"/>
                           <Component id="tfAluno" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfMensalidade" alignment="0" pref="70" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -86,18 +85,13 @@
                   <Component id="lbTurma" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbTurma" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lbMensalidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfMensalidade" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="rbAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="rbInativo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lbSituacao" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="50" max="32767" attributes="0"/>
+              <EmptySpace pref="56" max="32767" attributes="0"/>
               <Component id="jToolBar1" min="-2" pref="50" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -171,13 +165,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Turma"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbMensalidade">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mensalidade"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="tfMensalidade">
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbAtivo">
       <Properties>

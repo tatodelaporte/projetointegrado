@@ -58,8 +58,6 @@ public class CadastroMatricula extends javax.swing.JDialog {
         lbAluno = new javax.swing.JLabel();
         tfAluno = new javax.swing.JTextField();
         lbTurma = new javax.swing.JLabel();
-        lbMensalidade = new javax.swing.JLabel();
-        tfMensalidade = new javax.swing.JTextField();
         rbAtivo = new javax.swing.JRadioButton();
         rbInativo = new javax.swing.JRadioButton();
         lbSituacao = new javax.swing.JLabel();
@@ -95,8 +93,6 @@ public class CadastroMatricula extends javax.swing.JDialog {
 
         lbTurma.setText("Turma");
 
-        lbMensalidade.setText("Mensalidade");
-
         btGSituacao.add(rbAtivo);
         rbAtivo.setText("Ativo");
 
@@ -117,12 +113,11 @@ public class CadastroMatricula extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbMensalidade)
                     .addComponent(lbTurma)
                     .addComponent(lbAluno)
                     .addComponent(lbCodigo)
                     .addComponent(lbSituacao))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rbAtivo)
@@ -132,8 +127,7 @@ public class CadastroMatricula extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(cbTurma, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tfCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                            .addComponent(tfAluno, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfMensalidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                            .addComponent(tfAluno, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
@@ -141,7 +135,7 @@ public class CadastroMatricula extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(cbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,16 +154,12 @@ public class CadastroMatricula extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbTurma)
                     .addComponent(cbTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbMensalidade)
-                    .addComponent(tfMensalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbAtivo)
                     .addComponent(rbInativo)
                     .addComponent(lbSituacao))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -226,14 +216,12 @@ public class CadastroMatricula extends javax.swing.JDialog {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lbAluno;
     private javax.swing.JLabel lbCodigo;
-    private javax.swing.JLabel lbMensalidade;
     private javax.swing.JLabel lbSituacao;
     private javax.swing.JLabel lbTurma;
     private javax.swing.JRadioButton rbAtivo;
     private javax.swing.JRadioButton rbInativo;
     private javax.swing.JTextField tfAluno;
     private javax.swing.JTextField tfCodigo;
-    private javax.swing.JTextField tfMensalidade;
     // End of variables declaration//GEN-END:variables
 
     public void preencherTurma() {

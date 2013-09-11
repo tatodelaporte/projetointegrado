@@ -5,6 +5,7 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.entidade;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.enums.EstadoEnum;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,11 +13,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import sun.security.util.Length;
 
 /**
  *
@@ -25,7 +22,7 @@ import sun.security.util.Length;
  */
 @Entity
 @Table
-public class Endereco {
+public class Endereco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,10 +43,10 @@ public class Endereco {
     private EstadoEnum estado;
     @Column(name = "cep", length = 8)
     private String cep;
-    
-    @ManyToMany
     @Column(length = 8)
     private Aluno aluno;
+    @Column(length = 8)
+    private Funcionario funcionario;
 
     public long getId() {
         return id;
