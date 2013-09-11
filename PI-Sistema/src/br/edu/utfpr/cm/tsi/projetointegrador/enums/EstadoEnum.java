@@ -10,7 +10,7 @@ package br.edu.utfpr.cm.tsi.projetointegrador.enums;
  */
 public enum EstadoEnum {
 
-    SELECIONE("Selecione"),
+    SELECIONE("Selecione uma opção"),
     AC("Acre"), // 
     AL("Alagoas"), // 
     AP("Amapá"), // 

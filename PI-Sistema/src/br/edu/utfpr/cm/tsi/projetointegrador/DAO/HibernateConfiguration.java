@@ -31,7 +31,7 @@ public class HibernateConfiguration {
             cfg = new AnnotationConfiguration();
             cfg.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
             cfg.setProperty("hibernate.connection.username", "root");
-            cfg.setProperty("hibernate.connection.password", "tato1234");
+            cfg.setProperty("hibernate.connection.password", "dani");
             cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/swin");
             cfg.setProperty("hibernate.show_sql", "true");
             cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
@@ -41,7 +41,10 @@ public class HibernateConfiguration {
             cfg.addAnnotatedClass(Matricula.class); // classes para serem mapeadas
             cfg.addAnnotatedClass(Piscina.class); // classes para serem mapeadas
             cfg.addAnnotatedClass(Turma.class); // classes para serem mapeadas
+
             cfg.addAnnotatedClass(Endereco.class); // classes para serem mapeadas
+        
+
             factory = cfg.buildSessionFactory();// construindo uma fabrica de sessão
 
         }
