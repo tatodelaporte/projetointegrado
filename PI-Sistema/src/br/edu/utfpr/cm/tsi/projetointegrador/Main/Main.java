@@ -378,7 +378,6 @@ public class Main extends javax.swing.JDialog {
     }//GEN-LAST:event_btConsultaHorarioActionPerformed
 
     private void btAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlunosActionPerformed
-
         new CadastroAlunos().setVisible(true);
     }//GEN-LAST:event_btAlunosActionPerformed
 

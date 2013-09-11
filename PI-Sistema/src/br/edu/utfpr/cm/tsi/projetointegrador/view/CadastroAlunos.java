@@ -7,6 +7,7 @@ package br.edu.utfpr.cm.tsi.projetointegrador.view;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.HibernateDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Aluno;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco;
+import br.edu.utfpr.cm.tsi.projetointegrador.enums.EstadoEnum;
 import br.edu.utfpr.cm.tsi.projetointegrador.util.ValidadorAlunos;
 import com.mysql.jdbc.Util;
 import java.awt.Color;
@@ -92,7 +93,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
         jLabel11 = new javax.swing.JLabel();
         jTextRG = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextDataNascimento = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextComplemento = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -100,7 +101,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
         jLabel14 = new javax.swing.JLabel();
         jTextMunicipio = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextEstado = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -190,9 +191,9 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
         jLabel2.setText("Data Nascimento");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextDataNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextDataNascimentoActionPerformed(evt);
             }
         });
 
@@ -204,9 +205,9 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
         jLabel15.setText("Estado");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextEstadoActionPerformed(evt);
             }
         });
 
@@ -248,7 +249,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -280,7 +281,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
                             .addComponent(jTextComplemento, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                             .addComponent(jTextBairro)
                             .addComponent(jTextMunicipio)
-                            .addComponent(jTextField2)))
+                            .addComponent(jTextEstado)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jButtonGravar)
@@ -322,7 +323,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -346,7 +347,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -385,7 +386,8 @@ public class CadastroAlunos extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextEnderecoActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-        
+         Aluno aluno=new Aluno();
+         aluno=getAluno();
 
 //        if (CampoCodigo.isEnabled() == true) {
 //           CampoCodigo.setText(null);
@@ -458,13 +460,13 @@ public class CadastroAlunos extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNumeroActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDataNascimentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextDataNascimentoActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEstadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextEstadoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -505,9 +507,15 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
         aluno.setNome(jTextNome.getText().trim());
         aluno.setCpf(jTextCPF.getText().trim());
+        aluno.setRg(jTextRG.getText().trim());
+      //    aluno.setDataNascimento(jTextDataNascimento.getText().trim());
         aluno.setEndereco(new Endereco());
         aluno.getEndereco().setNomeEndereco(jTextEndereco.getText().trim());
         aluno.getEndereco().setNumero(Integer.parseInt(jTextNumero.getText().trim()));
+        aluno.getEndereco().setComplemento(jTextComplemento.getText().trim());
+        aluno.getEndereco().setBairro(jTextBairro.getText().trim());
+        aluno.getEndereco().setMunicipio(jTextMunicipio.getText().trim());
+        aluno.getEndereco().setEstado(EstadoEnum.AC);
         aluno.setTelefone(jTextTelefone.getText().trim());
 
 
@@ -582,9 +590,9 @@ public class CadastroAlunos extends javax.swing.JDialog {
     private javax.swing.JTextField jTextBairro;
     private javax.swing.JTextField jTextCPF;
     private javax.swing.JTextField jTextComplemento;
+    private javax.swing.JTextField jTextDataNascimento;
     private javax.swing.JTextField jTextEndereco;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextEstado;
     private javax.swing.JTextField jTextMunicipio;
     private javax.swing.JTextField jTextNome;
     private javax.swing.JTextField jTextNumero;
