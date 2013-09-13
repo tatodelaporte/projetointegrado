@@ -14,6 +14,8 @@ import java.awt.Color;
 import java.awt.KeyboardFocusManager;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
@@ -447,13 +449,13 @@ public class CadastroAlunos extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextCPFActionPerformed
 
     private void jTextNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNomeFocusLost
-           if(jTextNome.getText().isEmpty()){
-          JOptionPane.showMessageDialog(null, "Campo NOME  \n esta em branco!!", "Atenção", JOptionPane.ERROR_MESSAGE);
-            jTextNome.requestFocus();
-       }else{
-           KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();  
-            manager.focusNextComponent();  
-       }
+//           if(jTextNome.getText().isEmpty()){
+//          JOptionPane.showMessageDialog(null, "Campo NOME  \n esta em branco!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+//            jTextNome.requestFocus();
+//       }else{
+//           KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();  
+//            manager.focusNextComponent();  
+//       }
     }//GEN-LAST:event_jTextNomeFocusLost
 
     private void jTextNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNumeroActionPerformed
@@ -476,24 +478,36 @@ public class CadastroAlunos extends javax.swing.JDialog {
         new JDialogConPessoa(null, true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public void setAluno(Aluno aluno) {
-        //   Aluno aluno=new Aluno();
+//    public void setAluno(Aluno aluno) {
+//        //   Aluno aluno=new Aluno();
+//
+//        jTextNome.setText(aluno.getNome());
+//        jTextCPF.setText(aluno.getCpf());
+//        jTextEndereco.setText(aluno.getEndereco().getNomeEndereco());
+//        jTextNumero.setText(String.valueOf(aluno.getEndereco().getNumero()));
+//        jTextTelefone.setText(aluno.getTelefone());
 
-        jTextNome.setText(aluno.getNome());
-        jTextCPF.setText(aluno.getCpf());
-        jTextEndereco.setText(aluno.getEndereco().getNomeEndereco());
-        jTextNumero.setText(String.valueOf(aluno.getEndereco().getNumero()));
-        jTextTelefone.setText(aluno.getTelefone());
-
-    }
+//}
 
     public void setAluno() {
         Aluno aluno = new Aluno();
 
         jTextNome.setText(aluno.getNome());
         jTextCPF.setText(aluno.getCpf());
+        jTextRG.setText(aluno.getRg());
+        
+        SimpleDateFormat data=new SimpleDateFormat("dd/MM/yyyy");
+//              data.format(aluno.getDataNascimento())
+//      aluno.setDataNascimento(data.parse(jTextDataNascimento.getText().trim()));
+      
+       
+        jTextDataNascimento.setText(data.format(aluno.getDataNascimento()));           
         jTextEndereco.setText(aluno.getEndereco().getNomeEndereco());
         jTextNumero.setText(String.valueOf(aluno.getEndereco().getNumero()));
+        jTextComplemento.setText(String.valueOf(aluno.getEndereco().getComplemento()));
+        jTextBairro.setText(String.valueOf(aluno.getEndereco().getBairro()));
+        jTextMunicipio.setText(String.valueOf(aluno.getEndereco().getMunicipio()));
+        jTextEstado.setText(String.valueOf(aluno.getEndereco().getEstado()));
         jTextTelefone.setText(aluno.getTelefone());
 
     }
@@ -507,8 +521,17 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
         aluno.setNome(jTextNome.getText().trim());
         aluno.setCpf(jTextCPF.getText().trim());
-        aluno.setRg(jTextRG.getText().trim());
-      //    aluno.setDataNascimento(jTextDataNascimento.getText().trim());
+        aluno.setRg(jTextRG.getText().trim());        
+        SimpleDateFormat data=new SimpleDateFormat("dd/MM/yyyy");
+        data.format(null);
+        try {
+        aluno.setDataNascimento(data.parse(jTextDataNascimento.getText().trim()));
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       
+        
         aluno.setEndereco(new Endereco());
         aluno.getEndereco().setNomeEndereco(jTextEndereco.getText().trim());
         aluno.getEndereco().setNumero(Integer.parseInt(jTextNumero.getText().trim()));
@@ -526,8 +549,15 @@ public class CadastroAlunos extends javax.swing.JDialog {
    private void limparCampos(){
        jTextNome.setText(null);
        jTextCPF.setText(null);
+       jTextRG.setText(null);      
+//       jTextDataNascimento(Date.parse(null));
        jTextEndereco.setText(null);
        jTextNumero.setText(null);
+       jTextNumero.setText(null);
+       jTextComplemento.setText(null);
+       jTextBairro.setText(null);
+       jTextMunicipio.setText(null);
+       jTextEstado.setText(null);
        jTextTelefone.setText(null);
    }
     
