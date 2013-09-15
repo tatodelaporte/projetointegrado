@@ -8,6 +8,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoTable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,22 +41,6 @@ public class JDialogConPessoa extends javax.swing.JDialog {
            return this.alunoTable;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-       
     public JDialogConPessoa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -79,6 +64,8 @@ public class JDialogConPessoa extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -92,34 +79,30 @@ public class JDialogConPessoa extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Alunos encontrados");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Código", "Nome", "CPF", "Endereco", "Numero", "Telefone"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTable1.setModel(getAlunoTable());
         jScrollPane1.setViewportView(jTable1);
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(10);
 
-        jButton1.setText("Ok");
+        jButton1.setText("Editar");
 
-        jButton2.setText("Fechar");
+        jButton2.setText("Visualizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Excluir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Fechar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -144,8 +127,12 @@ public class JDialogConPessoa extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(204, 204, 204)
                         .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton4)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,7 +151,9 @@ public class JDialogConPessoa extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton3)
+                    .addComponent(jButton2)
+                    .addComponent(jButton4))
                 .addGap(20, 20, 20))
         );
 
@@ -174,6 +163,29 @@ public class JDialogConPessoa extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+int row = jTable1.getSelectedRow();
+        if(row >= 0){
+            int opcao = JOptionPane.showConfirmDialog(null, "Deseja Excluir o Aluno: " + this.alunoTable.getAlunoEntity(row).getNome(), "Excluir aluno", 2);
+            if(opcao == 0){
+                try{
+                    this.alunoDao.delete(this.alunoTable.getAlunoEntity(row));
+                    JOptionPane.showMessageDialog(null, "Aluno Excluído com Sucesso!");
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null,"Erro ao Excluir Aluno!","Erro",JOptionPane.ERROR_MESSAGE); 
+                }                
+                refreshTable();                
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor Selecione uma linha da Tabela para Excluir!");
+        }
+               
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,6 +231,8 @@ public class JDialogConPessoa extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
