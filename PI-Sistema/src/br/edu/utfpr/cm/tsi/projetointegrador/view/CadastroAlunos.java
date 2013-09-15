@@ -29,12 +29,12 @@ import org.jcp.xml.dsig.internal.dom.Utils;
  * @author Daniele
  */
 public class CadastroAlunos extends javax.swing.JDialog {
-    private AlunoDao alunoDao;
 
+    private AlunoDao alunoDao;
     MaskFormatter mCPF = new MaskFormatter();
     //   ValidadorAlunos valida=new ValidadorAlunos();
     boolean flag;
-    
+
     /**
      * Creates new form CadastroAlunos
      */
@@ -59,12 +59,12 @@ public class CadastroAlunos extends javax.swing.JDialog {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         flag = false;
-      //  CampoCodigo.setEnabled(flag);
-        jTextNome.setEnabled(flag);
-        jTextCPF.setEnabled(flag);
-        jTextEndereco.setEnabled(flag);
-        jTextNumero.setEnabled(flag);
-        jTextTelefone.setEnabled(flag);
+        //  CampoCodigo.setEnabled(flag);
+//        jTextNome.setEnabled(flag);
+//        jTextCPF.setEnabled(flag);
+//        jTextEndereco.setEnabled(flag);
+//        jTextNumero.setEnabled(flag);
+//        jTextTelefone.setEnabled(flag);
     }
 
     /**
@@ -351,21 +351,18 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
     private void jTextNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeActionPerformed
         //if (jTextNome.getText().equals("   ")) {
-          //  JOptionPane.showMessageDialog(null, "Por favor coloque seu nome");
+        //  JOptionPane.showMessageDialog(null, "Por favor coloque seu nome");
         //jTextNom
-      // jTextNome.addActionListener(new ActionListener(){  
-    //    public void ActionPerformed(ActionEvent e){  
-    //    if(jtextfield.getText().isEmpty()){  
-    //        JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);  
-     //   } else {  
-            //Passou na validação  
-            //Faz algo aqui  
-      //  }  
-  //  }  
+        // jTextNome.addActionListener(new ActionListener(){  
+        //    public void ActionPerformed(ActionEvent e){  
+        //    if(jtextfield.getText().isEmpty()){  
+        //        JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);  
+        //   } else {  
+        //Passou na validação  
+        //Faz algo aqui  
+        //  }  
+        //  }  
 //});  
-
-
-        
     }//GEN-LAST:event_jTextNomeActionPerformed
 
     private void jTextEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEnderecoActionPerformed
@@ -373,56 +370,31 @@ public class CadastroAlunos extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextEnderecoActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-         Aluno aluno=new Aluno();
-         aluno=getAluno();
+        alunoDao = new AlunoDao();
+        try {
+            alunoDao.persist(getAluno());
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           this.limparCampos();
 
-//        if (CampoCodigo.isEnabled() == true) {
-//           CampoCodigo.setText(null);
-//            try {
-//
-//                hibernateDao.persist(getAluno());
-//            } catch (Exception ex) {
-//                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            // JOptionPane.showMessageDialog(null, "Alterações feitas com sucesso");
-//        }
-//        if (CampoCodigo.isEnabled() == false) {
-//            try {
-//                try {
-//                    hibernateDao.persist(getAluno());
-//                } catch (Exception ex) {
-//                    Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            } catch (Exception ex) {
-//                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//        this.limparCampos();
-        //this.dispose();
-        //System.exit(0);
-        
-       
+
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
-
     private void jTextNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNomeKeyTyped
-      
-       
-
-
     }//GEN-LAST:event_jTextNomeKeyTyped
 
     private void jTextCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCPFFocusLost
-              if (!jTextCPF.getText().contains("_")) {
-            if (!ValidadorAlunos.isCPF(jTextCPF.getText())) {
-                jTextCPF.setForeground(Color.RED);
-                JOptionPane.showMessageDialog(this, "CPF inválido ");
-                jTextCPF.requestFocus();
-               } else {
-                jTextCPF.setForeground(Color.BLUE);
-                
-            }
-        }
+//        if (!jTextCPF.getText().contains("_")) {
+//            if (!ValidadorAlunos.isCPF(jTextCPF.getText())) {
+//                jTextCPF.setForeground(Color.RED);
+//                JOptionPane.showMessageDialog(this, "CPF inválido ");
+//                jTextCPF.requestFocus();
+//            } else {
+//                jTextCPF.setForeground(Color.BLUE);
+//
+//            }
+//        }
     }//GEN-LAST:event_jTextCPFFocusLost
 
     private void jTextTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextTelefoneFocusLost
@@ -463,28 +435,26 @@ public class CadastroAlunos extends javax.swing.JDialog {
 //        jTextEndereco.setText(aluno.getEndereco().getNomeEndereco());
 //        jTextNumero.setText(String.valueOf(aluno.getEndereco().getNumero()));
 //        jTextTelefone.setText(aluno.getTelefone());
-
 //}
-
     public void setAluno() {
         Aluno aluno = new Aluno();
 
         jTextNome.setText(aluno.getNome());
         jTextCPF.setText(aluno.getCpf());
         jTextRG.setText(aluno.getRg());
-        
-        SimpleDateFormat data=new SimpleDateFormat("dd/MM/yyyy");
-//              data.format(aluno.getDataNascimento())
+
+        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+//      data.format(aluno.getDataNascimento())
 //      aluno.setDataNascimento(data.parse(jTextDataNascimento.getText().trim()));
-      
-       
-        jTextDataNascimento.setText(data.format(aluno.getDataNascimento()));           
+
+
+        jTextDataNascimento.setText(data.format(aluno.getDataNascimento()));
         jTextEndereco.setText(aluno.getEndereco().getNomeEndereco());
         jTextNumero.setText(String.valueOf(aluno.getEndereco().getNumero()));
         jTextComplemento.setText(String.valueOf(aluno.getEndereco().getComplemento()));
         jTextBairro.setText(String.valueOf(aluno.getEndereco().getBairro()));
         jTextMunicipio.setText(String.valueOf(aluno.getEndereco().getMunicipio()));
-       
+        jComboEstado.setSelectedItem(aluno.getEndereco().getEstado().toString());
         jTextTelefone.setText(aluno.getTelefone());
 
     }
@@ -498,47 +468,47 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
         aluno.setNome(jTextNome.getText().trim());
         aluno.setCpf(jTextCPF.getText().trim());
-        aluno.setRg(jTextRG.getText().trim());        
-        SimpleDateFormat data=new SimpleDateFormat("dd/MM/yyyy");
-        data.format(null);
-        try {
-        aluno.setDataNascimento(data.parse(jTextDataNascimento.getText().trim()));
-        } catch (ParseException ex) {
-            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
-       
+        aluno.setRg(jTextRG.getText().trim());
+//        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+//        data.format(null);
+        Date data=null;
         
+        try{
+            data=new SimpleDateFormat("dd/MM/yyyy").parse(jTextDataNascimento.getText());
+        }catch (ParseException ex) {
+            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE,null,ex);
+        }
+
+
+        aluno.setDataNascimento(data);
         aluno.setEndereco(new Endereco());
         aluno.getEndereco().setNomeEndereco(jTextEndereco.getText().trim());
         aluno.getEndereco().setNumero(Integer.parseInt(jTextNumero.getText().trim()));
         aluno.getEndereco().setComplemento(jTextComplemento.getText().trim());
         aluno.getEndereco().setBairro(jTextBairro.getText().trim());
         aluno.getEndereco().setMunicipio(jTextMunicipio.getText().trim());
-        aluno.getEndereco().setEstado(EstadoEnum.AC);
+        aluno.getEndereco().setEstado(EstadoEnum.getEnum(jComboEstado.getSelectedItem().toString()));
         aluno.setTelefone(jTextTelefone.getText().trim());
 
 
         return aluno;
 
     }
-    
-   private void limparCampos(){
-       jTextNome.setText(null);
-       jTextCPF.setText(null);
-       jTextRG.setText(null);      
+
+    private void limparCampos() {
+        jTextNome.setText(null);
+        jTextCPF.setText(null);
+        jTextRG.setText(null);
 //       jTextDataNascimento(Date.parse(null));
-       jTextEndereco.setText(null);
-       jTextNumero.setText(null);
-       jTextNumero.setText(null);
-       jTextComplemento.setText(null);
-       jTextBairro.setText(null);
-       jTextMunicipio.setText(null);
+        jTextEndereco.setText(null);
+        jTextNumero.setText(null);
+        jTextNumero.setText(null);
+        jTextComplemento.setText(null);
+        jTextBairro.setText(null);
+        jTextMunicipio.setText(null);
 //       jTextEstado.setText(null);
-       jTextTelefone.setText(null);
-   }
-    
-    
+        jTextTelefone.setText(null);
+    }
 
     /**
      * @param args the command line arguments
