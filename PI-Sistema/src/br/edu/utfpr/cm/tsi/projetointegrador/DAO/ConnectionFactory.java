@@ -6,16 +6,14 @@ package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
  *
- * @author daniele
+ * @author Daniele
  */
 public class ConnectionFactory {
-    
-    public static final String JDBC_URL = "jdbc:mysql://localhost:3306/swin?user=root&password=douglas";
+    public static final String JDBC_URL = "jdbc:mysql://localhost:3306/swin?user=root&password=dani";
 
     public static  Connection prepareConnection() throws SQLException {
         DriverManager.registerDriver(new com.mysql.jdbc.Driver());
@@ -26,6 +24,4 @@ public class ConnectionFactory {
     }
 
    
-    
-
 }

@@ -4,15 +4,58 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.view;
 
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoTable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Daniele
  */
 public class JDialogConPessoa extends javax.swing.JDialog {
-
+       private AlunoTable alunoTable;
+       private AlunoDao alunoDao;
     /**
      * Creates new form JDialogConPessoa
      */
+       
+    private void refreshTable(){
+           try {
+               this.alunoTable=new AlunoTable(alunoDao.findAll());
+           } catch (Exception ex) {
+               Logger.getLogger(JDialogConPessoa.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+           jTable1.setModel(this.alunoTable);
+    }   
+    
+    
+    private AlunoTable getAlunoTable(){
+           try {
+               this.alunoTable=new AlunoTable(alunoDao.findAll());
+           } catch (Exception ex) {
+               Logger.getLogger(JDialogConPessoa.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           return this.alunoTable;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+       
     public JDialogConPessoa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
