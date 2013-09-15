@@ -243,18 +243,20 @@ public class CadastroMatricula extends javax.swing.JDialog {
     }
     
     public void preecherAluno() {
-        cbAluno.removeAll();
-        cbAluno.removeAllItems();
-      
-        List<Aluno> alunos = null;
-        try {
-            alunos = AlunoDao.list();
-        } catch (SQLException ex) {
-            Logger.getLogger(CadastroMatricula.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        for (Aluno a : alunos) {
-            cbAluno.addItem(a);
-        }
-        
-    }
+//        cbAluno.removeAll();
+//        cbAluno.removeAllItems();
+//      
+//        List<Aluno> alunos = null;
+//        try {
+////            alunos = AlunoDao.list();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(CadastroMatricula.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        for (Aluno a : alunos) {
+//            cbAluno.addItem(a);
+//        }
+//        
+//    }
+}
+    
 }

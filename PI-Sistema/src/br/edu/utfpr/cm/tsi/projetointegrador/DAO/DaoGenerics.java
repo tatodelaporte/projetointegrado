@@ -17,35 +17,35 @@ import org.hibernate.Session;
 
 /**
  *
- * @author Daniel
+ * @author Daniele
  */
-public class DaoGenerics<T> implements Dao<T> {
+public abstract class DaoGenerics<T> {
 
+    private Class<T> classeDaEntidade;
+    
     Session session = null;
     Class classe = null;
 
-    public DaoGenerics(Class classe) {
-        this.classe = classe;
+    public DaoGenerics(Class<T> classeDaEntidade) {
+        this.classeDaEntidade = classeDaEntidade;
     }
 
-    public Class getClasse() {
-        return this.classe;
-    }
-
-    @Override
-    public void persist(T o) throws Exception {
+   
+        public void persist(T o) throws Exception {
         session = TransactionManager.getCurrentSession();
         session.saveOrUpdate(o);
 
     }
 
-    @Override
+    
     public void delete(T o) throws Exception {
         session = TransactionManager.getCurrentSession();
+        session.beginTransaction();
         session.delete(o);
+        session.getTransaction().commit();
     }
 
-    @Override
+   
     public T retrieve(int id) throws Exception {
         T objeto = null;
         if (id > 0) {
@@ -56,14 +56,21 @@ public class DaoGenerics<T> implements Dao<T> {
         return objeto;
     }
 
-    @Override
+   
     public List<T> list() throws Exception {
         session = TransactionManager.getCurrentSession();
         List<T> lista = session.createQuery("FROM " + classe.getSimpleName()).list();
         return lista;
     }
 
-    @Override
+    public List<T> findAll() throws Exception {
+        session = TransactionManager.getCurrentSession();
+        List<T> lista = session.createCriteria(classeDaEntidade).list();
+        return lista;
+    }
+
+    
+   
     public List<T> list(Filter... filters) throws Exception {
         List<T> lista = new ArrayList<>();
         String sql = " where ";

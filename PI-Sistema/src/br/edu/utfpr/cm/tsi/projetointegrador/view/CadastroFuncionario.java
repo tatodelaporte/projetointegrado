@@ -359,7 +359,7 @@ public class CadastroFuncionario extends javax.swing.JDialog {
         if (CampoCodigo.isEnabled() == true) {
             CampoCodigo.setText(null);
             try {
-                new DaoGenerics<Funcionario>(Funcionario.class).persist(getFuncionario());
+//                new DaoGenerics<Funcionario>(Funcionario.class).persist(getFuncionario());
             } catch (Exception ex) {
                 Logger.getLogger(CadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -370,7 +370,7 @@ public class CadastroFuncionario extends javax.swing.JDialog {
         if (CampoCodigo.isEnabled() == false) {
             try {
 
-                new DaoGenerics<Funcionario>(Funcionario.class).persist(getFuncionario());
+//                new DaoGenerics<Funcionario>(Funcionario.class).persist(getFuncionario());
 
 
                 JOptionPane.showMessageDialog(null, "Funcionario Cadastrado");
@@ -395,7 +395,7 @@ public class CadastroFuncionario extends javax.swing.JDialog {
 
         try {
             //DaoFuncionario.retrieve(Integer.parseInt(codprocurado));
-            new DaoGenerics<Funcionario>(Funcionario.class).persist(getFuncionario());
+//            new DaoGenerics<Funcionario>(Funcionario.class).persist(getFuncionario());
         } catch (Exception ex) {
             Logger.getLogger(CadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
