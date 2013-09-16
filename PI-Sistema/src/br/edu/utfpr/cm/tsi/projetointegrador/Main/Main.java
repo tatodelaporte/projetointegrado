@@ -10,6 +10,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroTurmas;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroAlunos;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastrodePiscinas;
+import br.edu.utfpr.cm.tsi.projetointegrador.view.JDialogConPessoa;
 
 
 
@@ -251,6 +252,11 @@ public class Main extends javax.swing.JDialog {
         jRadioButtonMenuItem5.setSelected(true);
         jRadioButtonMenuItem5.setText("Alunos");
         jRadioButtonMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user.png"))); // NOI18N
+        jRadioButtonMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem5ActionPerformed(evt);
+            }
+        });
         mnConsultas.add(jRadioButtonMenuItem5);
 
         jRadioButtonMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
@@ -320,7 +326,7 @@ public class Main extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,6 +410,10 @@ public class Main extends javax.swing.JDialog {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btTurmasActionPerformed
+
+    private void jRadioButtonMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem5ActionPerformed
+         new JDialogConPessoa(null, rootPaneCheckingEnabled);
+    }//GEN-LAST:event_jRadioButtonMenuItem5ActionPerformed
 
     public void criarBanco() {
         try {
