@@ -437,6 +437,8 @@ public class CadastroAlunos extends javax.swing.JDialog {
         try {
             alunoDao = new AlunoDao();
             alunoDao.persist(getAluno());
+            //JOptionPane.showMessageDialog(""," ");
+
         } catch (Exception ex) {
             Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -483,10 +485,6 @@ public class CadastroAlunos extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNumeroActionPerformed
 
-    private void jTextDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDataNascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextDataNascimentoActionPerformed
-
     private void jComboEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboEstadoActionPerformed
@@ -504,6 +502,10 @@ public class CadastroAlunos extends javax.swing.JDialog {
         dialog.setLocation(getX()+50, getY()+50);
         dialog.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDataNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextDataNascimentoActionPerformed
 
 //    public void setAluno(Aluno aluno) {
 //        //   Aluno aluno=new Aluno();
@@ -585,7 +587,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
         jComboEstado.setSelectedIndex(0);
        // jComboEstado.setSelectedItem("Selecione uma opção");        
         //jComboEstado.setText("")
-        jTextTelefone.setText(" ");
+        jTextTelefone.setText(null);
     }
 
     /**

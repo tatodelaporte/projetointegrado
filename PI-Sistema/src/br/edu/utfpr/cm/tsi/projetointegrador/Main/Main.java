@@ -11,6 +11,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroAlunos;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastrodePiscinas;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.JDialogConPessoa;
+import java.awt.Frame;
 
 
 
@@ -412,7 +413,12 @@ public class Main extends javax.swing.JDialog {
     }//GEN-LAST:event_btTurmasActionPerformed
 
     private void jRadioButtonMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem5ActionPerformed
-         new JDialogConPessoa(null, rootPaneCheckingEnabled);
+      JDialogConPessoa conPessoa=new JDialogConPessoa(new Frame(),true);
+      
+      conPessoa.setLocationRelativeTo(null);
+      conPessoa.setResizable(false);
+      conPessoa.setVisible(true);
+      
     }//GEN-LAST:event_jRadioButtonMenuItem5ActionPerformed
 
     public void criarBanco() {
