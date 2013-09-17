@@ -565,16 +565,16 @@ public class CadastroAlunos extends javax.swing.JDialog {
     }
 
     private void limparCampos() {
-        jTextNome.setText(null);
-        jTextCPF.setText(null);
-        jTextRG.setText(null);
-     //   jTextDataNascimento(Date.parse(null));
-        jTextEndereco.setText(null);
-        jTextNumero.setText(null);
-        jTextNumero.setText(null);
-        jTextComplemento.setText(null);
-        jTextBairro.setText(null);
-        jTextMunicipio.setText(null);
+        jTextNome.setText(" ");
+        jTextCPF.setText(" ");
+        jTextRG.setText("");
+        jTextDataNascimento.setText(" ");
+        jTextEndereco.setText(" ");
+        jTextNumero.setText(" ");
+        jTextNumero.setText(" ");
+        jTextComplemento.setText(" ");
+        jTextBairro.setText(" ");
+        jTextMunicipio.setText(" ");
         jComboEstado.setSelectedItem("Selecione uma opção");
         
         jTextTelefone.setText(null);
