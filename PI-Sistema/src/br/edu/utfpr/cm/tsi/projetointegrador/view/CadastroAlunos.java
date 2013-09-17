@@ -575,7 +575,8 @@ public class CadastroAlunos extends javax.swing.JDialog {
         jTextComplemento.setText(null);
         jTextBairro.setText(null);
         jTextMunicipio.setText(null);
-      //  jComboEstado.
+        jComboEstado.setSelectedItem("Selecione uma opção");
+        
         jTextTelefone.setText(null);
     }
 
