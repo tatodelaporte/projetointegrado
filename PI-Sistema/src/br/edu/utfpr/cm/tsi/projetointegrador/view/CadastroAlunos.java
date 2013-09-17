@@ -112,6 +112,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
         jLabel20 = new javax.swing.JLabel();
         jTextCodigo = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -253,14 +254,12 @@ public class CadastroAlunos extends javax.swing.JDialog {
             }
         });
 
+        jLabel19.setText("*Campos obrigatórios");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(242, 242, 242)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,6 +340,13 @@ public class CadastroAlunos extends javax.swing.JDialog {
                                 .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel16))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(jLabel1))
+                    .addComponent(jLabel19))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,11 +401,12 @@ public class CadastroAlunos extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextTelefone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(31, 31, 31)
+                .addGap(88, 88, 88)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonGravar))
-                .addGap(44, 44, 44))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel19))
         );
 
         pack();
@@ -575,9 +582,10 @@ public class CadastroAlunos extends javax.swing.JDialog {
         jTextComplemento.setText(" ");
         jTextBairro.setText(" ");
         jTextMunicipio.setText(" ");
-        jComboEstado.setSelectedItem("Selecione uma opção");
-        
-        jTextTelefone.setText(null);
+        jComboEstado.setSelectedIndex(0);
+       // jComboEstado.setSelectedItem("Selecione uma opção");        
+        //jComboEstado.setText("")
+        jTextTelefone.setText(" ");
     }
 
     /**
@@ -630,6 +638,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
