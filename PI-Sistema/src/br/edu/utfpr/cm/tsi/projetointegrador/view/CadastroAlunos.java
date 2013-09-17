@@ -59,6 +59,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         flag = false;
+        jTextCodigo.setEnabled(flag);
         //  CampoCodigo.setEnabled(flag);
 //        jTextNome.setEnabled(flag);
 //        jTextCPF.setEnabled(flag);
@@ -283,13 +284,12 @@ public class CadastroAlunos extends javax.swing.JDialog {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jTextComplemento, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                                             .addComponent(jTextMunicipio)
-                                            .addComponent(jTextTelefone))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                            .addComponent(jTextTelefone)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                                        .addComponent(jTextEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                        .addComponent(jTextEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel15)
@@ -568,14 +568,14 @@ public class CadastroAlunos extends javax.swing.JDialog {
         jTextNome.setText(null);
         jTextCPF.setText(null);
         jTextRG.setText(null);
-//       jTextDataNascimento(Date.parse(null));
+     //   jTextDataNascimento(Date.parse(null));
         jTextEndereco.setText(null);
         jTextNumero.setText(null);
         jTextNumero.setText(null);
         jTextComplemento.setText(null);
         jTextBairro.setText(null);
         jTextMunicipio.setText(null);
-//       jTextEstado.setText(null);
+      //  jComboEstado.
         jTextTelefone.setText(null);
     }
 

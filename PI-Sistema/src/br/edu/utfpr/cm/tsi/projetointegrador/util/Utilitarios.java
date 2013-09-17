@@ -4,9 +4,12 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.util;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.util.InputMismatchException;
 import java.util.List;
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
@@ -272,4 +275,33 @@ public class Utilitarios {
             comboBox.addItem(entidade);
         }
     }
+    
+    public static void habilitarTodos(Container container, boolean habilitar) {
+        // obter oa componentes contidos no container
+        Component[] componentes = container.getComponents();
+
+        // percorrer a lista de componentes (des)habilitando-os
+        for (Component component : componentes) {
+            // nao verifica componentes JLabel
+            if (component instanceof JTextField) {// container setcontaniner 
+                continue; //((jTextcomponent)componet).setText(")
+            }
+            // caso seja container, aplicamos a mesma solucao
+             if(component instanceof JComboBox){
+                 continue; 
+             }                              
+            
+            if (component instanceof Container ) {
+                habilitarTodos((Container)component, habilitar);
+            }
+            component.setEnabled(habilitar); //se compjnete e textfild 
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
 }

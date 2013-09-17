@@ -115,6 +115,12 @@ public class CadastroFuncionario extends javax.swing.JDialog {
 
         lbCodigo.setText("Codigo");
 
+        CampoCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoCodigoActionPerformed(evt);
+            }
+        });
+
         lbNome.setText("Nome");
 
         lbCPF.setText("CPF");
