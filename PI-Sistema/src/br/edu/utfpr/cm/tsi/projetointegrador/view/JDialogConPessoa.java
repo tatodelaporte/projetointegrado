@@ -43,6 +43,7 @@ public class JDialogConPessoa extends javax.swing.JDialog {
     
     public JDialogConPessoa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.alunoDao=new AlunoDao();
         initComponents();
     }
 
@@ -170,11 +171,11 @@ public class JDialogConPessoa extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-int row = jTable1.getSelectedRow();
+    int row = jTable1.getSelectedRow();
         if(row >= 0){
             int opcao = JOptionPane.showConfirmDialog(null, "Deseja Excluir o Aluno: " + this.alunoTable.getAlunoEntity(row).getNome(), "Excluir aluno", 2);
             if(opcao == 0){
