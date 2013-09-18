@@ -18,6 +18,7 @@ public class AlunoConsultas extends javax.swing.JDialog {
      //  private AlunoView alunoView;
        private AlunoTable alunoTable;
        private AlunoDao alunoDao;
+       private AlunoController alunoController;
     /**
      * Creates new form JDialogConPessoa
      */
@@ -228,7 +229,7 @@ public class AlunoConsultas extends javax.swing.JDialog {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
       if(jRBNome.isSelected()){
-    //    this.alunoTable=new AlunoController(this.)
+        this.alunoTable = new AlunoTable(this.AlunoController.getDao)
       }
     }//GEN-LAST:event_jButton5ActionPerformed
 
