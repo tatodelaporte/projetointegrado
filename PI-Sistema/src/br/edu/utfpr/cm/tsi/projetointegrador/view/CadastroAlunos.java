@@ -498,7 +498,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextRGActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JDialog dialog = new JDialogConPessoa(null, true);
+        JDialog dialog = new AlunoConsultas(null, true);
         dialog.setLocation(getX()+50, getY()+50);
         dialog.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
