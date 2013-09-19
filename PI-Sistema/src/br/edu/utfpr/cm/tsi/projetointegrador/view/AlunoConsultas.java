@@ -229,7 +229,7 @@ public class AlunoConsultas extends javax.swing.JDialog {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
       if(jRBNome.isSelected()){
-        this.alunoTable = new AlunoTable(this.AlunoController.getDao)
+   //     this.alunoTable = new AlunoTable(this.alunoController.getAlunoDao().)
       }
     }//GEN-LAST:event_jButton5ActionPerformed
 

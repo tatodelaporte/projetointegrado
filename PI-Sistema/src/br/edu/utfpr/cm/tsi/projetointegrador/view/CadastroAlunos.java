@@ -8,21 +8,13 @@ import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Aluno;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco;
 import br.edu.utfpr.cm.tsi.projetointegrador.enums.EstadoEnum;
-import br.edu.utfpr.cm.tsi.projetointegrador.util.ValidadorAlunos;
-import com.mysql.jdbc.Util;
-import java.awt.Color;
-import java.awt.KeyboardFocusManager;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
-import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
-import org.jcp.xml.dsig.internal.dom.Utils;
 
 /**
  *
