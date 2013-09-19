@@ -69,8 +69,8 @@ public class AlunoConsultas extends javax.swing.JDialog {
         jButton4 = new javax.swing.JButton();
         jRBNome = new javax.swing.JRadioButton();
         jRBCpf = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
+        jTextPesquisando = new javax.swing.JTextField();
+        jButtonPesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -118,16 +118,16 @@ public class AlunoConsultas extends javax.swing.JDialog {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextPesquisando.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextPesquisandoActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Pesquisar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonPesquisarActionPerformed(evt);
             }
         });
 
@@ -155,13 +155,13 @@ public class AlunoConsultas extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
+                            .addComponent(jTextPesquisando)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jRBNome)
                                 .addGap(35, 35, 35)
                                 .addComponent(jRBCpf)))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5)))
+                        .addComponent(jButtonPesquisar)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -174,8 +174,8 @@ public class AlunoConsultas extends javax.swing.JDialog {
                     .addComponent(jRBCpf))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
+                    .addComponent(jTextPesquisando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonPesquisar))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(30, 30, 30)
@@ -223,15 +223,21 @@ public class AlunoConsultas extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRBCpfActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextPesquisandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPesquisandoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextPesquisandoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
       if(jRBNome.isSelected()){
-   //     this.alunoTable = new AlunoTable(this.alunoController.getAlunoDao().)
+      this.alunoTable = new AlunoTable(this.alunoController.getAlunoDao().filtrarPorCpf(jTextPesquisando.getText()));
+      jTable1.setModel(this.alunoTable);     
+      }else if(jRBNome.isSelected()){
+          this.alunoTable= new AlunoTable(this.alunoController.getAlunoDao().filterByNome(jTextPesquisando.getText()));
+       jTable1.setModel(this.alunoTable);
+      }else{
+          JOptionPane.showMessageDialog(null, "Por favor selecione uma das pesquisas");
       }
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,13 +286,13 @@ public class AlunoConsultas extends javax.swing.JDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JRadioButton jRBCpf;
     private javax.swing.JRadioButton jRBNome;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextPesquisando;
     // End of variables declaration//GEN-END:variables
 }
