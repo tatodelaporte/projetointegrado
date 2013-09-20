@@ -28,7 +28,7 @@ public class AlunoController {
         this.endereco = new Endereco();
     }
 
-    public static Aluno getaAlunoSelecionado() {
+    public static Aluno getAlunoSelecionado() {
         return alunoSelecionado;
     }
 

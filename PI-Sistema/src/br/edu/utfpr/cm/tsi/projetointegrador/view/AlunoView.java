@@ -5,6 +5,8 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.view;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.control.AlunoController;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -24,6 +26,28 @@ public class AlunoView extends javax.swing.JDialog {
         initComponents();
         this.alunoController=new AlunoController();
         setLabel();
+    }
+    
+    public void setLabel() {
+     //     jLId.setText(AlunoController.getAlunoSelecionado().getId().ToString());
+          jLabelNome.setText(AlunoController.getAlunoSelecionado().getNome().toString());
+          jLabelcpf.setText(AlunoController.getAlunoSelecionado().getCpf().toString());
+          jLabelrg.setText(AlunoController.getAlunoSelecionado().getRg().toString());
+          
+          SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
+          
+          jLabelDataNascimento.setText(format.format(AlunoController.getAlunoSelecionado().getDataNascimento()).toString());
+          jLabelEndereco.setText(AlunoController.getAlunoSelecionado().getEndereco().toString());
+          jLabelNumero.setText(String.valueOf(AlunoController.getAlunoSelecionado().getEndereco().getNumero()).toString());          
+          jLabelComplemento.setText(AlunoController.getAlunoSelecionado().getEndereco().getComplemento().toString());
+          jLabelBairro.setText(AlunoController.getAlunoSelecionado().getEndereco().getBairro().toString());
+          jLabelMunicipio.setText(AlunoController.getAlunoSelecionado().getEndereco().getMunicipio().toString());
+          jLabelEstado.setText(AlunoController.getAlunoSelecionado().getEndereco().getEstado().toString());
+          jLabelTelefone.setText(AlunoController.getAlunoSelecionado().getTelefone().toString());
+          
+         
+          
+          
     }
 
     /**
@@ -270,7 +294,7 @@ public class AlunoView extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -346,7 +370,5 @@ public class AlunoView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelrg;
     // End of variables declaration//GEN-END:variables
 
-    private void setLabel() {
-          
-    }
+    
 }
