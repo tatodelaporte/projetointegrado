@@ -228,7 +228,7 @@ public class AlunoConsultas extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextPesquisandoActionPerformed
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
-      if(jRBNome.isSelected()){
+   if(jRBCpf.isSelected()){
       this.alunoTable = new AlunoTable(this.alunoController.getAlunoDao().filtrarPorCpf(jTextPesquisando.getText()));
       jTable1.setModel(this.alunoTable);     
       }else if(jRBNome.isSelected()){
