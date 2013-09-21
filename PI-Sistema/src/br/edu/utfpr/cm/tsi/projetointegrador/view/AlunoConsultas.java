@@ -3,11 +3,11 @@
  * and open the template in the editor.
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.view;
-import br.edu.utfpr.cm.tsi.projetointegrador.control.AlunoController;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoTable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,7 +18,7 @@ public class AlunoConsultas extends javax.swing.JDialog {
      //  private AlunoView alunoView;
        private AlunoTable alunoTable;
        private AlunoDao alunoDao;
-       private AlunoController alunoController;
+       
     /**
      * Creates new form JDialogConPessoa
      */
@@ -47,6 +47,7 @@ public class AlunoConsultas extends javax.swing.JDialog {
         super(parent, modal);
         this.alunoDao=new AlunoDao();
         initComponents();
+        jRBNome.setSelected(true);
     }
 
     /**
@@ -85,6 +86,11 @@ public class AlunoConsultas extends javax.swing.JDialog {
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(10);
 
         jButton1.setText("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Visualizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +199,20 @@ public class AlunoConsultas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        if(row >= 0){
+            AlunoDao.setAlunoSelecionado(this.alunoTable.getAlunoEntity(row));
+            AlunoView alunoView =new AlunoView(null, true);
+            alunoView.setLocationRelativeTo(null);
+            alunoView.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor Selecione uma linha da Tabela para Visualizar!");
+        }
+    
+        
+        
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -228,16 +247,28 @@ public class AlunoConsultas extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextPesquisandoActionPerformed
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
-   if(jRBCpf.isSelected()){
-      this.alunoTable = new AlunoTable(this.alunoController.getAlunoDao().filtrarPorCpf(jTextPesquisando.getText()));
+      alunoDao=new AlunoDao();
+      if(jRBCpf.isSelected()){
+      this.alunoTable = new AlunoTable(this.alunoDao.filtrarPorCpf(jTextPesquisando.getText()));
       jTable1.setModel(this.alunoTable);     
       }else if(jRBNome.isSelected()){
-          this.alunoTable= new AlunoTable(this.alunoController.getAlunoDao().filterByNome(jTextPesquisando.getText()));
+          this.alunoTable= new AlunoTable(this.alunoDao.filterByNome(jTextPesquisando.getText()));
        jTable1.setModel(this.alunoTable);
-      }else{
-          JOptionPane.showMessageDialog(null, "Por favor selecione uma das pesquisas");
       }
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int row = jTable1.getSelectedRow();
+        if(row >= 0){
+            AlunoDao.setAlunoSelecionado(this.alunoTable.getAlunoEntity(row));
+            CadastroAlunos cadastroAlunos =new CadastroAlunos(null, true);
+            cadastroAlunos.setLocationRelativeTo(null);
+            cadastroAlunos.setVisible(true);
+            cadastroAlunos.setEditAluno();
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor Selecione uma linha da Tabela para Visualizar!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

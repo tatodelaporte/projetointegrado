@@ -21,64 +21,36 @@ public class AlunoDao  extends DaoGenerics<Aluno>{
     }
    
     private Session session;
+    private static Aluno alunoSelecionado;
     
     public List <Aluno> filtrarPorCpf(String cpf){
-        List<Aluno> list=null;
-      //  this.session = Hib.getSessionFactory().openSession();        
-        try{
-        //    this.session.beginTransaction();
-            list = this.session.createCriteria(Aluno.class).                                
-                    add(Restrictions.like("cpf", cpf+"%")).
+        session = TransactionManager.getCurrentSession();
+        List<Aluno> lista = session.createCriteria(Aluno.class).
+                add(Restrictions.like("cpf", "%"+cpf+"%")).
                     addOrder(Order.asc("nome")).
-                    list();       
-            this.session.getTransaction().commit();            
-        }catch(Exception e){
-            System.out.println("Erro ao Buscar "+e);
-            this.session.getTransaction().rollback();
-        }finally{
-            this.session.close();
-        }
-        return list;
+                list();
+        return lista;
     }
     
      public List<Aluno> filterByNome(String nome){
-        List<Aluno> list = null;
-         try{
-            this.session.beginTransaction();
-            list = this.session.createCriteria(Aluno.class).                                
-                    add(Restrictions.like("nome", "%"+nome+"%")).
+       session = TransactionManager.getCurrentSession();
+        List<Aluno> lista = session.createCriteria(Aluno.class).
+                add(Restrictions.like("nome", "%"+nome+"%")).
                     addOrder(Order.asc("nome")).
-                    list();       
-            this.session.getTransaction().commit();            
-        }catch(Exception e){
-            System.out.println("Erro ao Buscar "+e);
-            this.session.getTransaction().rollback();
-        }finally{
-            this.session.close();
-        }
-        return list;
+                list();
+        return lista;
+    }
+
+    public static Aluno getAlunoSelecionado() {
+        return alunoSelecionado;
+    }
+
+    public static void setAlunoSelecionado(Aluno alunoSelecionado) {
+        AlunoDao.alunoSelecionado = alunoSelecionado;
     }
     
-    public boolean haveCpf(String cpf){
-        List<Aluno> list = null;
-       
-        try{
-            this.session.beginTransaction();
-            list = this.session.createCriteria(Aluno.class).                                
-                    add(Restrictions.like("cpf", cpf)).
-                    list();       
-            this.session.getTransaction().commit();            
-        }catch(Exception e){
-            System.out.println("Erro ao Buscar "+e);
-            this.session.getTransaction().rollback();
-        }finally{
-            this.session.close();
-        }
-        if(list.size()>0){
-            return true;
-        }
-        return false;
-    }
+     
+     
 }
 
     
