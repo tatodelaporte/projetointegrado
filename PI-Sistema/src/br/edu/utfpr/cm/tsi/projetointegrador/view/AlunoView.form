@@ -90,8 +90,6 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jBExcluir" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jBuEditar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jBuFechar" min="-2" max="-2" attributes="0"/>
@@ -159,7 +157,6 @@
               </Group>
               <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jBExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBuEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBuFechar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -304,17 +301,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="buscando"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jBExcluir">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icons/Trash Full.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Excluir"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBExcluirActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBuEditar">
       <Properties>

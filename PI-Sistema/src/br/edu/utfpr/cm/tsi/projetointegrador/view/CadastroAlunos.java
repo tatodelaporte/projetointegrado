@@ -8,13 +8,15 @@ import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Aluno;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco;
 import br.edu.utfpr.cm.tsi.projetointegrador.enums.EstadoEnum;
+import br.edu.utfpr.cm.tsi.projetointegrador.util.MaskUtil;
+import br.edu.utfpr.cm.tsi.projetointegrador.util.Utilitarios;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDialog;
+import javax.swing.JFormattedTextField;
 import javax.swing.text.MaskFormatter;
+import br.edu.utfpr.cm.tsi.projetointegrador.util.FixedLengthDocumentUtil;
 
 /**
  *
@@ -23,48 +25,79 @@ import javax.swing.text.MaskFormatter;
 public class CadastroAlunos extends javax.swing.JDialog {
 
     private AlunoDao alunoDao;
-    MaskFormatter mCPF = new MaskFormatter();
+    
     //   ValidadorAlunos valida=new ValidadorAlunos();
-    boolean flag;
+    boolean edicao = false;
 
     /**
      * Creates new form CadastroAlunos
      */
-    public CadastroAlunos() {
+    public CadastroAlunos(java.awt.Frame parent, boolean modal) {
         initComponents();
-
-        try {
-
-            mCPF.setMask("###.###.###-##");
-            mCPF.setPlaceholderCharacter('_');
-
-        } catch (ParseException ex) {
-        }
-
-
-        setSize(500, 610);
+        aplicarMascaras();
         setTitle("Cadastro de Alunos");
         setVisible(true);
         setLocationRelativeTo(null);
         pack();
         setResizable(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
-        flag = false;
-        jTextCodigo.setEnabled(flag);
-        //  CampoCodigo.setEnabled(flag);
-//        jTextNome.setEnabled(flag);
-//        jTextCPF.setEnabled(flag);
-//        jTextEndereco.setEnabled(flag);
-//        jTextNumero.setEnabled(flag);
-//        jTextTelefone.setEnabled(flag);
+    }
+    
+    private void aplicarMascaras(){
+        MaskUtil mask = new MaskUtil();
+        try {
+            mask.maskCep(jTextCep);
+            mask.maskCpf(jTextCPF);
+            mask.maskData(jTextDataNascimento);
+            mask.maskTelFixo(jTextTelefone);
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void setEditAluno(){
+        jTextCodigo.setText(String.valueOf(AlunoDao.getAlunoSelecionado().getId()));
+        jTextNome.setText(AlunoDao.getAlunoSelecionado().getNome());
+        jTextCPF.setText(AlunoDao.getAlunoSelecionado().getCpf());
+        jTextRG.setText(AlunoDao.getAlunoSelecionado().getRg());
+        
+        SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
+        
+        jTextDataNascimento.setText(format.format(AlunoDao.getAlunoSelecionado().getDataNascimento()));
+        jTextEndereco.setText(AlunoDao.getAlunoSelecionado().getEndereco().getNomeEndereco());
+        jTextNumero.setText(String.valueOf(AlunoDao.getAlunoSelecionado().getEndereco().getNumero()));
+        jTextComplemento.setText(AlunoDao.getAlunoSelecionado().getEndereco().getComplemento());
+        jTextBairro.setText(AlunoDao.getAlunoSelecionado().getEndereco().getBairro());
+        jTextMunicipio.setText(AlunoDao.getAlunoSelecionado().getEndereco().getMunicipio());
+        jComboEstado.setSelectedItem(AlunoDao.getAlunoSelecionado().getEndereco().getEstado().getUf());
+        jTextTelefone.setText(AlunoDao.getAlunoSelecionado().getTelefone());
+        jTextCep.setText(AlunoDao.getAlunoSelecionado().getEndereco().getCep());
+        
+        this.edicao = true;
+    }
+    
+    private void setAluno(Aluno aluno) throws ParseException, Exception{
+        aluno.setNome(jTextNome.getText().trim());
+        aluno.setCpf(Utilitarios.formatString(jTextCPF.getText().trim()));
+        aluno.setRg(jTextRG.getText().trim());
+        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+        aluno.setDataNascimento(data.parse(jTextDataNascimento.getText()));
+        aluno.setEndereco(new Endereco());
+        aluno.getEndereco().setNomeEndereco(jTextEndereco.getText().trim());
+        aluno.getEndereco().setNumero(Integer.parseInt(jTextNumero.getText().trim()));
+        aluno.getEndereco().setComplemento(jTextComplemento.getText().trim());
+        aluno.getEndereco().setBairro(jTextBairro.getText().trim());
+        aluno.getEndereco().setMunicipio(jTextMunicipio.getText().trim());
+        aluno.getEndereco().setEstado(EstadoEnum.getEnum(jComboEstado.getSelectedItem().toString()));
+        aluno.getEndereco().setCep(Utilitarios.formatString(jTextCep.getText().trim()));
+        aluno.setTelefone(Utilitarios.formatString(jTextTelefone.getText().trim()));
+        
+        alunoDao = new AlunoDao();
+        
+            
+        alunoDao.saveOrUpdate(aluno);
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -78,9 +111,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
         jTextEndereco = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButtonGravar = new javax.swing.JButton();
-        jTextTelefone = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextCPF = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextNumero = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -88,7 +119,6 @@ public class CadastroAlunos extends javax.swing.JDialog {
         jLabel11 = new javax.swing.JLabel();
         jTextRG = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextDataNascimento = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextComplemento = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -105,6 +135,11 @@ public class CadastroAlunos extends javax.swing.JDialog {
         jTextCodigo = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jTextCep = new javax.swing.JFormattedTextField();
+        jTextCPF = new javax.swing.JFormattedTextField();
+        jTextDataNascimento = new javax.swing.JFormattedTextField();
+        jTextTelefone = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -113,6 +148,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
         jLabel3.setText("Nome");
 
+        jTextNome.setDocument(new FixedLengthDocumentUtil(5));
         jTextNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextNomeActionPerformed(evt);
@@ -149,30 +185,8 @@ public class CadastroAlunos extends javax.swing.JDialog {
             }
         });
 
-        try {
-            jTextTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jTextTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextTelefoneFocusLost(evt);
-            }
-        });
-
         jLabel7.setForeground(new java.awt.Color(255, 51, 0));
         jLabel7.setText("*");
-
-        jTextCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCPFActionPerformed(evt);
-            }
-        });
-        jTextCPF.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextCPFFocusLost(evt);
-            }
-        });
 
         jLabel8.setText("Número");
 
@@ -197,12 +211,6 @@ public class CadastroAlunos extends javax.swing.JDialog {
         });
 
         jLabel2.setText("Data Nascimento");
-
-        jTextDataNascimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextDataNascimentoActionPerformed(evt);
-            }
-        });
 
         jLabel12.setText("Complemento");
 
@@ -238,6 +246,8 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
         jLabel20.setText("Código");
 
+        jTextCodigo.setEnabled(false);
+
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Sherlock.png"))); // NOI18N
         jButton2.setText("Pesquisar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +257,8 @@ public class CadastroAlunos extends javax.swing.JDialog {
         });
 
         jLabel19.setText("*Campos obrigatórios");
+
+        jLabel21.setText("Cep");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,6 +279,10 @@ public class CadastroAlunos extends javax.swing.JDialog {
                                 .addGap(3, 3, 3)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                                        .addComponent(jTextEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel12)
                                             .addComponent(jLabel14)
@@ -275,17 +291,9 @@ public class CadastroAlunos extends javax.swing.JDialog {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jTextComplemento, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                                             .addComponent(jTextMunicipio)
-                                            .addComponent(jTextTelefone)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                                        .addComponent(jTextEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jTextTelefone))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel15)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -293,12 +301,18 @@ public class CadastroAlunos extends javax.swing.JDialog {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel13)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jTextBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel15)
+                                            .addComponent(jLabel21))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jComboEstado, 0, 157, Short.MAX_VALUE)
+                                            .addComponent(jTextCep))))))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
+                        .addGap(244, 244, 244)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -315,22 +329,26 @@ public class CadastroAlunos extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel16)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel7)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel16))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,10 +378,10 @@ public class CadastroAlunos extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel7)
-                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11)
-                    .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -391,7 +409,10 @@ public class CadastroAlunos extends javax.swing.JDialog {
                     .addComponent(jComboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextTelefone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel21)
+                        .addComponent(jTextCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(88, 88, 88)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -425,14 +446,19 @@ public class CadastroAlunos extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextEnderecoActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-//        alunoDao = new AlunoDao();
-        try {
-            alunoDao = new AlunoDao();
-            alunoDao.persist(getAluno());
-            //JOptionPane.showMessageDialog(""," ");
-
-        } catch (Exception ex) {
-            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+        if(!edicao){
+            try {
+                this.setAluno(new Aluno());
+            } catch (Exception ex) {
+                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else{
+            try {
+                this.setAluno(AlunoDao.getAlunoSelecionado());
+            } catch (Exception ex) {
+                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+            } 
         }
         this.limparCampos();
 
@@ -441,27 +467,6 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
     private void jTextNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNomeKeyTyped
     }//GEN-LAST:event_jTextNomeKeyTyped
-
-    private void jTextCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCPFFocusLost
-//        if (!jTextCPF.getText().contains("_")) {
-//            if (!ValidadorAlunos.isCPF(jTextCPF.getText())) {
-//                jTextCPF.setForeground(Color.RED);
-//                JOptionPane.showMessageDialog(this, "CPF inválido ");
-//                jTextCPF.requestFocus();
-//            } else {
-//                jTextCPF.setForeground(Color.BLUE);
-//
-//            }
-//        }
-    }//GEN-LAST:event_jTextCPFFocusLost
-
-    private void jTextTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextTelefoneFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextTelefoneFocusLost
-
-    private void jTextCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCPFActionPerformed
 
     private void jTextNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNomeFocusLost
 //           if(jTextNome.getText().isEmpty()){
@@ -490,80 +495,10 @@ public class CadastroAlunos extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextRGActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JDialog dialog = new AlunoConsultas(null, true);
+        AlunoConsultas dialog = new AlunoConsultas(null, true);
         dialog.setLocation(getX()+50, getY()+50);
         dialog.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jTextDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDataNascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextDataNascimentoActionPerformed
-
-//    public void setAluno(Aluno aluno) {
-//        //   Aluno aluno=new Aluno();
-//
-//        jTextNome.setText(aluno.getNome());
-//        jTextCPF.setText(aluno.getCpf());
-//        jTextEndereco.setText(aluno.getEndereco().getNomeEndereco());
-//        jTextNumero.setText(String.valueOf(aluno.getEndereco().getNumero()));
-//        jTextTelefone.setText(aluno.getTelefone());
-//}
-    public void setAluno() {
-        Aluno aluno = new Aluno();
-
-        jTextNome.setText(aluno.getNome());
-        jTextCPF.setText(aluno.getCpf());
-        jTextRG.setText(aluno.getRg());
-
-        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
-//      data.format(aluno.getDataNascimento())
-//      aluno.setDataNascimento(data.parse(jTextDataNascimento.getText().trim()));
-        jTextDataNascimento.setText(data.format(aluno.getDataNascimento()));
-        jTextEndereco.setText(aluno.getEndereco().getNomeEndereco());
-        jTextNumero.setText(String.valueOf(aluno.getEndereco().getNumero()));
-        jTextComplemento.setText(String.valueOf(aluno.getEndereco().getComplemento()));
-        jTextBairro.setText(String.valueOf(aluno.getEndereco().getBairro()));
-        jTextMunicipio.setText(String.valueOf(aluno.getEndereco().getMunicipio()));
-        jComboEstado.setSelectedItem(aluno.getEndereco().getEstado().toString());
-        jTextTelefone.setText(aluno.getTelefone());
-
-    }
-
-    public Aluno getAluno() {
-        Aluno aluno = new Aluno();
-
-//        if (CampoCodigo.isEnabled() == true) { //para remover tem q estar aberto /p novo nao
-//            aluno.setId(Integer.parseInt(CampoCodigo.getText().trim()));
-//        }
-
-        aluno.setNome(jTextNome.getText().trim());
-        aluno.setCpf(jTextCPF.getText().trim());
-        aluno.setRg(jTextRG.getText().trim());
-//        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
-//        data.format(null);
-        Date data = null;
-
-        try {
-            data = new SimpleDateFormat("dd/MM/yyyy").parse(jTextDataNascimento.getText());
-        } catch (ParseException ex) {
-            Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
-        aluno.setDataNascimento(data);
-        aluno.setEndereco(new Endereco());
-        aluno.getEndereco().setNomeEndereco(jTextEndereco.getText().trim());
-        aluno.getEndereco().setNumero(Integer.parseInt(jTextNumero.getText().trim()));
-        aluno.getEndereco().setComplemento(jTextComplemento.getText().trim());
-        aluno.getEndereco().setBairro(jTextBairro.getText().trim());
-        aluno.getEndereco().setMunicipio(jTextMunicipio.getText().trim());
-        aluno.getEndereco().setEstado(EstadoEnum.getEnum(jComboEstado.getSelectedItem().toString()));
-        aluno.setTelefone(jTextTelefone.getText().trim());
-
-
-        return aluno;
-
-    }
 
     private void limparCampos() {
         jTextNome.setText(" ");
@@ -577,8 +512,6 @@ public class CadastroAlunos extends javax.swing.JDialog {
         jTextBairro.setText(" ");
         jTextMunicipio.setText(" ");
         jComboEstado.setSelectedIndex(0);
-       // jComboEstado.setSelectedItem("Selecione uma opção");        
-        //jComboEstado.setText("")
         jTextTelefone.setText(null);
     }
 
@@ -612,7 +545,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroAlunos().setVisible(true);
+                new CadastroAlunos(null, true).setVisible(true);
             }
         });
     }
@@ -635,6 +568,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -643,10 +577,11 @@ public class CadastroAlunos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextBairro;
-    private javax.swing.JTextField jTextCPF;
+    private javax.swing.JFormattedTextField jTextCPF;
+    private javax.swing.JFormattedTextField jTextCep;
     private javax.swing.JTextField jTextCodigo;
     private javax.swing.JTextField jTextComplemento;
-    private javax.swing.JTextField jTextDataNascimento;
+    private javax.swing.JFormattedTextField jTextDataNascimento;
     private javax.swing.JTextField jTextEndereco;
     private javax.swing.JTextField jTextMunicipio;
     private javax.swing.JTextField jTextNome;

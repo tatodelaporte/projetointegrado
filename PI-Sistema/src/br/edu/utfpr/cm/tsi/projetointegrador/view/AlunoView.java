@@ -4,7 +4,7 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.view;
 
-import br.edu.utfpr.cm.tsi.projetointegrador.control.AlunoController;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
@@ -21,32 +21,30 @@ public class AlunoView extends javax.swing.JDialog {
      * Creates new form AlunoView
      */
     
-    private AlunoController alunoController;
     
     public AlunoView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         super.setTitle("Tela visualização do Cliente");        
         initComponents();
-        this.alunoController=new AlunoController();
         setLabel();
     }
     
     public void setLabel() {
-     //     jLId.setText(AlunoController.getAlunoSelecionado().getId().ToString());
-          jLabelNome.setText(AlunoController.getAlunoSelecionado().getNome().toString());
-          jLabelcpf.setText(AlunoController.getAlunoSelecionado().getCpf().toString());
-          jLabelrg.setText(AlunoController.getAlunoSelecionado().getRg().toString());
+     //     jLId.setText(AlunoDao.getAlunoSelecionado().getId().ToString());
+          jLabelNome.setText(AlunoDao.getAlunoSelecionado().getNome().toString());
+          jLabelcpf.setText(AlunoDao.getAlunoSelecionado().getCpf().toString());
+          jLabelrg.setText(AlunoDao.getAlunoSelecionado().getRg().toString());
           
           SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
           
-          jLabelDataNascimento.setText(format.format(AlunoController.getAlunoSelecionado().getDataNascimento()).toString());
-          jLabelEndereco.setText(AlunoController.getAlunoSelecionado().getEndereco().toString());
-          jLabelNumero.setText(String.valueOf(AlunoController.getAlunoSelecionado().getEndereco().getNumero()).toString());          
-          jLabelComplemento.setText(AlunoController.getAlunoSelecionado().getEndereco().getComplemento().toString());
-          jLabelBairro.setText(AlunoController.getAlunoSelecionado().getEndereco().getBairro().toString());
-          jLabelMunicipio.setText(AlunoController.getAlunoSelecionado().getEndereco().getMunicipio().toString());
-          jLabelEstado.setText(AlunoController.getAlunoSelecionado().getEndereco().getEstado().toString());
-          jLabelTelefone.setText(AlunoController.getAlunoSelecionado().getTelefone().toString());
+          jLabelDataNascimento.setText(format.format(AlunoDao.getAlunoSelecionado().getDataNascimento()).toString());
+          jLabelEndereco.setText(AlunoDao.getAlunoSelecionado().getEndereco().getNomeEndereco());
+          jLabelNumero.setText(String.valueOf(AlunoDao.getAlunoSelecionado().getEndereco().getNumero()).toString());          
+          jLabelComplemento.setText(AlunoDao.getAlunoSelecionado().getEndereco().getComplemento().toString());
+          jLabelBairro.setText(AlunoDao.getAlunoSelecionado().getEndereco().getBairro().toString());
+          jLabelMunicipio.setText(AlunoDao.getAlunoSelecionado().getEndereco().getMunicipio().toString());
+          jLabelEstado.setText(AlunoDao.getAlunoSelecionado().getEndereco().getEstado().getUf());
+          jLabelTelefone.setText(AlunoDao.getAlunoSelecionado().getTelefone().toString());
           
          
           
@@ -88,7 +86,6 @@ public class AlunoView extends javax.swing.JDialog {
         jLabelEstado = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabelTelefone = new javax.swing.JLabel();
-        jBExcluir = new javax.swing.JButton();
         jBuEditar = new javax.swing.JButton();
         jBuFechar = new javax.swing.JButton();
 
@@ -147,14 +144,6 @@ public class AlunoView extends javax.swing.JDialog {
         jLabel25.setText("telefone:");
 
         jLabelTelefone.setText("buscando");
-
-        jBExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Trash Full.png"))); // NOI18N
-        jBExcluir.setText("Excluir");
-        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBExcluirActionPerformed(evt);
-            }
-        });
 
         jBuEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iDisk.png"))); // NOI18N
         jBuEditar.setText("Editar");
@@ -230,8 +219,6 @@ public class AlunoView extends javax.swing.JDialog {
                 .addContainerGap(220, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBuEditar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBuFechar)
@@ -288,7 +275,6 @@ public class AlunoView extends javax.swing.JDialog {
                     .addComponent(jLabelTelefone))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBExcluir)
                     .addComponent(jBuEditar)
                     .addComponent(jBuFechar))
                 .addContainerGap())
@@ -304,26 +290,6 @@ public class AlunoView extends javax.swing.JDialog {
     private void jBuFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuFecharActionPerformed
         this.dispose();
     }//GEN-LAST:event_jBuFecharActionPerformed
-
-    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
-       int opcao = JOptionPane.showConfirmDialog(null, "Deseja Excluir o Aluno: " + AlunoController.getAlunoSelecionado().getNome(), "Excluir Cliente", 2);
-            if(opcao == 0){        
-                try{
-               //    this.alunoController.delete(AlunoController.getAlunoSelecionado());
-                    try {
-                        this.alunoController.getAlunoDao().delete(AlunoController.getAlunoSelecionado());
-                    } catch (Exception ex) {
-                        Logger.getLogger(AlunoView.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    JOptionPane.showMessageDialog(null, "Aluno Excluído com Sucesso!");
-                    dispose();
-                }catch (RuntimeException ex){
-                     JOptionPane.showMessageDialog(null,"Erro ao Excluir Aluno!","Erro",JOptionPane.ERROR_MESSAGE);                 
-                }             
-            }
-                                             
-
-    }//GEN-LAST:event_jBExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,7 +333,6 @@ public class AlunoView extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBExcluir;
     private javax.swing.JButton jBuEditar;
     private javax.swing.JButton jBuFechar;
     private javax.swing.JLabel jLId;

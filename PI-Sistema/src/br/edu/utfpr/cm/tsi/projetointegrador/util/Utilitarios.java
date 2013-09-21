@@ -297,6 +297,31 @@ public class Utilitarios {
             component.setEnabled(habilitar); //se compjnete e textfild 
         }
     }
+        
+        
+        
+   public static String formatString(String string){
+        if(string.contains(".")){
+            string = string.replaceAll("\\.", "");
+            formatString(string);
+        }if(string.contains("_")){
+            string = string.replaceAll("\\_", "");
+            formatString(string);
+        }if (string.contains("/")){
+            string = string.replaceAll("\\/", "");
+            formatString(string);
+        }if (string.contains("-")){
+            string = string.replaceAll("-", "");
+            formatString(string);
+        }if (string.contains("(")){
+            string = string.replaceAll("\\(", "");
+            formatString(string);
+        }if (string.contains(")")){
+            string = string.replaceAll("\\)", "");
+            formatString(string);
+        }return string;
+    }
+    }
     
     
     
@@ -304,4 +329,4 @@ public class Utilitarios {
     
     
     
-}
+
