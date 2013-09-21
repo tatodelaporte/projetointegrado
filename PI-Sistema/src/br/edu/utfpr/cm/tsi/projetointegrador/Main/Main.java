@@ -342,7 +342,7 @@ public class Main extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbmiAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiAlunoActionPerformed
-        new CadastroAlunos().setVisible(true);
+        new CadastroAlunos(null,true).setVisible(true);
     }//GEN-LAST:event_rbmiAlunoActionPerformed
 
     private void mnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSairActionPerformed
@@ -385,7 +385,7 @@ public class Main extends javax.swing.JDialog {
     }//GEN-LAST:event_btConsultaHorarioActionPerformed
 
     private void btAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlunosActionPerformed
-        new CadastroAlunos().setVisible(true);
+        new CadastroAlunos(null,true).setVisible(true);
     }//GEN-LAST:event_btAlunosActionPerformed
 
     private void btPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPiscinaActionPerformed

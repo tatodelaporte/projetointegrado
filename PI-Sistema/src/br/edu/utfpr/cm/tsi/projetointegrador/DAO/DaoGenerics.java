@@ -31,9 +31,11 @@ public abstract class DaoGenerics<T> {
     }
 
    
-        public void persist(T o) throws Exception {
+        public void saveOrUpdate(T o) throws Exception {
         session = TransactionManager.getCurrentSession();
+        session.beginTransaction();
         session.saveOrUpdate(o);
+        session.getTransaction().commit();
 
     }
 

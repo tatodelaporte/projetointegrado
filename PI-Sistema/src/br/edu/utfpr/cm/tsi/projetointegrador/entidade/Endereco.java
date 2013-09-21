@@ -25,29 +25,32 @@ import javax.persistence.Table;
 public class Endereco implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
+    
     @Column(name = "endereco", length = 100)
     private String nomeEndereco;
+    
     @Column(name = "numero", length = 8)
     private int numero;
+    
     @Column(name = "complemento", length = 60)
     private String complemento;
+    
     @Column(name = "bairro", length = 100)
     private String bairro;
+    
     @Column(name = "municipio", length = 60)
     private String municipio;
+    
     @Column(name = "estado")
     @Enumerated(EnumType.STRING)
     private EstadoEnum estado;
+    
     @Column(name = "cep", length = 8)
     private String cep;
-    @Column(length = 8)
-    private Aluno aluno;
-    @Column(length = 8)
-    private Funcionario funcionario;
-
+    
     public long getId() {
         return id;
     }
