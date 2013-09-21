@@ -7,6 +7,9 @@ package br.edu.utfpr.cm.tsi.projetointegrador.view;
 import br.edu.utfpr.cm.tsi.projetointegrador.control.AlunoController;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -85,9 +88,9 @@ public class AlunoView extends javax.swing.JDialog {
         jLabelEstado = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabelTelefone = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBExcluir = new javax.swing.JButton();
+        jBuEditar = new javax.swing.JButton();
+        jBuFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -145,22 +148,27 @@ public class AlunoView extends javax.swing.JDialog {
 
         jLabelTelefone.setText("buscando");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Trash Full.png"))); // NOI18N
-        jButton1.setText("Excluir");
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iDisk.png"))); // NOI18N
-        jButton2.setText("Editar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Trash Full.png"))); // NOI18N
+        jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBExcluirActionPerformed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/OK.png"))); // NOI18N
-        jButton3.setText("Fechar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBuEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iDisk.png"))); // NOI18N
+        jBuEditar.setText("Editar");
+        jBuEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBuEditarActionPerformed(evt);
+            }
+        });
+
+        jBuFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/OK.png"))); // NOI18N
+        jBuFechar.setText("Fechar");
+        jBuFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBuFecharActionPerformed(evt);
             }
         });
 
@@ -222,11 +230,11 @@ public class AlunoView extends javax.swing.JDialog {
                 .addContainerGap(220, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jBExcluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(jBuEditar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(jBuFechar)
                 .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
@@ -280,22 +288,42 @@ public class AlunoView extends javax.swing.JDialog {
                     .addComponent(jLabelTelefone))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jBExcluir)
+                    .addComponent(jBuEditar)
+                    .addComponent(jBuFechar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBuEditarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBuFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuFecharActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jBuFecharActionPerformed
+
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+       int opcao = JOptionPane.showConfirmDialog(null, "Deseja Excluir o Aluno: " + AlunoController.getAlunoSelecionado().getNome(), "Excluir Cliente", 2);
+            if(opcao == 0){        
+                try{
+               //    this.alunoController.delete(AlunoController.getAlunoSelecionado());
+                    try {
+                        this.alunoController.getAlunoDao().delete(AlunoController.getAlunoSelecionado());
+                    } catch (Exception ex) {
+                        Logger.getLogger(AlunoView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Aluno Excluído com Sucesso!");
+                    dispose();
+                }catch (RuntimeException ex){
+                     JOptionPane.showMessageDialog(null,"Erro ao Excluir Aluno!","Erro",JOptionPane.ERROR_MESSAGE);                 
+                }             
+            }
+                                             
+
+    }//GEN-LAST:event_jBExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,9 +367,9 @@ public class AlunoView extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBExcluir;
+    private javax.swing.JButton jBuEditar;
+    private javax.swing.JButton jBuFechar;
     private javax.swing.JLabel jLId;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
