@@ -155,7 +155,7 @@
                   <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBuEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBuFechar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -305,7 +305,7 @@
     <Component class="javax.swing.JButton" name="jBuEditar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icons/iDisk.png"/>
+          <Image iconType="3" name="/icons/editar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Editar"/>
       </Properties>
@@ -316,7 +316,7 @@
     <Component class="javax.swing.JButton" name="jBuFechar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icons/OK.png"/>
+          <Image iconType="3" name="/icons/fechar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Fechar"/>
       </Properties>
