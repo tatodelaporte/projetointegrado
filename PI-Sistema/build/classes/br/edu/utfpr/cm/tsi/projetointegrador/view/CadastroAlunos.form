@@ -253,7 +253,7 @@
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextNomeKeyTyped"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTextNome.setDocument(new FixedLengthDocumentUtil(5));"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTextNome.setDocument(new FixedLengthDocumentUtil(100));"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -270,6 +270,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextEnderecoActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTextEndereco.setDocument(new FixedLengthDocumentUtil(100));"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -342,6 +345,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextComplemento">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTextComplemento.setDocument(new FixedLengthDocumentUtil(60));"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>
@@ -349,6 +355,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextBairro">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTextBairro.setDocument(new FixedLengthDocumentUtil(30));"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel14">
       <Properties>
@@ -356,6 +365,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextMunicipio">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTextMunicipio.setDocument(new FixedLengthDocumentUtil(60));"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel15">
       <Properties>

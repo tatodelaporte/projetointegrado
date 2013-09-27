@@ -148,7 +148,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
         jLabel3.setText("Nome");
 
-        jTextNome.setDocument(new FixedLengthDocumentUtil(5));
+        jTextNome.setDocument(new FixedLengthDocumentUtil(100));
         jTextNome.setName(""); // NOI18N
         jTextNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,6 +170,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
         jLabel5.setText("Endereço");
 
+        jTextEndereco.setDocument(new FixedLengthDocumentUtil(100));
         jTextEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextEnderecoActionPerformed(evt);
@@ -215,9 +216,15 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
         jLabel12.setText("Complemento");
 
+        jTextComplemento.setDocument(new FixedLengthDocumentUtil(60));
+
         jLabel13.setText("Bairro");
 
+        jTextBairro.setDocument(new FixedLengthDocumentUtil(30));
+
         jLabel14.setText("Municipio");
+
+        jTextMunicipio.setDocument(new FixedLengthDocumentUtil(60));
 
         jLabel15.setText("Estado");
 
