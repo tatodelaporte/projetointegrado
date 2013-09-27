@@ -73,19 +73,19 @@ public class CadastroMatricula extends javax.swing.JDialog {
 
         jToolBar1.setRollover(true);
 
-        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/New Folder.png"))); // NOI18N
+        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cadastrar.png"))); // NOI18N
         btNovo.setText("Novo");
         jToolBar1.add(btNovo);
 
-        btGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Installer.png"))); // NOI18N
+        btGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/editar.png"))); // NOI18N
         btGravar.setText("Gravar");
         jToolBar1.add(btGravar);
 
-        btAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iDisk.png"))); // NOI18N
+        btAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/editar.png"))); // NOI18N
         btAlterar.setText("Alterar");
         jToolBar1.add(btAlterar);
 
-        btRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Trash Full.png"))); // NOI18N
+        btRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/excluir.png"))); // NOI18N
         btRemover.setText("Remover");
         jToolBar1.add(btRemover);
 

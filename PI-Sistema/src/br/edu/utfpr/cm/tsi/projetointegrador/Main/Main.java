@@ -65,7 +65,6 @@ public class Main extends javax.swing.JDialog {
         rbmiAluno = new javax.swing.JRadioButtonMenuItem();
         rbmiFuncionario = new javax.swing.JRadioButtonMenuItem();
         rbmiPiscina = new javax.swing.JRadioButtonMenuItem();
-        rbmiMensalidade = new javax.swing.JRadioButtonMenuItem();
         rmbiTurma = new javax.swing.JRadioButtonMenuItem();
         mnMovimentos = new javax.swing.JMenu();
         rbmiMatricula = new javax.swing.JRadioButtonMenuItem();
@@ -201,17 +200,6 @@ public class Main extends javax.swing.JDialog {
             }
         });
         mnCadastros.add(rbmiPiscina);
-
-        rbmiMensalidade.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
-        rbmiMensalidade.setSelected(true);
-        rbmiMensalidade.setText("Mensalidade");
-        rbmiMensalidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Applications.png"))); // NOI18N
-        rbmiMensalidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbmiMensalidadeActionPerformed(evt);
-            }
-        });
-        mnCadastros.add(rbmiMensalidade);
 
         rmbiTurma.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
         rmbiTurma.setSelected(true);
@@ -395,10 +383,6 @@ public class Main extends javax.swing.JDialog {
     private void rbmiPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiPiscinaActionPerformed
         new CadastrodePiscinas().setVisible(true);
     }//GEN-LAST:event_rbmiPiscinaActionPerformed
-
-    private void rbmiMensalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiMensalidadeActionPerformed
-
-    }//GEN-LAST:event_rbmiMensalidadeActionPerformed
 
     private void jRadioButtonMenuCriarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuCriarBancoActionPerformed
         HibernateConfiguration.createSchema();
@@ -595,7 +579,6 @@ public class Main extends javax.swing.JDialog {
     private javax.swing.JRadioButtonMenuItem rbmiConsultaHorarios;
     private javax.swing.JRadioButtonMenuItem rbmiFuncionario;
     private javax.swing.JRadioButtonMenuItem rbmiMatricula;
-    private javax.swing.JRadioButtonMenuItem rbmiMensalidade;
     private javax.swing.JRadioButtonMenuItem rbmiPiscina;
     private javax.swing.JRadioButtonMenuItem rmbiFrequencia;
     private javax.swing.JRadioButtonMenuItem rmbiTurma;

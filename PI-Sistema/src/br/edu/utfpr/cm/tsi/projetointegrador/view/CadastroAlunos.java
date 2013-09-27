@@ -149,6 +149,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
         jLabel3.setText("Nome");
 
         jTextNome.setDocument(new FixedLengthDocumentUtil(5));
+        jTextNome.setName(""); // NOI18N
         jTextNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextNomeActionPerformed(evt);
