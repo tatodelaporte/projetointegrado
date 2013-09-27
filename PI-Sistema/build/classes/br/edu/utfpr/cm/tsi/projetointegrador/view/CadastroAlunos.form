@@ -310,6 +310,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextNumeroActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTextNumero.setDocument(new FixedLengthDocumentUtil(8));"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
@@ -458,6 +461,9 @@
     <Component class="javax.swing.JFormattedTextField" name="jTextDataNascimento">
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="jTextTelefone">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTextTelefone.setDocument(new FixedLengthDocumentUtil(12));"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel22">
       <Properties>

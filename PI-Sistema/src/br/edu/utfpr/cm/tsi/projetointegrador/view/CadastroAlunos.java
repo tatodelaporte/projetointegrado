@@ -193,6 +193,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
         jLabel8.setText("Número");
 
+        jTextNumero.setDocument(new FixedLengthDocumentUtil(8));
         jTextNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextNumeroActionPerformed(evt);
@@ -267,6 +268,8 @@ public class CadastroAlunos extends javax.swing.JDialog {
         });
 
         jLabel21.setText("Cep");
+
+        jTextTelefone.setDocument(new FixedLengthDocumentUtil(12));
 
         jLabel22.setForeground(new java.awt.Color(255, 0, 0));
         jLabel22.setText("*");
