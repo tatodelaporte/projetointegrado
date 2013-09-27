@@ -32,18 +32,29 @@ public class Aluno implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    
     @Column(length = 100, nullable = false)
     private String nome;
+    
+    
     @Column(length = 11) //unique true
     private String cpf;
-    @Column(length = 9)
+    
+    
+    @Column(length = 8)
     private String rg;
+    
+    
     @Column(name = "dataNascimento", length = 8)
     @Temporal(javax.persistence.TemporalType.DATE)//
     private Date dataNascimento;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER) //deletar junto 
+    
+    
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER) //deletar junto     
     private Endereco endereco;
-    @Column(length = 18)
+    
+    
+    @Column(length = 12)
     private String telefone;
 
     public int getId() {
