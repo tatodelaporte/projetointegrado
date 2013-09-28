@@ -10,6 +10,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroTurmas;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroAlunos;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.InformacoeDesenvolvedores;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.JDialogRelatorios;
+import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroFrequencia;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastrodePiscinas;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.AlunoConsultas;
@@ -156,6 +157,11 @@ public class Main extends javax.swing.JDialog {
         btFrequencia.setFocusable(false);
         btFrequencia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btFrequencia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btFrequencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFrequenciaActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btFrequencia);
 
         btConsultaHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/natação.png"))); // NOI18N
@@ -237,6 +243,11 @@ public class Main extends javax.swing.JDialog {
         rmbiFrequencia.setSelected(true);
         rmbiFrequencia.setText("Frequencia");
         rmbiFrequencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/AOL Instant Messenger.png"))); // NOI18N
+        rmbiFrequencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rmbiFrequenciaActionPerformed(evt);
+            }
+        });
         mnMovimentos.add(rmbiFrequencia);
 
         jMenuBar1.add(mnMovimentos);
@@ -469,6 +480,14 @@ public class Main extends javax.swing.JDialog {
          rel.setResizable(false);
          rel.setVisible(true);
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+
+    private void btFrequenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFrequenciaActionPerformed
+       new CadastroFrequencia().setVisible(true);
+    }//GEN-LAST:event_btFrequenciaActionPerformed
+
+    private void rmbiFrequenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmbiFrequenciaActionPerformed
+       new CadastroFrequencia().setVisible(true);
+    }//GEN-LAST:event_rmbiFrequenciaActionPerformed
 
     public void criarBanco() {
         try {

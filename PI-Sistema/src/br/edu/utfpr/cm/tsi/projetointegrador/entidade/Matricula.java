@@ -6,12 +6,16 @@ package br.edu.utfpr.cm.tsi.projetointegrador.entidade;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Aluno;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -24,10 +28,15 @@ public class Matricula implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
-    @ManyToOne
+    
+    @OneToOne
     private Aluno aluno;
+    
+    
     @OneToOne
     private Turma turma;
+    
+    
     @Column(length = 1)
     private int situação;
    
@@ -48,6 +57,9 @@ public class Matricula implements Serializable {
         this.aluno = aluno;
     }
 
+
+    
+    
     public Turma getTurma() {
         return turma;
     }

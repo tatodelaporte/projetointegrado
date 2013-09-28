@@ -28,7 +28,7 @@ import javax.persistence.Temporal;
 public class Turma implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
         
     @Column(length = 100)
