@@ -112,4 +112,8 @@ public class Aluno implements Serializable {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public void setDataNascimento(Endereco endereco) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
