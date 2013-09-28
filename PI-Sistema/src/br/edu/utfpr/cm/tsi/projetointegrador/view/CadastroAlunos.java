@@ -269,8 +269,6 @@ public class CadastroAlunos extends javax.swing.JDialog {
 
         jLabel21.setText("Cep");
 
-        jTextTelefone.setDocument(new FixedLengthDocumentUtil(12));
-
         jLabel22.setForeground(new java.awt.Color(255, 0, 0));
         jLabel22.setText("*");
 

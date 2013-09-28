@@ -8,7 +8,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.DAO.HibernateConfiguration;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Turma;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.FuncionarioDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.PiscinaDao;
-import br.edu.utfpr.cm.tsi.projetointegrador.DAO.TurmaDao;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.EXCLUIRISSO;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Funcionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoGenerics;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Piscina;
@@ -460,7 +460,7 @@ public class CadastroTurmas extends javax.swing.JDialog {
         turma = getTurma();
         try {
 
-            TurmaDao.update(turma);
+            EXCLUIRISSO.update(turma);
 
         } catch (SQLException ex) {
             Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
@@ -478,7 +478,7 @@ public class CadastroTurmas extends javax.swing.JDialog {
 
         try {
 
-            TurmaDao.delete(turma);
+            EXCLUIRISSO.delete(turma);
 
         } catch (SQLException ex) {
             Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);

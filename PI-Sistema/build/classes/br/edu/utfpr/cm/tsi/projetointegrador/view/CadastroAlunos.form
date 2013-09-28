@@ -461,9 +461,6 @@
     <Component class="javax.swing.JFormattedTextField" name="jTextDataNascimento">
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="jTextTelefone">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTextTelefone.setDocument(new FixedLengthDocumentUtil(12));"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel22">
       <Properties>

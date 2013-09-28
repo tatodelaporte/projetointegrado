@@ -4,14 +4,18 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.view;
 
-import br.edu.utfpr.cm.tsi.projetointegrador.DAO.TurmaDao;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.EXCLUIRISSO;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Aluno;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.MatriculaDao;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.TurmaDao;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Matricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Turma;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -24,6 +28,7 @@ public class CadastroMatricula extends javax.swing.JDialog {
      */
     public CadastroMatricula() {
         initComponents();
+        AlunoDao.setAlunoSelecionado(new Aluno());
         setSize(500, 610);
         setTitle("Cadastro de Matriculas");
         setVisible(true);
@@ -32,10 +37,12 @@ public class CadastroMatricula extends javax.swing.JDialog {
         setResizable(false);// Trava o tamanho do painel.
         preencherTurma();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
-        
-        
     }
+    
+    public void setCampoAlunoSelecionado(){
+        tfAluno.setText(AlunoDao.getAlunoSelecionado().getNome());
+    }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,14 +69,20 @@ public class CadastroMatricula extends javax.swing.JDialog {
         rbInativo = new javax.swing.JRadioButton();
         lbSituacao = new javax.swing.JLabel();
         cbTurma = new javax.swing.JComboBox();
-        cbAluno = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Sherlock.png"))); // NOI18N
         btBuscar.setText("Buscar");
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
         lbCodigo.setText("Codigo");
+
+        tfCodigo.setEnabled(false);
 
         jToolBar1.setRollover(true);
 
@@ -79,6 +92,11 @@ public class CadastroMatricula extends javax.swing.JDialog {
 
         btGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/editar.png"))); // NOI18N
         btGravar.setText("Gravar");
+        btGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGravarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btGravar);
 
         btAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/editar.png"))); // NOI18N
@@ -91,6 +109,8 @@ public class CadastroMatricula extends javax.swing.JDialog {
 
         lbAluno.setText("Aluno");
 
+        tfAluno.setEnabled(false);
+
         lbTurma.setText("Turma");
 
         btGSituacao.add(rbAtivo);
@@ -102,8 +122,11 @@ public class CadastroMatricula extends javax.swing.JDialog {
         lbSituacao.setText("Situação");
 
         cbTurma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbAluno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTurmaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,34 +145,31 @@ public class CadastroMatricula extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rbAtivo)
                         .addGap(18, 18, 18)
-                        .addComponent(rbInativo))
+                        .addComponent(rbInativo)
+                        .addContainerGap(236, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cbTurma, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                            .addComponent(tfAluno, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(btBuscar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(cbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(tfAluno, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(10, 10, 10)
+                        .addComponent(btBuscar)
+                        .addGap(24, 24, 24))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCodigo)
-                    .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscar))
+                    .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbAluno)
                     .addComponent(tfAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbTurma)
@@ -159,12 +179,41 @@ public class CadastroMatricula extends javax.swing.JDialog {
                     .addComponent(rbAtivo)
                     .addComponent(rbInativo)
                     .addComponent(lbSituacao))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+       AlunoConsultaMatricula consul=new AlunoConsultaMatricula(new JFrame(), true);
+       consul.setLocationRelativeTo(null);
+       consul.setVisible(true);
+       setCampoAlunoSelecionado();
+    }//GEN-LAST:event_btBuscarActionPerformed
+
+    private Matricula getMatricula(){
+        Matricula matricula=new Matricula();
+        matricula.setAluno(AlunoDao.getAlunoSelecionado());
+        matricula.setSituação(0);
+        matricula.setTurma((Turma) cbTurma.getSelectedItem());
+        return matricula;
+    }
+    
+    private void btGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGravarActionPerformed
+        MatriculaDao matri=new MatriculaDao();
+        try {
+            matri.saveOrUpdate(getMatricula());
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroMatricula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btGravarActionPerformed
+
+    private void cbTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTurmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTurmaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,7 +260,6 @@ public class CadastroMatricula extends javax.swing.JDialog {
     private javax.swing.JButton btGravar;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btRemover;
-    private javax.swing.JComboBox cbAluno;
     private javax.swing.JComboBox cbTurma;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lbAluno;
@@ -224,39 +272,22 @@ public class CadastroMatricula extends javax.swing.JDialog {
     private javax.swing.JTextField tfCodigo;
     // End of variables declaration//GEN-END:variables
 
-    public void preencherTurma() {
+    private void preencherTurma() {
         
         cbTurma.removeAllItems();
         cbTurma.removeAll();
         
         List<Turma> turmas = null;
+        TurmaDao turma = new TurmaDao();
         try {
-            turmas = TurmaDao.list();
-        } catch (SQLException ex) {
+            turmas = turma.findAll();
+        } catch (Exception ex) {
             Logger.getLogger(CadastroMatricula.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         for (Turma t : turmas) {
             cbTurma.addItem(t);
         }
-        
     }
-    
-    public void preecherAluno() {
-//        cbAluno.removeAll();
-//        cbAluno.removeAllItems();
-//      
-//        List<Aluno> alunos = null;
-//        try {
-////            alunos = AlunoDao.list();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(CadastroMatricula.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        for (Aluno a : alunos) {
-//            cbAluno.addItem(a);
-//        }
-//        
-//    }
-}
     
 }
