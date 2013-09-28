@@ -8,6 +8,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroFuncionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroTurmas;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroAlunos;
+import br.edu.utfpr.cm.tsi.projetointegrador.view.InformacoeDesenvolvedores;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastrodePiscinas;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.AlunoConsultas;
@@ -307,6 +308,11 @@ public class Main extends javax.swing.JDialog {
         jRadioButtonDesenvolvedores.setSelected(true);
         jRadioButtonDesenvolvedores.setText("Desenvolvedores");
         jRadioButtonDesenvolvedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/desenvol.png"))); // NOI18N
+        jRadioButtonDesenvolvedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonDesenvolvedoresActionPerformed(evt);
+            }
+        });
         jMenu2.add(jRadioButtonDesenvolvedores);
 
         jMenuBar1.add(jMenu2);
@@ -427,6 +433,17 @@ public class Main extends javax.swing.JDialog {
     private void jRadioButtonMenuCriarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuCriarBancoActionPerformed
           HibernateConfiguration.createSchema();
     }//GEN-LAST:event_jRadioButtonMenuCriarBancoActionPerformed
+
+    private void jRadioButtonDesenvolvedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDesenvolvedoresActionPerformed
+        //    new InformacoeDesenvolvedores(null,true).setVisible(true);
+          //      InformacoeDesenvolvedores.set
+        InformacoeDesenvolvedores info=new InformacoeDesenvolvedores(new Frame(),true);
+        info.setLocationRelativeTo(null);
+        info.setResizable(false);
+        info.setVisible(true);
+        
+              //new CadastroMatricula().setVisible(true);                     
+    }//GEN-LAST:event_jRadioButtonDesenvolvedoresActionPerformed
 
     public void criarBanco() {
         try {
