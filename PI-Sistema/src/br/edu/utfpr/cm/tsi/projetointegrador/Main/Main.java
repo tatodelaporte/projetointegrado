@@ -76,7 +76,7 @@ public class Main extends javax.swing.JDialog {
         jRadioButtonMenuItem8 = new javax.swing.JRadioButtonMenuItem();
         rbmiConsultaHorarios = new javax.swing.JRadioButtonMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuCriarBanco = new javax.swing.JRadioButtonMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jRadioButtonDesenvolvedores = new javax.swing.JRadioButtonMenuItem();
         mnSair = new javax.swing.JMenu();
@@ -254,6 +254,11 @@ public class Main extends javax.swing.JDialog {
         jRadioButtonMenuItem6.setSelected(true);
         jRadioButtonMenuItem6.setText("Turmas");
         jRadioButtonMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Group.png"))); // NOI18N
+        jRadioButtonMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem6ActionPerformed(evt);
+            }
+        });
         mnConsultas.add(jRadioButtonMenuItem6);
 
         jRadioButtonMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
@@ -283,11 +288,16 @@ public class Main extends javax.swing.JDialog {
 
         jMenu1.setText("Configurações");
 
-        jRadioButtonMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("Criar Banco");
-        jRadioButtonMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/banco.png"))); // NOI18N
-        jMenu1.add(jRadioButtonMenuItem1);
+        jRadioButtonMenuCriarBanco.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        jRadioButtonMenuCriarBanco.setSelected(true);
+        jRadioButtonMenuCriarBanco.setText("Criar Banco");
+        jRadioButtonMenuCriarBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/banco.png"))); // NOI18N
+        jRadioButtonMenuCriarBanco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuCriarBancoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jRadioButtonMenuCriarBanco);
 
         jMenuBar1.add(jMenu1);
 
@@ -409,6 +419,14 @@ public class Main extends javax.swing.JDialog {
       conPessoa.setVisible(true);
       
     }//GEN-LAST:event_jRadioButtonMenuItem5ActionPerformed
+
+    private void jRadioButtonMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonMenuItem6ActionPerformed
+
+    private void jRadioButtonMenuCriarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuCriarBancoActionPerformed
+          HibernateConfiguration.createSchema();
+    }//GEN-LAST:event_jRadioButtonMenuCriarBancoActionPerformed
 
     public void criarBanco() {
         try {
@@ -572,7 +590,7 @@ public class Main extends javax.swing.JDialog {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonDesenvolvedores;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuCriarBanco;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem5;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem6;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem7;
