@@ -77,6 +77,7 @@ public class Main extends javax.swing.JDialog {
         rbmiConsultaHorarios = new javax.swing.JRadioButtonMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jRadioButtonMenuCriarBanco = new javax.swing.JRadioButtonMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         mnSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -291,6 +292,9 @@ public class Main extends javax.swing.JDialog {
         jMenu1.add(jRadioButtonMenuCriarBanco);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Sobre");
+        jMenuBar1.add(jMenu2);
 
         mnSair.setText("Sair");
         mnSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -564,6 +568,7 @@ public class Main extends javax.swing.JDialog {
     private javax.swing.JButton btTurmas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuCriarBanco;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem5;
