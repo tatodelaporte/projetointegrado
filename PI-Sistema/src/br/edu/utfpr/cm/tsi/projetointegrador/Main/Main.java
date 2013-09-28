@@ -76,8 +76,9 @@ public class Main extends javax.swing.JDialog {
         jRadioButtonMenuItem8 = new javax.swing.JRadioButtonMenuItem();
         rbmiConsultaHorarios = new javax.swing.JRadioButtonMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jRadioButtonMenuCriarBanco = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jRadioButtonDesenvolvedores = new javax.swing.JRadioButtonMenuItem();
         mnSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -282,18 +283,22 @@ public class Main extends javax.swing.JDialog {
 
         jMenu1.setText("Configurações");
 
-        jRadioButtonMenuCriarBanco.setSelected(true);
-        jRadioButtonMenuCriarBanco.setText("Criar Banco");
-        jRadioButtonMenuCriarBanco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuCriarBancoActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jRadioButtonMenuCriarBanco);
+        jRadioButtonMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("Criar Banco");
+        jRadioButtonMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/banco.png"))); // NOI18N
+        jMenu1.add(jRadioButtonMenuItem1);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Sobre");
+
+        jRadioButtonDesenvolvedores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        jRadioButtonDesenvolvedores.setSelected(true);
+        jRadioButtonDesenvolvedores.setText("Desenvolvedores");
+        jRadioButtonDesenvolvedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/desenvol.png"))); // NOI18N
+        jMenu2.add(jRadioButtonDesenvolvedores);
+
         jMenuBar1.add(jMenu2);
 
         mnSair.setText("Sair");
@@ -387,10 +392,6 @@ public class Main extends javax.swing.JDialog {
     private void rbmiPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiPiscinaActionPerformed
         new CadastrodePiscinas().setVisible(true);
     }//GEN-LAST:event_rbmiPiscinaActionPerformed
-
-    private void jRadioButtonMenuCriarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuCriarBancoActionPerformed
-        HibernateConfiguration.createSchema();
-    }//GEN-LAST:event_jRadioButtonMenuCriarBancoActionPerformed
 
     private void btTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTurmasActionPerformed
         try {
@@ -570,7 +571,8 @@ public class Main extends javax.swing.JDialog {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuCriarBanco;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonDesenvolvedores;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem5;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem6;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem7;

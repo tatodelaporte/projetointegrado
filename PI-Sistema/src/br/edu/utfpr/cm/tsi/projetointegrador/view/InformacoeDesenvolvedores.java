@@ -57,7 +57,7 @@ public class InformacoeDesenvolvedores extends javax.swing.JDialog {
 
         jLabel6.setText("fone contato: 9975-61-36");
 
-        jLabel7.setText("Daniel Delaport - ");
+        jLabel7.setText("Daniel Delaport - d.delaporte@hotmail.com");
 
         jLabel8.setText("fone contato:9997-68-64");
 
@@ -87,8 +87,8 @@ public class InformacoeDesenvolvedores extends javax.swing.JDialog {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
