@@ -9,6 +9,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroMatricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroTurmas;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroAlunos;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.InformacoeDesenvolvedores;
+import br.edu.utfpr.cm.tsi.projetointegrador.view.JDialogRelatorios;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastrodePiscinas;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.AlunoConsultas;
@@ -78,6 +79,8 @@ public class Main extends javax.swing.JDialog {
         rbmiConsultaHorarios = new javax.swing.JRadioButtonMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jRadioButtonMenuCriarBanco = new javax.swing.JRadioButtonMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jRadioButtonDesenvolvedores = new javax.swing.JRadioButtonMenuItem();
         mnSair = new javax.swing.JMenu();
@@ -302,6 +305,21 @@ public class Main extends javax.swing.JDialog {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu3.setText("Relatórios");
+
+        jRadioButtonMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("Gerar Relatórios");
+        jRadioButtonMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pdf.png"))); // NOI18N
+        jRadioButtonMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jRadioButtonMenuItem1);
+
+        jMenuBar1.add(jMenu3);
+
         jMenu2.setText("Sobre");
 
         jRadioButtonDesenvolvedores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
@@ -444,6 +462,13 @@ public class Main extends javax.swing.JDialog {
         
               //new CadastroMatricula().setVisible(true);                     
     }//GEN-LAST:event_jRadioButtonDesenvolvedoresActionPerformed
+
+    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+         JDialogRelatorios rel=new JDialogRelatorios(new Frame(),true);
+         rel.setLocationRelativeTo(null);
+         rel.setResizable(false);
+         rel.setVisible(true);
+    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
 
     public void criarBanco() {
         try {
@@ -605,9 +630,11 @@ public class Main extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonDesenvolvedores;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuCriarBanco;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem5;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem6;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem7;
