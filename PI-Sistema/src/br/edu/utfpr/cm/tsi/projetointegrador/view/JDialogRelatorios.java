@@ -4,7 +4,7 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.view;
 
-import br.edu.utfpr.cm.tsi.projetointegrador.relatorios.GerarRelatorios;
+import relatorios.GerarRelatorios;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -174,7 +174,16 @@ public class JDialogRelatorios extends javax.swing.JDialog {
              } catch (Exception ex) {
                  Logger.getLogger(JDialogRelatorios.class.getName()).log(Level.SEVERE, null, ex);
              }
+         }else if(jRadioButtonRelatorioFuncionarios.isSelected()){
+             file=new File("src/relatorios/relatorioFuncionarios.jrxml").getAbsoluteFile();
+             System.out.println(file);
+             try {
+                 relatorios.gerarRelatorio(this.file);
+             } catch (Exception ex) {
+                 Logger.getLogger(JDialogRelatorios.class.getName()).log(Level.SEVERE, null, ex);
+             }
          }
+         
              
     }//GEN-LAST:event_jButton1ActionPerformed
 
