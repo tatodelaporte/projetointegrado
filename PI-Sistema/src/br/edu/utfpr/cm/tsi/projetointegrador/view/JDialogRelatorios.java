@@ -40,6 +40,7 @@ public class JDialogRelatorios extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         panel1 = new java.awt.Panel();
         jRadioButtonRelatorioAlunos = new javax.swing.JRadioButton();
@@ -54,6 +55,7 @@ public class JDialogRelatorios extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Selecione o Relatório desejado");
 
+        buttonGroup1.add(jRadioButtonRelatorioAlunos);
         jRadioButtonRelatorioAlunos.setText("Relatórios de Alunos");
         jRadioButtonRelatorioAlunos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,8 +63,10 @@ public class JDialogRelatorios extends javax.swing.JDialog {
             }
         });
 
+        buttonGroup1.add(jRadioButtonRelatorioFuncionarios);
         jRadioButtonRelatorioFuncionarios.setText("Relatório de Funcionários");
 
+        buttonGroup1.add(jRadioButtonRelFrequAlunos);
         jRadioButtonRelFrequAlunos.setText("Relatório de Frequencias Alunos");
         jRadioButtonRelFrequAlunos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +74,7 @@ public class JDialogRelatorios extends javax.swing.JDialog {
             }
         });
 
+        buttonGroup1.add(jRadioButtonRelAlunosTurmas);
         jRadioButtonRelAlunosTurmas.setText("Relatório de Alunos x Turmas");
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
@@ -229,6 +234,7 @@ public class JDialogRelatorios extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

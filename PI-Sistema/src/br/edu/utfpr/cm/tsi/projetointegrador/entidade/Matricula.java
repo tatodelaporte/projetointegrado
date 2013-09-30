@@ -29,7 +29,7 @@ public class Matricula implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     
-    @OneToOne
+    @ManyToOne
     private Aluno aluno;
     
     

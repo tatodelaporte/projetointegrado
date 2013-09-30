@@ -119,6 +119,11 @@ public class AlunoConsultas extends javax.swing.JDialog {
 
         buttonGroup1.add(jRBNome);
         jRBNome.setText("Pesquisa por Nome");
+        jRBNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBNomeActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRBCpf);
         jRBCpf.setText("Pesquisa por CPF");
@@ -274,6 +279,10 @@ public class AlunoConsultas extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Por favor Selecione uma linha da Tabela para Visualizar!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jRBNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRBNomeActionPerformed
 
     /**
      * @param args the command line arguments
