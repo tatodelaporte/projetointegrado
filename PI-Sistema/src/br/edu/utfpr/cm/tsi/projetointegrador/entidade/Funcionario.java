@@ -5,11 +5,14 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.entidade;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -28,15 +31,17 @@ public class Funcionario implements Serializable {
     @Column(length = 11)
     private String rg;
     @Column(length = 8)
-    private String cep;
-    @Column(length = 20)
-    private String prefixo;
-    @Column(length = 200)
-    private String endereco;
-    @Column(length = 5)
-    private String numero;
-    @Column(length = 50)
-    private String cidade;
+//    private String cep;
+//    @Column(length = 20)
+//    private String prefixo;
+//    @Column(length = 200)
+//    private String endereco;
+//    @Column(length = 5)
+//    private String numero;
+//    @Column(length = 50)
+//    private String cidade;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER) //deletar junto     
+    private Endereco endereco;
 
     public int getId() {
         return id;
@@ -68,46 +73,6 @@ public class Funcionario implements Serializable {
 
     public void setRg(String rg) {
         this.rg = rg;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getPrefixo() {
-        return prefixo;
-    }
-
-    public void setPrefixo(String prefixo) {
-        this.prefixo = prefixo;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
     }
 
     public String getFoneCelular() {
@@ -151,8 +116,7 @@ public class Funcionario implements Serializable {
         AC, AL, AP, AM, BA, CE, DF,
         ES, GO, MA, MT, MS, MG, PA,
         PB, PR, PE, PI, RJ, RN, RS,
-        RO, RR, SC, SP, SE, TO,
-    }
+        RO, RR, SC, SP, SE, TO,}
 
     public enum Prefixo {
 
@@ -161,15 +125,13 @@ public class Funcionario implements Serializable {
         FAVELA, FAZENDA, FERROVIA, ILHA, JARDIM, LADEIRA, LAGO,
         LAGOA, LOTEAMENTO, MORRO, PATIO, PONTE, PORTO, PRACA, PROLONGAMENTO,
         QUADRA, RAMAL, RAMPA, RECANDO, RODOVIA, RUA, SITIO, TERMINAL, TRAVESSA,
-        TREVO, TUNEL, UNIDADE, VALA, VIA, VIADUTO, VIELA, VILA,
-    }
+        TREVO, TUNEL, UNIDADE, VALA, VIA, VIADUTO, VIELA, VILA,}
 
     public enum TipoFuncionario {
 
         Atendente,
         Professor,
-        Gerente,
-    }
+        Gerente,}
 
     @Override
     public String toString() {
