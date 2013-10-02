@@ -285,7 +285,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButtonGravar)
+                                .addComponent(jButtonGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1))
                             .addGroup(layout.createSequentialGroup()
@@ -513,7 +513,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextRGActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AlunoConsultas dialog = new AlunoConsultas(null, true);
+        FuncionarioConsultas dialog = new FuncionarioConsultas(null, true);
         dialog.setLocation(getX()+50, getY()+50);
         dialog.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed

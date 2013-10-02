@@ -35,7 +35,7 @@ public class CadastroFrequencia extends javax.swing.JDialog {
            try {
                this.frequenciaTable=new FrequenciaTable(matriculaDao.findAll());
            } catch (Exception ex) {
-               Logger.getLogger(AlunoConsultas.class.getName()).log(Level.SEVERE, null, ex);
+               Logger.getLogger(FuncionarioConsultas.class.getName()).log(Level.SEVERE, null, ex);
            }
            
            jTable1.setModel(this.frequenciaTable);
@@ -45,7 +45,7 @@ public class CadastroFrequencia extends javax.swing.JDialog {
            try {
                this.frequenciaTable=new FrequenciaTable(matriculaDao.findAll());
            } catch (Exception ex) {
-               Logger.getLogger(AlunoConsultas.class.getName()).log(Level.SEVERE, null, ex);
+               Logger.getLogger(FuncionarioConsultas.class.getName()).log(Level.SEVERE, null, ex);
            }
            return this.frequenciaTable;
     }

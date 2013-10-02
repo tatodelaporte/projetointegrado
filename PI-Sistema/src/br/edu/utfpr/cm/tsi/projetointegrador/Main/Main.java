@@ -13,7 +13,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.view.JDialogRelatorios;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroFrequencia;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastrodePiscinas;
-import br.edu.utfpr.cm.tsi.projetointegrador.view.AlunoConsultas;
+import br.edu.utfpr.cm.tsi.projetointegrador.view.FuncionarioConsultas;
 import java.awt.Frame;
 
 
@@ -414,7 +414,7 @@ public class Main extends javax.swing.JDialog {
     }//GEN-LAST:event_btTurmasActionPerformed
 
     private void jRadioButtonMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem5ActionPerformed
-      AlunoConsultas conPessoa=new AlunoConsultas(new Frame(),true);
+      FuncionarioConsultas conPessoa=new FuncionarioConsultas(new Frame(),true);
       
       conPessoa.setLocationRelativeTo(null);
       conPessoa.setResizable(false);
