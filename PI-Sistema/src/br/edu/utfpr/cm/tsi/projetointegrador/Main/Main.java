@@ -1,6 +1,5 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.Main;
 
-
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.HibernateConfiguration;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.ConnectionFactory;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.ConsultaHorarioAula;
@@ -12,7 +11,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.view.InformacoeDesenvolvedores;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.JDialogRelatorios;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastroFrequencia;
 
-import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastrodePiscinas;
+//import br.edu.utfpr.cm.tsi.projetointegrador.view.CadastrodePiscinas;
 import br.edu.utfpr.cm.tsi.projetointegrador.view.FuncionarioConsultas;
 import java.awt.Frame;
 
@@ -359,7 +358,7 @@ public class Main extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbmiAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiAlunoActionPerformed
-        new CadastroAlunos(null,true).setVisible(true);
+        new CadastroAlunos(null, true).setVisible(true);
     }//GEN-LAST:event_rbmiAlunoActionPerformed
 
     private void mnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSairActionPerformed
@@ -374,7 +373,10 @@ public class Main extends javax.swing.JDialog {
             new CadastroTurmas().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_rmbiTurmaActionPerformed
 
     private void rbmiFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiFuncionarioActionPerformed
@@ -394,32 +396,35 @@ public class Main extends javax.swing.JDialog {
     }//GEN-LAST:event_btMatriculaActionPerformed
 
     private void btAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlunosActionPerformed
-        new CadastroAlunos(null,true).setVisible(true);
+        new CadastroAlunos(null, true).setVisible(true);
     }//GEN-LAST:event_btAlunosActionPerformed
 
     private void btPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPiscinaActionPerformed
-        new CadastrodePiscinas().setVisible(true);
+        // new CadastrodePiscinas().setVisible(true);
     }//GEN-LAST:event_btPiscinaActionPerformed
 
     private void rbmiPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiPiscinaActionPerformed
-        new CadastrodePiscinas().setVisible(true);
+        // new CadastrodePiscinas().setVisible(true);
     }//GEN-LAST:event_rbmiPiscinaActionPerformed
 
     private void btTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTurmasActionPerformed
-        try {
+        try {        
             new CadastroTurmas().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+      
     }//GEN-LAST:event_btTurmasActionPerformed
 
     private void jRadioButtonMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem5ActionPerformed
-      FuncionarioConsultas conPessoa=new FuncionarioConsultas(new Frame(),true);
-      
-      conPessoa.setLocationRelativeTo(null);
-      conPessoa.setResizable(false);
-      conPessoa.setVisible(true);
-      
+        FuncionarioConsultas conPessoa = new FuncionarioConsultas(new Frame(), true);
+
+        conPessoa.setLocationRelativeTo(null);
+        conPessoa.setResizable(false);
+        conPessoa.setVisible(true);
+
     }//GEN-LAST:event_jRadioButtonMenuItem5ActionPerformed
 
     private void jRadioButtonMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem6ActionPerformed
@@ -427,33 +432,33 @@ public class Main extends javax.swing.JDialog {
     }//GEN-LAST:event_jRadioButtonMenuItem6ActionPerformed
 
     private void jRadioButtonMenuCriarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuCriarBancoActionPerformed
-          HibernateConfiguration.createSchema();
+        HibernateConfiguration.createSchema();
     }//GEN-LAST:event_jRadioButtonMenuCriarBancoActionPerformed
 
     private void jRadioButtonDesenvolvedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDesenvolvedoresActionPerformed
         //    new InformacoeDesenvolvedores(null,true).setVisible(true);
-          //      InformacoeDesenvolvedores.set
-        InformacoeDesenvolvedores info=new InformacoeDesenvolvedores(new Frame(),true);
+        //      InformacoeDesenvolvedores.set
+        InformacoeDesenvolvedores info = new InformacoeDesenvolvedores(new Frame(), true);
         info.setLocationRelativeTo(null);
         info.setResizable(false);
         info.setVisible(true);
-        
-              //new CadastroMatricula().setVisible(true);                     
+
+        //new CadastroMatricula().setVisible(true);                     
     }//GEN-LAST:event_jRadioButtonDesenvolvedoresActionPerformed
 
     private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
-         JDialogRelatorios rel=new JDialogRelatorios(new Frame(),true);
-         rel.setLocationRelativeTo(null);
-         rel.setResizable(false);
-         rel.setVisible(true);
+        JDialogRelatorios rel = new JDialogRelatorios(new Frame(), true);
+        rel.setLocationRelativeTo(null);
+        rel.setResizable(false);
+        rel.setVisible(true);
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
 
     private void btFrequenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFrequenciaActionPerformed
-       new CadastroFrequencia().setVisible(true);
+        new CadastroFrequencia().setVisible(true);
     }//GEN-LAST:event_btFrequenciaActionPerformed
 
     private void rmbiFrequenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmbiFrequenciaActionPerformed
-       new CadastroFrequencia().setVisible(true);
+        new CadastroFrequencia().setVisible(true);
     }//GEN-LAST:event_rmbiFrequenciaActionPerformed
 
     public void criarBanco() {
@@ -496,39 +501,39 @@ public class Main extends javax.swing.JDialog {
                     + "FOREIGN KEY (turma) REFERENCES turma(id)ON DELETE CASCADE);");
 
 
-             st.executeUpdate("CREATE TABLE IF NOT EXISTS "
-                     +"aluno(" 
-                     +"id int (10) not null AUTO_INCREMENT,"
-                     +"nome varchar (50) not null,"
-                     +"cpf varchar (16) not null,"
-                     +"endereco varchar (150) not null,"
-                     +"numero varchar (7) not null,"
-                     +"ADD CONSTRAINT UNIQUE_aluno_cpf,"
-                     +"UNIQUE (cpf),"
-                     +"telefone varchar (15),"
-                     +"PRIMARY KEY (id));");
-             st.executeUpdate("CREATE TABLE IF NOT EXISTS "
-                     +"piscina("
-                     +"id int (10) not null AUTO_INCREMENT,"
-                     +"descricao varchar (60) not null,"
-                     +"tamanho varchar (10) not null,"
-                     +"capacidade varchar (10) not null,"
-                     +"PRIMARY KEY (id));");
-             st.executeUpdate("CREATE TABLE IF NOT EXISTS "
-                     +"mensalidade("
-                     +"id int (15) not null AUTO_INCREMENT,"
-                     +"nome varchar (50) not null,"
-                     +"tipo varchar (20) not null,"
-                     +"valor varchar (10) not null,"
-                     +"PRIMARY KEY (id));");
-             
-             
-             
-             
+            st.executeUpdate("CREATE TABLE IF NOT EXISTS "
+                    + "aluno("
+                    + "id int (10) not null AUTO_INCREMENT,"
+                    + "nome varchar (50) not null,"
+                    + "cpf varchar (16) not null,"
+                    + "endereco varchar (150) not null,"
+                    + "numero varchar (7) not null,"
+                    + "ADD CONSTRAINT UNIQUE_aluno_cpf,"
+                    + "UNIQUE (cpf),"
+                    + "telefone varchar (15),"
+                    + "PRIMARY KEY (id));");
+            st.executeUpdate("CREATE TABLE IF NOT EXISTS "
+                    + "piscina("
+                    + "id int (10) not null AUTO_INCREMENT,"
+                    + "descricao varchar (60) not null,"
+                    + "tamanho varchar (10) not null,"
+                    + "capacidade varchar (10) not null,"
+                    + "PRIMARY KEY (id));");
+            st.executeUpdate("CREATE TABLE IF NOT EXISTS "
+                    + "mensalidade("
+                    + "id int (15) not null AUTO_INCREMENT,"
+                    + "nome varchar (50) not null,"
+                    + "tipo varchar (20) not null,"
+                    + "valor varchar (10) not null,"
+                    + "PRIMARY KEY (id));");
 
-            JOptionPane.showMessageDialog(rootPane,"Banco Criado");
 
-  
+
+
+
+            JOptionPane.showMessageDialog(rootPane, "Banco Criado");
+
+
 
 
 

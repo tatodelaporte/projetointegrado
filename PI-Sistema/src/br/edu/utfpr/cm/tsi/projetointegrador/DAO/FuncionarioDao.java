@@ -1,6 +1,10 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.DAO;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Funcionario;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
@@ -36,6 +40,15 @@ public class FuncionarioDao extends DaoGenerics<Funcionario> {
         return lista;
     }
 
+    public List<Funcionario> filterByTipo(String tipofuncionario) {
+        session = TransactionManager.getCurrentSession();
+        List<Funcionario> lista = session.createCriteria(Funcionario.class).
+                add(Restrictions.like("tipofuncionario", "%" + 3 + "%")).
+                addOrder(Order.asc("tipofuncionario")).
+                list();
+        return lista;
+    }
+
     public static Funcionario getFuncionarioSelecionado() {
         return funcionarioSelecionado;
     }
@@ -43,7 +56,40 @@ public class FuncionarioDao extends DaoGenerics<Funcionario> {
     public static void setFuncionarioSelecionado(Funcionario funcionarioSelecionado) {
         FuncionarioDao.funcionarioSelecionado = funcionarioSelecionado;
     }
+
+    
+    
+    
+    private static Funcionario converteRsParaFuncionario(ResultSet rs) throws SQLException {
+
+        Funcionario f = new Funcionario();
+
+        f.setId(rs.getInt("id"));
+        f.setNome(rs.getString("nome"));
+        f.setCpf(rs.getString("cpf"));
+        f.setRg(rs.getString("rg"));
+        f.setTelefone(rs.getString("telefone"));
+
+
+
+        return f;
+
+    }
 }
+//    public static List<Funcionario> list() throws SQLException {
+//        List<Funcionario> Func = new ArrayList<Funcionario>();
+//
+//        Statement st = ConnectionFactory.prepareConnection().createStatement();
+//        ResultSet rs = st.executeQuery("SELECT * FROM funcionario");
+//
+//        while (rs.next()) {
+//            Funcionario f = converteRsParaFuncionario(rs);
+//            Func.add(f);
+//        }
+//
+//        return Func;
+//    }
+//}
 //    private static Funcionario converteRsParaFuncionario(ResultSet rs) throws SQLException {
 //
 //        Funcionario f = new Funcionario();
@@ -156,5 +202,5 @@ public class FuncionarioDao extends DaoGenerics<Funcionario> {
 //        }
 //
 //        return Func;
-//    }
+//}
 

@@ -4,18 +4,21 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.view;
 
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoGenerics;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Funcionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.FuncionarioDao;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco;
 import br.edu.utfpr.cm.tsi.projetointegrador.util.Utilitarios;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import br.edu.utfpr.cm.tsi.projetointegrador.enums.EstadoEnum;
 import br.edu.utfpr.cm.tsi.projetointegrador.enums.TipoFuncionarioEnum;
 import br.edu.utfpr.cm.tsi.projetointegrador.util.MaskUtil;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -333,9 +336,8 @@ public class CadastroFuncionario extends javax.swing.JDialog {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbProfessor)
                         .addComponent(cbTipoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btGravar)
-                        .addComponent(btFechar)))
+                    .addComponent(btFechar)
+                    .addComponent(btGravar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(91, 91, 91))
         );
 
@@ -366,10 +368,13 @@ public class CadastroFuncionario extends javax.swing.JDialog {
     private void btGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGravarActionPerformed
         if (!edicao) {
             try {
-                this.setFuncionario(new Funcionario());
+                // this.setFuncionario(new Funcionario());
+                new DaoGenerics<Funcionario>(Funcionario.class) {
+                }.saveOrUpdate(getFuncionario());
             } catch (Exception ex) {
                 Logger.getLogger(CadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         } else {
             try {
                 this.setFuncionario(FuncionarioDao.getFuncionarioSelecionado());
@@ -437,6 +442,20 @@ public class CadastroFuncionario extends javax.swing.JDialog {
     public Funcionario getFuncionario() {
 
         Funcionario funcionario = new Funcionario();
+        funcionario.setNome(tfNome.getText().trim());
+        funcionario.setCpf(Utilitarios.formatString(tfCPF.getText().trim()));
+        funcionario.setRg(tfRG.getText().trim());
+        funcionario.setEndereco(new Endereco());
+        funcionario.getEndereco().setNomeEndereco(tfEndereco.getText().trim());
+        funcionario.getEndereco().setNumero(Integer.parseInt(tfNumero.getText().trim()));
+        funcionario.getEndereco().setComplemento(tfComplemento.getText().trim());
+        funcionario.getEndereco().setBairro(tfBairro.getText().trim());
+        funcionario.getEndereco().setMunicipio(tfMunicipio.getText().trim());
+        funcionario.getEndereco().setEstado(EstadoEnum.getEnum(cbUF.getSelectedItem().toString()));
+        funcionario.getEndereco().setCep(Utilitarios.formatString(tfCEP.getText().trim()));
+        funcionario.setTelefone(Utilitarios.formatString(tfTelefone.getText().trim()));
+        funcionario.setTipofuncionario(TipoFuncionarioEnum.getEnum(cbTipoFuncionario.getSelectedItem().toString()));
+        // funcionario.setTipofuncionario(TipoFuncionarioEnum.getEnum(cbTipoFuncionario.getModel().getSelectedItem().toString()));
 //        if (CampoCodigo.isEnabled() == true) { //para remover tem que estar aberto/para inserir nao precisa ESTAR ABERTA SO QUANDO VAI REMOVER PARA PUXAR PELO ID
 //            funcionario.setId(Integer.parseInt(CampoCodigo.getText().trim()));
 //        }
@@ -472,27 +491,15 @@ public class CadastroFuncionario extends javax.swing.JDialog {
 //        tfFoneCelular.setText(funcionario.getFoneCelular());
 //        tfFoneResidencia.setText(funcionario.getFoneResidencia());
 //        cbTipoFuncionario.setSelectedItem(funcionario.getTipoFuncionario());
-
+// Usado para preencher o Form com os dados da consulta
     }
 
-    // Usado para preencher o Form com os dados da consulta
-    private void setFuncionario(Funcionario funcionario) {
-//        tfNome.setText(funcionario.getNome());
-//        tfCPF.setText(funcionario.getCpf());
-//        tfRG.setText(funcionario.getRg());
-//        tfCEP.setText(funcionario.getRg());
-//        cbPrefixo.setSelectedItem(funcionario.getPrefixo());
-//        tfEndereco.setText(funcionario.getEndereco());
-//        cbUF.setSelectedItem(funcionario.getUf());
-//        tfCidade.setText(funcionario.getCidade());
-//        tfFoneCelular.setText(funcionario.getFoneCelular());
-//        tfFoneResidencia.setText(funcionario.getFoneResidencia());
-//        cbTipoFuncionario.setSelectedItem(funcionario.getTipoFuncionario());
+    private void setFuncionario(Funcionario funcionario) throws ParseException, Exception {
     }
 
     private void limparCampos() {
         tfNome.setText(" ");
-        tfCPF.setText(" ");
+        tfCPF.setText(null);
         tfRG.setText(" ");
         tfEndereco.setText(" ");
         tfNumero.setText(" ");
@@ -500,8 +507,8 @@ public class CadastroFuncionario extends javax.swing.JDialog {
         tfBairro.setText(" ");
         tfMunicipio.setText(" ");
         cbUF.setSelectedIndex(0);
-        tfCEP.setText(" ");
-        tfTelefone.setText(" ");
+        tfCEP.setText(null);
+        tfTelefone.setText(null);
         cbTipoFuncionario.setSelectedIndex(0);
     }
 }

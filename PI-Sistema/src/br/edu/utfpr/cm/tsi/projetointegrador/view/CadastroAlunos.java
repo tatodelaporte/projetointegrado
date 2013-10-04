@@ -77,6 +77,7 @@ public class CadastroAlunos extends javax.swing.JDialog {
     }
     
     private void setAluno(Aluno aluno) throws ParseException, Exception{
+       
         aluno.setNome(jTextNome.getText().trim());
         aluno.setCpf(Utilitarios.formatString(jTextCPF.getText().trim()));
         aluno.setRg(jTextRG.getText().trim());

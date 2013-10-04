@@ -24,7 +24,7 @@ public enum TipoFuncionarioEnum {
         return this.tipoFuncionario;
     }
 
-    public static String[] getTipos() {
+    public static Object[] getTipos() {
         String[] tipo = new String[TipoFuncionarioEnum.values().length];
         for (TipoFuncionarioEnum tipoFunc : TipoFuncionarioEnum.values()) {
             tipo[tipoFunc.ordinal()] = tipoFunc.getTipoFuncionarioEnum();

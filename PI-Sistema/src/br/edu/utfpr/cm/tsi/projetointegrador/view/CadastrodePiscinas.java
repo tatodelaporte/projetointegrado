@@ -60,7 +60,6 @@ public class CadastrodePiscinas extends javax.swing.JDialog {
         jTextCapacidadeAlunos = new javax.swing.JTextField();
         jButtonNovo = new javax.swing.JButton();
         jButtonGravar = new javax.swing.JButton();
-        jButtonAlterar = new javax.swing.JButton();
         jButtonRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -123,19 +122,11 @@ public class CadastrodePiscinas extends javax.swing.JDialog {
             }
         });
 
-        jButtonGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Installer.png"))); // NOI18N
+        jButtonGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cadastrar.png"))); // NOI18N
         jButtonGravar.setText("Gravar");
         jButtonGravar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGravarActionPerformed(evt);
-            }
-        });
-
-        jButtonAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iDisk.png"))); // NOI18N
-        jButtonAlterar.setText("Alterar");
-        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAlterarActionPerformed(evt);
             }
         });
 
@@ -179,11 +170,9 @@ public class CadastrodePiscinas extends javax.swing.JDialog {
                         .addComponent(jButtonNovo)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonGravar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonAlterar)
-                        .addGap(18, 18, 18)
+                        .addGap(93, 93, 93)
                         .addComponent(jButtonRemover)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,11 +197,10 @@ public class CadastrodePiscinas extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextCapacidadeAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNovo)
-                    .addComponent(jButtonGravar)
-                    .addComponent(jButtonAlterar)
+                    .addComponent(jButtonGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonRemover))
                 .addGap(22, 22, 22))
         );
@@ -322,16 +310,6 @@ public class CadastrodePiscinas extends javax.swing.JDialog {
             } this.dispose();
                          
     }//GEN-LAST:event_jButtonGravarActionPerformed
-
-    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
-         Piscina piscina=new Piscina();
-            piscina=getPiscina();            
-            try{
-                
-                PiscinaDao.update(piscina);
-            }catch (SQLException ex){
-                Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null,ex);
-    }//GEN-LAST:event_jButtonAlterarActionPerformed
           this.dispose();
   }
     private void setPiscina(Piscina piscina){
@@ -383,7 +361,6 @@ public class CadastrodePiscinas extends javax.swing.JDialog {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CampoPiscina;
-    private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovo;
