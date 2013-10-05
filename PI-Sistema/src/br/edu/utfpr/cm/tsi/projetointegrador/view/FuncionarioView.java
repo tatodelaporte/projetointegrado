@@ -5,8 +5,8 @@
 package br.edu.utfpr.cm.tsi.projetointegrador.view;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.FuncionarioDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco;
-import java.awt.event.WindowAdapter;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,36 +14,35 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Daniele
+ * @author Daniel
  */
-public class AlunoView extends javax.swing.JDialog {
+public class FuncionarioView extends javax.swing.JDialog {
 
     /**
-     * Creates new form AlunoView
+     * Creates new form FuncionarioView
      */
-    public AlunoView(java.awt.Frame parent, boolean modal) {
+    public FuncionarioView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        super.setTitle("Tela visualização do Cliente");
+        super.setTitle("Tela visualização do Funcionario");
         initComponents();
         setLabel();
     }
 
     public void setLabel() {
         //     jLId.setText(AlunoDao.getAlunoSelecionado().getId().ToString());
-        jLabelNome.setText(AlunoDao.getAlunoSelecionado().getNome().toString());
-        jLabelcpf.setText(AlunoDao.getAlunoSelecionado().getCpf().toString());
-        jLabelrg.setText(AlunoDao.getAlunoSelecionado().getRg().toString());
+        jLabelNome.setText(FuncionarioDao.getFuncionarioSelecionado().getNome().toString());
+        jLabelcpf.setText(FuncionarioDao.getFuncionarioSelecionado().getCpf().toString());
+        jLabelrg.setText(FuncionarioDao.getFuncionarioSelecionado().getRg().toString());
 
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-        jLabelDataNascimento.setText(format.format(AlunoDao.getAlunoSelecionado().getDataNascimento()).toString());
-        jLabelEndereco.setText(AlunoDao.getAlunoSelecionado().getEndereco().getNomeEndereco());
-        jLabelNumero.setText(String.valueOf(AlunoDao.getAlunoSelecionado().getEndereco().getNumero()).toString());
-        jLabelComplemento.setText(AlunoDao.getAlunoSelecionado().getEndereco().getComplemento().toString());
-        jLabelBairro.setText(AlunoDao.getAlunoSelecionado().getEndereco().getBairro().toString());
-        jLabelMunicipio.setText(AlunoDao.getAlunoSelecionado().getEndereco().getMunicipio().toString());
-        jLabelEstado.setText(AlunoDao.getAlunoSelecionado().getEndereco().getEstado().getUf());
-        jLabelTelefone.setText(AlunoDao.getAlunoSelecionado().getTelefone().toString());
+        jLabelEndereco.setText(FuncionarioDao.getFuncionarioSelecionado().getEndereco().getNomeEndereco());
+        jLabelNumero.setText(String.valueOf(FuncionarioDao.getFuncionarioSelecionado().getEndereco().getNumero()).toString());
+        jLabelComplemento.setText(FuncionarioDao.getFuncionarioSelecionado().getEndereco().getComplemento().toString());
+        jLabelBairro.setText(FuncionarioDao.getFuncionarioSelecionado().getEndereco().getBairro().toString());
+        jLabelMunicipio.setText(FuncionarioDao.getFuncionarioSelecionado().getEndereco().getMunicipio().toString());
+        jLabelEstado.setText(FuncionarioDao.getFuncionarioSelecionado().getEndereco().getEstado().getUf());
+        jLabelTelefone.setText(FuncionarioDao.getFuncionarioSelecionado().getTelefone().toString());
 
 
 
@@ -163,121 +162,119 @@ public class AlunoView extends javax.swing.JDialog {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLId))
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelrg)
-                            .addComponent(jLabelcpf)
-                            .addComponent(jLabelNome)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelDataNascimento))
-                    .addComponent(jLabel12)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelEndereco)
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelNumero))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel25))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelTelefone)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelMunicipio)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel23)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelEstado))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelComplemento)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelBairro)))))
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLId))
+                .addComponent(jLabel3)
+                .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel4)
+                .addComponent(jLabel6)
+                .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabelrg)
+                .addComponent(jLabelcpf)
+                .addComponent(jLabelNome)))
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelDataNascimento))
+                .addComponent(jLabel12)
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelEndereco)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelNumero))
+                .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel17)
+                .addComponent(jLabel19)
+                .addComponent(jLabel25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabelTelefone)
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabelMunicipio)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelEstado))
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabelComplemento)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelBairro)))))
                 .addContainerGap(220, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBuEditar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBuFechar)
-                .addGap(21, 21, 21))
-        );
+                .addGap(21, 21, 21)));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLId))
+                .addComponent(jLabel1)
+                .addComponent(jLId))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabelNome))
+                .addComponent(jLabel4)
+                .addComponent(jLabelNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabelcpf))
+                .addComponent(jLabel6)
+                .addComponent(jLabelcpf))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabelrg))
+                .addComponent(jLabel8)
+                .addComponent(jLabelrg))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabelDataNascimento))
+                .addComponent(jLabel10)
+                .addComponent(jLabelDataNascimento))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabelEndereco)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabelNumero))
+                .addComponent(jLabel13)
+                .addComponent(jLabelEndereco)
+                .addComponent(jLabel15)
+                .addComponent(jLabelNumero))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabelComplemento)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabelBairro))
+                .addComponent(jLabel17)
+                .addComponent(jLabelComplemento)
+                .addComponent(jLabel21)
+                .addComponent(jLabelBairro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabelMunicipio)
-                    .addComponent(jLabel23)
-                    .addComponent(jLabelEstado))
+                .addComponent(jLabel19)
+                .addComponent(jLabelMunicipio)
+                .addComponent(jLabel23)
+                .addComponent(jLabelEstado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabelTelefone))
+                .addComponent(jLabel25)
+                .addComponent(jLabelTelefone))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBuEditar)
-                    .addComponent(jBuFechar))
-                .addContainerGap())
-        );
+                .addComponent(jBuEditar)
+                .addComponent(jBuFechar))
+                .addContainerGap()));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -361,8 +358,4 @@ public class AlunoView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelcpf;
     private javax.swing.JLabel jLabelrg;
     // End of variables declaration//GEN-END:variables
-
-    void addWindowListener(WindowAdapter windowAdapter) {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
 }

@@ -11,10 +11,12 @@ import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Matricula;
 //import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Mensalidade;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Piscina;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Turma;
+import config.DataBaseConfig;
 import java.sql.Connection;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.dialect.DialectFactory;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 /**
@@ -27,12 +29,13 @@ public class HibernateConfiguration {
     private static SessionFactory factory = null;
 
     public static SessionFactory getSessionFactory() {
+
         if (cfg == null) {
             cfg = new AnnotationConfiguration();
             cfg.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-            cfg.setProperty("hibernate.connection.username", "root");
-            cfg.setProperty("hibernate.connection.password", "dani");
-            cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/swin");
+            cfg.setProperty("hibernate.connection.username", "aluno");
+            cfg.setProperty("hibernate.connection.password", "aluno");
+            cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/aluno");
             cfg.setProperty("hibernate.show_sql", "true");
             cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
             cfg.setProperty("hibernate.connection.autocommit", "true");

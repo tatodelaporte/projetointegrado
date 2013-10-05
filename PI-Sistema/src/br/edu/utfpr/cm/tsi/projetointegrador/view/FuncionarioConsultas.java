@@ -3,11 +3,11 @@
  * and open the template in the editor.
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.view;
-import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
-import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoTable;
+
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.FuncionarioDao;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.FuncionarioTable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,37 +15,37 @@ import javax.swing.JOptionPane;
  * @author Daniel
  */
 public class FuncionarioConsultas extends javax.swing.JDialog {
-     //  private AlunoView alunoView;
-       private AlunoTable alunoTable;
-       private AlunoDao alunoDao;
-       
+
+    private FuncionarioTable funcionarioTable;
+    private FuncionarioDao funcionarioDao;
+    private boolean flag = true;
+    
+
     /**
      * Creates new form JDialogConPessoa
      */
-       
-    private void refreshTable(){
-           try {
-               this.alunoTable=new AlunoTable(alunoDao.findAll());
-           } catch (Exception ex) {
-               Logger.getLogger(FuncionarioConsultas.class.getName()).log(Level.SEVERE, null, ex);
-           }
-           
-           jTable1.setModel(this.alunoTable);
-    }   
-    
-    
-    private AlunoTable getAlunoTable(){
-           try {
-               this.alunoTable=new AlunoTable(alunoDao.findAll());
-           } catch (Exception ex) {
-               Logger.getLogger(FuncionarioConsultas.class.getName()).log(Level.SEVERE, null, ex);
-           }
-           return this.alunoTable;
+    private void refreshTable() {
+        try {
+            this.funcionarioTable = new FuncionarioTable(funcionarioDao.findAll());
+        } catch (Exception ex) {
+            Logger.getLogger(FuncionarioConsultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        jTable1.setModel(this.funcionarioTable);
     }
-    
+
+    private FuncionarioTable getFuncionarioTable() {
+        try {
+            this.funcionarioTable = new FuncionarioTable(funcionarioDao.findAll());
+        } catch (Exception ex) {
+            Logger.getLogger(FuncionarioConsultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return this.funcionarioTable;
+    }
+
     public FuncionarioConsultas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.alunoDao=new AlunoDao();
+        this.funcionarioDao = new FuncionarioDao();
         initComponents();
         jRBNome.setSelected(true);
     }
@@ -81,7 +81,7 @@ public class FuncionarioConsultas extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Funcionarios encontrados");
 
-        jTable1.setModel(getAlunoTable());
+        jTable1.setModel(getFuncionarioTable());
         jScrollPane1.setViewportView(jTable1);
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(10);
 
@@ -210,19 +210,19 @@ public class FuncionarioConsultas extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int row = jTable1.getSelectedRow();
-        if(row >= 0){
-            AlunoDao.setAlunoSelecionado(this.alunoTable.getAlunoEntity(row));
-            AlunoView alunoView =new AlunoView(null, true);
-            alunoView.setLocationRelativeTo(null);
-            alunoView.setVisible(true);
-        }else{
+        if (row >= 0) {
+            funcionarioDao.setFuncionarioSelecionado(this.funcionarioTable.getFuncionarioEntity(row));
+            FuncionarioView funcionarioView = new FuncionarioView(null, true);
+            funcionarioView.setLocationRelativeTo(null);
+            funcionarioView.setVisible(true);
+        } else {
             JOptionPane.showMessageDialog(null, "Por favor Selecione uma linha da Tabela para Visualizar!");
         }
-    
-        
-        
-        
-        
+
+
+
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -230,22 +230,22 @@ public class FuncionarioConsultas extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    int row = jTable1.getSelectedRow();
-        if(row >= 0){
-            int opcao = JOptionPane.showConfirmDialog(null, "Deseja Excluir o Aluno: " + this.alunoTable.getAlunoEntity(row).getNome(), "Excluir aluno", 2);
-            if(opcao == 0){
-                try{
-                    this.alunoDao.delete(this.alunoTable.getAlunoEntity(row));
-                    JOptionPane.showMessageDialog(null, "Aluno Excluído com Sucesso!");
-                }catch(Exception ex){
-                    JOptionPane.showMessageDialog(null,"Erro ao Excluir Aluno!","Erro",JOptionPane.ERROR_MESSAGE); 
-                }                
-                refreshTable();                
+        int row = jTable1.getSelectedRow();
+        if (row >= 0) {
+            int opcao = JOptionPane.showConfirmDialog(null, "Deseja Excluir o Funcionario: " + this.funcionarioTable.getFuncionarioEntity(row).getNome(), "Excluir Funcionario", 2);
+            if (opcao == 0) {
+                try {
+                    this.funcionarioDao.delete(this.funcionarioTable.getFuncionarioEntity(row));
+                    JOptionPane.showMessageDialog(null, "Funcionario Excluído com Sucesso!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao Excluir Funcionario!", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+                refreshTable();
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Por favor Selecione uma linha da Tabela para Excluir!");
         }
-               
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jRBCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBCpfActionPerformed
@@ -257,25 +257,26 @@ public class FuncionarioConsultas extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextPesquisandoActionPerformed
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
-      alunoDao=new AlunoDao();
-      if(jRBCpf.isSelected()){
-      this.alunoTable = new AlunoTable(this.alunoDao.filtrarPorCpf(jTextPesquisando.getText()));
-      jTable1.setModel(this.alunoTable);     
-      }else if(jRBNome.isSelected()){
-          this.alunoTable= new AlunoTable(this.alunoDao.filterByNome(jTextPesquisando.getText()));
-       jTable1.setModel(this.alunoTable);
-      }
+        funcionarioDao = new FuncionarioDao();
+        if (jRBCpf.isSelected()) {
+            this.funcionarioTable = new FuncionarioTable(this.funcionarioDao.filtrarPorCpf(jTextPesquisando.getText()));
+            jTable1.setModel(this.funcionarioTable);
+        } else if (jRBNome.isSelected()) {
+            this.funcionarioTable = new FuncionarioTable(this.funcionarioDao.filterByNome(jTextPesquisando.getText()));
+            jTable1.setModel(this.funcionarioTable);
+        }
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        flag = false;
         int row = jTable1.getSelectedRow();
-        if(row >= 0){
-            AlunoDao.setAlunoSelecionado(this.alunoTable.getAlunoEntity(row));
-            CadastroAlunos cadastroAlunos =new CadastroAlunos(null, true);
-            cadastroAlunos.setLocationRelativeTo(null);
-            cadastroAlunos.setVisible(true);
-            cadastroAlunos.setEditAluno();
-        }else{
+        if (row >= 0) {
+            FuncionarioDao.setFuncionarioSelecionado(this.funcionarioTable.getFuncionarioEntity(row));
+            CadastroFuncionario cadastroFuncionario = new CadastroFuncionario(null, true);
+            cadastroFuncionario.setLocationRelativeTo(null);
+            cadastroFuncionario.setVisible(true);
+            cadastroFuncionario.setEditFuncionario();
+        } else {
             JOptionPane.showMessageDialog(null, "Por favor Selecione uma linha da Tabela para Visualizar!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -314,7 +315,7 @@ public class FuncionarioConsultas extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               FuncionarioConsultas dialog = new FuncionarioConsultas(new javax.swing.JFrame(), true);
+                FuncionarioConsultas dialog = new FuncionarioConsultas(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

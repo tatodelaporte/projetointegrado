@@ -16,7 +16,9 @@ import javax.swing.JOptionPane;
  * @author Daniele
  */
 public class CadastrodePiscinas extends javax.swing.JDialog {
+
     boolean flag;
+
     /**
      * Creates new form CadastrodePiscinas
      */
@@ -29,13 +31,13 @@ public class CadastrodePiscinas extends javax.swing.JDialog {
         pack();
         setResizable(false);// Trava o tamanho do painel.
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+
         flag = false;
-        CampoPiscina.setEnabled(flag); 
-        jTextDescricaoPiscina.setEnabled(flag);
-        jTextTamanho.setEnabled(flag);
-        jTextCapacidadeAlunos.setEnabled(flag); 
-       
+        // CampoPiscina.setEnabled(flag); 
+        // jTextDescricaoPiscina.setEnabled(flag);
+        // jTextTamanho.setEnabled(flag);
+        //  jTextCapacidadeAlunos.setEnabled(flag); 
+
     }
 
     /**
@@ -209,26 +211,25 @@ public class CadastrodePiscinas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        Piscina piscina=new Piscina();
-        String Buscar="";
-        
-        if(jRadioCodigoPiscina.isSelected()){
-            piscina.setId(Integer.parseInt(CampoPiscina.getText().trim()));
-            Buscar =CampoPiscina.getText();
-        }try{
-            PiscinaDao.retrieve(Integer.parseInt(Buscar));
-            
-        }catch (SQLException ex){
-            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE,null, ex);
-        }
-        try{
-            piscina=PiscinaDao.retrieve(Integer.parseInt(Buscar));
-        }catch(SQLException ex){
-            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE,null, ex);
-        }
-        
-           setPiscina(piscina);
-        
+//        Piscina piscina=new Piscina();
+//        String Buscar="";
+//        
+////        if(jRadioCodigoPiscina.isSelected()){
+////            piscina.setId(Integer.parseInt(CampoPiscina.getText().trim()));
+////            Buscar =CampoPiscina.getText();
+//        }try{
+//            PiscinaDao.retrieve(Integer.parseInt(Buscar));
+//            
+//        }catch (SQLException ex){
+//            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE,null, ex);
+//        }
+//        try{
+//            piscina=PiscinaDao.retrieve(Integer.parseInt(Buscar));
+//        }catch(SQLException ex){
+//            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE,null, ex);
+//        }
+//        
+//         //  setPiscina(piscina);
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jTextDescricaoPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDescricaoPiscinaActionPerformed
@@ -236,16 +237,16 @@ public class CadastrodePiscinas extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextDescricaoPiscinaActionPerformed
 
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
-         Piscina piscina=new Piscina();
-            piscina=getPiscina();            
-            try{
-                
-                PiscinaDao.delete(piscina);
-            }catch (SQLException ex){
-                Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null,ex);
-    }                                              
-                 this.dispose();
-              
+        Piscina piscina = new Piscina();
+        //   piscina=getPiscina();            
+        try {
+
+            PiscinaDao.delete(piscina);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 
     private void CampoPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoPiscinaActionPerformed
@@ -253,15 +254,12 @@ public class CadastrodePiscinas extends javax.swing.JDialog {
     }//GEN-LAST:event_CampoPiscinaActionPerformed
 
     private void jRadioCodigoPiscinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCodigoPiscinaActionPerformed
-               flag=true;
-               CampoPiscina.setEnabled(flag); 
-               jTextDescricaoPiscina.setEnabled(flag);
-               jTextTamanho.setEnabled(flag);
-               jTextCapacidadeAlunos.setEnabled(flag); 
-                
-                 
-                
-                
+//               flag=true;
+//               CampoPiscina.setEnabled(flag); 
+//               jTextDescricaoPiscina.setEnabled(flag);
+//               jTextTamanho.setEnabled(flag);
+//               jTextCapacidadeAlunos.setEnabled(flag); 
+//                
     }//GEN-LAST:event_jRadioCodigoPiscinaActionPerformed
 
     private void jTextTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTamanhoActionPerformed
@@ -273,58 +271,54 @@ public class CadastrodePiscinas extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextCapacidadeAlunosActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-           flag=true;
-           CampoPiscina.setText(null);
-           CampoPiscina.setEnabled(false);
-           
-           jTextDescricaoPiscina.setEnabled(flag);
-           jTextTamanho.setEnabled(flag);
-           jTextCapacidadeAlunos.setEnabled(flag);
-           
+//           flag=true;
+//           CampoPiscina.setText(null);
+//           CampoPiscina.setEnabled(false);
+//           
+//           jTextDescricaoPiscina.setEnabled(flag);
+//           jTextTamanho.setEnabled(flag);
+//           jTextCapacidadeAlunos.setEnabled(flag);
+//           
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-          Piscina piscina=new Piscina();
-             piscina = getPiscina(); 
-            
-            if(CampoPiscina.isEnabled() == true){
-                CampoPiscina.setText(null);
-             try{
-                
-                PiscinaDao.update(piscina);
-            }catch (SQLException ex){
-                Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null,ex);
-                
-            }//  JOptionPane.showMessageDialog(null,"Alteracões feita com sucesso");
-            
-            }   
-            if(CampoPiscina.isEnabled() == false){
-                try{
-                    
-                    PiscinaDao.insert(piscina);
-                }catch (SQLException ex){
-                    
-                    Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null,ex);
-                }
-                        
-            } this.dispose();
-                         
+//          Piscina piscina=new Piscina();
+//             piscina = getPiscina(); 
+//            
+//            if(CampoPiscina.isEnabled() == true){
+//                CampoPiscina.setText(null);
+//             try{
+//                
+//                PiscinaDao.update(piscina);
+//            }catch (SQLException ex){
+//                Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null,ex);
+//                
+//            }//  JOptionPane.showMessageDialog(null,"Alteracões feita com sucesso");
+//            
+//            }   
+//            if(CampoPiscina.isEnabled() == false){
+//                try{
+//                    
+//                    PiscinaDao.insert(piscina);
+//                }catch (SQLException ex){
+//                    
+//                    Logger.getLogger(CadastrodePiscinas.class.getName()).log(Level.SEVERE, null,ex);
+//                }
+//                        
+//            } this.dispose();
+//                         
     }//GEN-LAST:event_jButtonGravarActionPerformed
-          this.dispose();
-  }
-    private void setPiscina(Piscina piscina){
+    //    this.dispose();
+
+    private void setPiscina(Piscina piscina) {
         jTextDescricaoPiscina.setText(piscina.getDescricao());
-        jTextTamanho.setText(piscina.getTamanho()); 
+        jTextTamanho.setText(piscina.getTamanho());
         jTextCapacidadeAlunos.setText(piscina.getCapacidadeAlunos());
-        
-        
-        
-   }
-    
-   
-    
-    
-    
+
+
+
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -377,37 +371,32 @@ public class CadastrodePiscinas extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public Piscina getPiscina() {
-        
+
         Piscina piscina = new Piscina();
-        
-        if(CampoPiscina.isEnabled() == true){ //para remover te q estar aberto /p inserir nao
+
+        if (CampoPiscina.isEnabled() == true) { //para remover te q estar aberto /p inserir nao
             piscina.setId(Integer.parseInt(CampoPiscina.getText().trim()));
         }
-        
+
         piscina.setDescricao(jTextDescricaoPiscina.getText().trim());
         piscina.setTamanho(jTextTamanho.getText().trim());
         piscina.setCapacidadeAlunos(jTextCapacidadeAlunos.getText().trim());
-         
+
         return piscina;
     }
-    
-    
-    public void setPiscina(){
-        
-        Piscina piscina=new Piscina();
-        
+
+    public void setPiscina() {
+
+        Piscina piscina = new Piscina();
+
         jTextDescricaoPiscina.setText(piscina.getDescricao());
         jTextTamanho.setText(piscina.getTamanho());
         jTextCapacidadeAlunos.setText(piscina.getCapacidadeAlunos());
-        
+
     }
-    
-    
-   // private void setPiscina(Piscina piscina){
-        
-     //   jTextDescricaoPiscina.setText(piscina.getDescricao());
-       // jTextTamanho.setText(piscina.getTamanho()); 
-       // jTextCapacidadeAlunos.setText(piscina.getCapacidadeAlunos());
-  // }
-    
+    // private void setPiscina(Piscina piscina){
+    //   jTextDescricaoPiscina.setText(piscina.getDescricao());
+    // jTextTamanho.setText(piscina.getTamanho()); 
+    // jTextCapacidadeAlunos.setText(piscina.getCapacidadeAlunos());
+    // }
 }

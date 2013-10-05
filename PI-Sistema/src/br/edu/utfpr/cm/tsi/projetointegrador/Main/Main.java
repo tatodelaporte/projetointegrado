@@ -380,11 +380,11 @@ public class Main extends javax.swing.JDialog {
     }//GEN-LAST:event_rmbiTurmaActionPerformed
 
     private void rbmiFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiFuncionarioActionPerformed
-        new CadastroFuncionario().setVisible(true);
+        new CadastroFuncionario(null,true).setVisible(true);
     }//GEN-LAST:event_rbmiFuncionarioActionPerformed
 
     private void btFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFuncionariosActionPerformed
-        new CadastroFuncionario().setVisible(true);
+        new CadastroFuncionario(null,true).setVisible(true);
     }//GEN-LAST:event_btFuncionariosActionPerformed
 
     private void rbmiMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiMatriculaActionPerformed

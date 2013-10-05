@@ -75,6 +75,18 @@ public class FuncionarioDao extends DaoGenerics<Funcionario> {
         return f;
 
     }
+    
+    public static Funcionario find(int id) throws SQLException {
+
+        Statement st = ConnectionFactory.prepareConnection().createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM funcionario where id= " + id);
+        rs.next();
+
+        Funcionario f = converteRsParaFuncionario(rs);
+        return f;
+    }
+    
+    
 }
 //    public static List<Funcionario> list() throws SQLException {
 //        List<Funcionario> Func = new ArrayList<Funcionario>();

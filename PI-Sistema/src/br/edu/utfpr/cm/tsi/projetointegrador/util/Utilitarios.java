@@ -275,7 +275,7 @@ public class Utilitarios {
             comboBox.addItem(entidade);
         }
     }
-    
+
     public static void habilitarTodos(Container container, boolean habilitar) {
         // obter oa componentes contidos no container
         Component[] componentes = container.getComponents();
@@ -287,46 +287,51 @@ public class Utilitarios {
                 continue; //((jTextcomponent)componet).setText(")
             }
             // caso seja container, aplicamos a mesma solucao
-             if(component instanceof JComboBox){
-                 continue; 
-             }                              
-            
-            if (component instanceof Container ) {
-                habilitarTodos((Container)component, habilitar);
+            if (component instanceof JComboBox) {
+                continue;
+            }
+
+            if (component instanceof Container) {
+                habilitarTodos((Container) component, habilitar);
             }
             component.setEnabled(habilitar); //se compjnete e textfild 
         }
     }
-        
-        
-        
-   public static String formatString(String string){
-        if(string.contains(".")){
+
+    public static String formatString(String string) {
+        if (string.contains(".")) {
             string = string.replaceAll("\\.", "");
             formatString(string);
-        }if(string.contains("_")){
+        }
+        if (string.contains("_")) {
             string = string.replaceAll("\\_", "");
             formatString(string);
-        }if (string.contains("/")){
+        }
+        if (string.contains("/")) {
             string = string.replaceAll("\\/", "");
             formatString(string);
-        }if (string.contains("-")){
+        }
+        if (string.contains("-")) {
             string = string.replaceAll("-", "");
             formatString(string);
-        }if (string.contains("(")){
+        }
+        if (string.contains("(")) {
             string = string.replaceAll("\\(", "");
             formatString(string);
-        }if (string.contains(")")){
+        }
+        if (string.contains(")")) {
             string = string.replaceAll("\\)", "");
             formatString(string);
-        }return string;
+        }
+        return string;
     }
-    }
-    
-    
-    
-    
-    
-    
-    
 
+    public static boolean isRG(String RG) {
+
+        if ("".equals(RG)) {
+            return false;
+        }
+
+        return false;
+    }
+}

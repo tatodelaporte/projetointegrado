@@ -13,7 +13,7 @@ public enum TipoFuncionarioEnum {
     SELECIONE("Selecione uma opção"), //
     ATENDENTE("Atendente"), //
     GERENTE("Gerente"), //
-    PROFESSOR("Professor"); //
+    PROFESSOR("Professor"); //  
     private String tipoFuncionario;
 
     private TipoFuncionarioEnum(String tipoFuncionario) {
@@ -24,7 +24,7 @@ public enum TipoFuncionarioEnum {
         return this.tipoFuncionario;
     }
 
-    public static Object[] getTipos() {
+    public static String[] getTipos() {
         String[] tipo = new String[TipoFuncionarioEnum.values().length];
         for (TipoFuncionarioEnum tipoFunc : TipoFuncionarioEnum.values()) {
             tipo[tipoFunc.ordinal()] = tipoFunc.getTipoFuncionarioEnum();
@@ -32,6 +32,8 @@ public enum TipoFuncionarioEnum {
         return tipo;
     }
 
+    
+    
     public static TipoFuncionarioEnum getEnum(String string) {
         switch (string) {
             case "Selecione":

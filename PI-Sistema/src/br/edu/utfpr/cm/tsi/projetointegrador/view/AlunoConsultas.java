@@ -212,7 +212,7 @@ public class AlunoConsultas extends javax.swing.JDialog {
         int row = jTable1.getSelectedRow();
         if(row >= 0){
             AlunoDao.setAlunoSelecionado(this.alunoTable.getAlunoEntity(row));
-            AlunoView alunoView =new AlunoView(null, true);
+            FuncionarioView alunoView =new FuncionarioView(null, true);
             alunoView.setLocationRelativeTo(null);
             alunoView.setVisible(true);
         }else{

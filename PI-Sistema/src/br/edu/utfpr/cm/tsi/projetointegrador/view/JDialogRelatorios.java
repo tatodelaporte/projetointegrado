@@ -72,6 +72,11 @@ public class JDialogRelatorios extends javax.swing.JDialog {
 
         buttonGroup1.add(jRadioButtonRelatorioFuncionarios);
         jRadioButtonRelatorioFuncionarios.setText("Relatório de Funcionários");
+        jRadioButtonRelatorioFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonRelatorioFuncionariosActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButtonRelFrequAlunos);
         jRadioButtonRelFrequAlunos.setText("Relatório de Frequencias Alunos");
@@ -177,37 +182,32 @@ public class JDialogRelatorios extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (jRadioButtonRelatorioFuncionarios.isSelected()) {
+
+        relatorios = new GerarRelatorios();
+        if (jRadioButtonRelatorioAlunos.isSelected()) {
+            file = new File("src/relatorios/relatorioAluno.jrxml").getAbsoluteFile();
+            System.out.println(file);
             try {
-                relatorioPronto("src/relatorios/FuncionariosRelatorio.jasper");
-            } catch (JRException ex) {
-                JOptionPane.showMessageDialog(this, "Relatório de Funcionarios não foi encontrado!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+                relatorios.gerarRelatorio(this.file);
+            } catch (Exception ex) {
+                Logger.getLogger(JDialogRelatorios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (jRadioButtonRelatorioFuncionarios.isSelected()) {
+            file = new File("src/relatorios/Funcionarios.jrxml").getAbsoluteFile();
+            System.out.println(file);
+            try {
+                relatorios.gerarRelatorio(this.file);
+            } catch (Exception ex) {
+                Logger.getLogger(JDialogRelatorios.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
 
-
-        //        relatorios = new GerarRelatorios();
-//        if(jRadioButtonRelatorioAlunos.isSelected()){
-//             file=new File("src/relatorios/relatorioAluno.jrxml").getAbsoluteFile();
-//             System.out.println(file);
-//             try {
-//                 relatorios.gerarRelatorio(this.file);
-//             } catch (Exception ex) {
-//                 Logger.getLogger(JDialogRelatorios.class.getName()).log(Level.SEVERE, null, ex);
-//             }
-//         }else if(jRadioButtonRelatorioFuncionarios.isSelected()){
-//             file=new File("src/relatorios/FuncionariosRelatorio.jasper").getAbsoluteFile();
-//             System.out.println(file);
-//             try {
-//                 relatorios.gerarRelatorio(this.file);
-//             } catch (Exception ex) {
-//                 Logger.getLogger(JDialogRelatorios.class.getName()).log(Level.SEVERE, null, ex);
-//             }
-//         }
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jRadioButtonRelatorioFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonRelatorioFuncionariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonRelatorioFuncionariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,19 +265,19 @@ public class JDialogRelatorios extends javax.swing.JDialog {
     private void relatorioPronto(String nome) throws JRException {
         try {
             // obtem o arquivo de relatorio compilado
-            
+
             URL arquivo = getClass().getResource(nome);
 
             // carrega o relatorio
-            
+
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(arquivo);
 
             // preenche o relatorio com os dados do BD
             // dando ponteiro null na hora de carregar.
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), ConnectionFactory.prepareConnection());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), HibernateConfiguration.getConnection());
 
             // cria visualizador de relatorio
-             
+
             JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
             // mostra o visualizador
             jrviewer.setVisible(true);

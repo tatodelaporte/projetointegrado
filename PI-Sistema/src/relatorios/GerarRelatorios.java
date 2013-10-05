@@ -4,6 +4,7 @@
  */
 package relatorios;
 
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.HibernateConfiguration;
 import java.awt.HeadlessException;
 import java.io.File;
 import java.sql.DriverManager;
@@ -41,7 +42,7 @@ public class GerarRelatorios {
         viewer.setLocationRelativeTo(null);
         JasperDesign jd = JRXmlLoader.load(file);
         JasperReport jr = JasperCompileManager.compileReport(jd);
-        JasperPrint jp = JasperFillManager.fillReport(jr, mapa, DriverManager.getConnection("jdbc:mysql://localhost:3306/swin", "root", "dani"));
+        JasperPrint jp = JasperFillManager.fillReport(jr, mapa,  HibernateConfiguration.getConnection());
 //      JasperViewer.viewReport(jp, false, new Locale("pt", "BR"));
         JasperViewer jrViewer = new JasperViewer(jp, true);
         viewer.getContentPane().add((jrViewer).getContentPane());
