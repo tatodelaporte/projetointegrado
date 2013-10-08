@@ -56,9 +56,7 @@
                       <Component id="lbcodTurma" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="tfId" min="-2" pref="48" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="rbBuscarTurmaId" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                       <Component id="btBuscar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -102,7 +100,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbcodTurma" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tfId" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbBuscarTurmaId" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -208,17 +205,6 @@
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator3">
     </Component>
-    <Component class="javax.swing.JRadioButton" name="rbBuscarTurmaId">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Codigo Turma"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbBuscarTurmaIdActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="CadastroTurmas_jRadioButton1"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JButton" name="btBuscar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -266,16 +252,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbProfessor">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="tfhorarioInicio">
       <Properties>

@@ -6,7 +6,7 @@ package br.edu.utfpr.cm.tsi.projetointegrador.view;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.FrequenciaTable;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.MatriculaDao;
-import br.edu.utfpr.cm.tsi.projetointegrador.DAO.TurmaDaoOLD;
+
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Turma;
 import com.sun.corba.se.impl.ior.FreezableList;
 import java.util.List;
@@ -242,9 +242,9 @@ private void preencherTurma() {
         cbTurma.removeAll();
         
         List<Turma> turmas = null;
-        TurmaDaoOLD turma = new TurmaDaoOLD();
+//        TurmaDaoOLD turma = new TurmaDaoOLD();
         try {
-            turmas = turma.findAll();
+  //          turmas = turma.findAll();
         } catch (Exception ex) {
             Logger.getLogger(CadastroMatricula.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -8,7 +8,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.DAO.TurmaDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Aluno;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.MatriculaDao;
-import br.edu.utfpr.cm.tsi.projetointegrador.DAO.TurmaDaoOLD;
+
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Matricula;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Turma;
 import java.sql.SQLException;
@@ -278,9 +278,9 @@ public class CadastroMatricula extends javax.swing.JDialog {
         cbTurma.removeAll();
         
         List<Turma> turmas = null;
-        TurmaDaoOLD turma = new TurmaDaoOLD();
+//        TurmaDaoOLD turma = new TurmaDaoOLD();
         try {
-            turmas = turma.findAll();
+  //          turmas = turma.findAll();
         } catch (Exception ex) {
             Logger.getLogger(CadastroMatricula.class.getName()).log(Level.SEVERE, null, ex);
         }

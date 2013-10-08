@@ -43,9 +43,9 @@ public class FuncionarioDao extends DaoGenerics<Funcionario> {
     public List<Funcionario> filterByTipo(String tipofuncionario) {
         session = TransactionManager.getCurrentSession();
         List<Funcionario> lista = session.createCriteria(Funcionario.class).
-                add(Restrictions.like("tipofuncionario", "%" + 3 + "%")).
-                addOrder(Order.asc("tipofuncionario")).
-                list();
+                add(Restrictions.like("tipofuncionario","%"+tipofuncionario+"%")).
+                addOrder(Order.asc("tipofuncionario")).list();
+                
         return lista;
     }
 
@@ -60,31 +60,31 @@ public class FuncionarioDao extends DaoGenerics<Funcionario> {
     
     
     
-    private static Funcionario converteRsParaFuncionario(ResultSet rs) throws SQLException {
-
-        Funcionario f = new Funcionario();
-
-        f.setId(rs.getInt("id"));
-        f.setNome(rs.getString("nome"));
-        f.setCpf(rs.getString("cpf"));
-        f.setRg(rs.getString("rg"));
-        f.setTelefone(rs.getString("telefone"));
-
-
-
-        return f;
-
-    }
+//    private static Funcionario converteRsParaFuncionario(ResultSet rs) throws SQLException {
+//
+//        Funcionario f = new Funcionario();
+//
+//        f.setId(rs.getInt("id"));
+//        f.setNome(rs.getString("nome"));
+//        f.setCpf(rs.getString("cpf"));
+//        f.setRg(rs.getString("rg"));
+//        f.setTelefone(rs.getString("telefone"));
+//
+//
+//
+//        return f;
+//
+//    }
     
-    public static Funcionario find(int id) throws SQLException {
-
-        Statement st = ConnectionFactory.prepareConnection().createStatement();
-        ResultSet rs = st.executeQuery("SELECT * FROM funcionario where id= " + id);
-        rs.next();
-
-        Funcionario f = converteRsParaFuncionario(rs);
-        return f;
-    }
+//    public static Funcionario find(int id) throws SQLException {
+//
+//        Statement st = ConnectionFactory.prepareConnection().createStatement();
+//        ResultSet rs = st.executeQuery("SELECT * FROM funcionario where id= " + id);
+//        rs.next();
+//
+//        Funcionario f = converteRsParaFuncionario(rs);
+//        return f;
+//    }
     
     
 }

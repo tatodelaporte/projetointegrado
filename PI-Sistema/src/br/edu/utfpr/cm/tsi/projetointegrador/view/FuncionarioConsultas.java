@@ -9,7 +9,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.DAO.FuncionarioTable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+import java.util.List;
 /**
  *
  * @author Daniel
@@ -276,9 +276,12 @@ public class FuncionarioConsultas extends javax.swing.JDialog {
             cadastroFuncionario.setLocationRelativeTo(null);
             cadastroFuncionario.setVisible(true);
             cadastroFuncionario.setEditFuncionario();
+            
         } else {
             JOptionPane.showMessageDialog(null, "Por favor Selecione uma linha da Tabela para Visualizar!");
         }
+       this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRBNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBNomeActionPerformed

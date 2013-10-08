@@ -33,9 +33,9 @@ public class HibernateConfiguration {
         if (cfg == null) {
             cfg = new AnnotationConfiguration();
             cfg.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-            cfg.setProperty("hibernate.connection.username", "aluno");
-            cfg.setProperty("hibernate.connection.password", "aluno");
-            cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/aluno");
+            cfg.setProperty("hibernate.connection.username", "root");
+            cfg.setProperty("hibernate.connection.password", "dani");
+            cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/swin");
             cfg.setProperty("hibernate.show_sql", "true");
             cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
             cfg.setProperty("hibernate.connection.autocommit", "true");

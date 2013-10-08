@@ -6,7 +6,7 @@ package br.edu.utfpr.cm.tsi.projetointegrador.Main;
 
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.MatriculaDao;
-import br.edu.utfpr.cm.tsi.projetointegrador.DAO.TurmaDaoOLD;
+
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Aluno;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Matricula;
@@ -44,8 +44,8 @@ public class Teste {
          aludoDao.saveOrUpdate(aluno2);
          aludoDao.saveOrUpdate(aluno3);
          
-         TurmaDaoOLD turmaDao = new TurmaDaoOLD();
-         turmaDao.saveOrUpdate(turma1);
+//         TurmaDaoOLD turmaDao = new TurmaDaoOLD();
+  //       turmaDao.saveOrUpdate(turma1);
                  
          
          MatriculaDao dao = new MatriculaDao();

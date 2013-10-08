@@ -370,9 +370,7 @@ public class Main extends javax.swing.JDialog {
 
     private void rmbiTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmbiTurmaActionPerformed
         try {
-            new CadastroTurmas().setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            new CadastroTurmas(null, true).setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -380,11 +378,11 @@ public class Main extends javax.swing.JDialog {
     }//GEN-LAST:event_rmbiTurmaActionPerformed
 
     private void rbmiFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiFuncionarioActionPerformed
-        new CadastroFuncionario(null,true).setVisible(true);
+        new CadastroFuncionario(null, true).setVisible(true);
     }//GEN-LAST:event_rbmiFuncionarioActionPerformed
 
     private void btFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFuncionariosActionPerformed
-        new CadastroFuncionario(null,true).setVisible(true);
+        new CadastroFuncionario(null, true).setVisible(true);
     }//GEN-LAST:event_btFuncionariosActionPerformed
 
     private void rbmiMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmiMatriculaActionPerformed
@@ -408,14 +406,12 @@ public class Main extends javax.swing.JDialog {
     }//GEN-LAST:event_rbmiPiscinaActionPerformed
 
     private void btTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTurmasActionPerformed
-        try {        
-            new CadastroTurmas().setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            new CadastroTurmas(null, true).setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+
     }//GEN-LAST:event_btTurmasActionPerformed
 
     private void jRadioButtonMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem5ActionPerformed

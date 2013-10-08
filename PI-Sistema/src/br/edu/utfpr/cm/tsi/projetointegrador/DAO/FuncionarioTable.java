@@ -16,8 +16,8 @@ import javax.swing.table.AbstractTableModel;
 public class FuncionarioTable extends AbstractTableModel {
 
     private List<Funcionario> linhas;
-    private static final int ID = 0, NOME = 1, CPF = 2, ENDERECO = 3, NUMERO = 4, TELEFONE = 5;
-    private String[] colunas = new String[]{"Código", "Nome", "CPF", "Endereco", "numero", "telefone"};
+    private static final int ID = 0, NOME = 1, CPF = 2, ENDERECO = 3, NUMERO = 4, TELEFONE = 5, TIPO=6;
+    private String[] colunas = new String[]{"Código", "Nome", "CPF", "Endereco", "numero", "telefone","Cargo"};
 
     public FuncionarioTable() {
         linhas = new ArrayList<Funcionario>();
@@ -56,6 +56,8 @@ public class FuncionarioTable extends AbstractTableModel {
 
             case ENDERECO:
                 return String.class;
+            case TIPO:
+                return String.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -69,7 +71,7 @@ public class FuncionarioTable extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        // Pega o Cliente referente a linha especificada.
+        // Pega o Funcionario referente a linha especificada.
         Funcionario funcionario = linhas.get(rowIndex);
 
         switch (columnIndex) {
@@ -85,6 +87,8 @@ public class FuncionarioTable extends AbstractTableModel {
                 return funcionario.getTelefone();
             case NUMERO:
                 return funcionario.getEndereco().getNumero();
+            case TIPO:
+                return funcionario.getTipofuncionario();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -114,6 +118,8 @@ public class FuncionarioTable extends AbstractTableModel {
             case NUMERO:
                 funcionario.getEndereco().setNumero((Integer) aValue);
                 break;
+            case TIPO:
+                funcionario.getTipofuncionario();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }

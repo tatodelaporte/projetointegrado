@@ -4,6 +4,8 @@
  */
 package br.edu.utfpr.cm.tsi.projetointegrador.view;
 
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoDao;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.AlunoTable;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.HibernateConfiguration;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Turma;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.FuncionarioDao;
@@ -11,9 +13,16 @@ import br.edu.utfpr.cm.tsi.projetointegrador.DAO.PiscinaDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.TurmaDao;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Funcionario;
 import br.edu.utfpr.cm.tsi.projetointegrador.DAO.DaoGenerics;
+import br.edu.utfpr.cm.tsi.projetointegrador.DAO.TurmaTable;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Aluno;
+import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Endereco;
 import br.edu.utfpr.cm.tsi.projetointegrador.entidade.Piscina;
+import br.edu.utfpr.cm.tsi.projetointegrador.enums.EstadoEnum;
 import br.edu.utfpr.cm.tsi.projetointegrador.enums.TipoFuncionarioEnum;
+import br.edu.utfpr.cm.tsi.projetointegrador.util.Utilitarios;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -28,12 +37,15 @@ import javax.swing.JOptionPane;
  */
 public class CadastroTurmas extends javax.swing.JDialog {
 
+    private TurmaDao turmaDao;
+    private FuncionarioDao funcionarioDao;
     private String diasaula = "";
+    boolean edicao = false;
 
     /**
      * Creates new form CadastroTurmas
      */
-    public CadastroTurmas() throws SQLException, Exception {
+    public CadastroTurmas(java.awt.Frame parent, boolean modal) throws Exception {
         initComponents();
         setSize(500, 610);
         setTitle("Cadastro de Turmas");
@@ -47,6 +59,50 @@ public class CadastroTurmas extends javax.swing.JDialog {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 
+    }
+
+    public void setEditTurma() {
+//        jTextCodigo.setText(String.valueOf(AlunoDao.getAlunoSelecionado().getId()));
+//        jTextNome.setText(AlunoDao.getAlunoSelecionado().getNome());
+//        jTextCPF.setText(AlunoDao.getAlunoSelecionado().getCpf());
+//        jTextRG.setText(AlunoDao.getAlunoSelecionado().getRg());
+//        
+//        SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
+//        
+//        jTextDataNascimento.setText(format.format(AlunoDao.getAlunoSelecionado().getDataNascimento()));
+//        jTextEndereco.setText(AlunoDao.getAlunoSelecionado().getEndereco().getNomeEndereco());
+//        jTextNumero.setText(String.valueOf(AlunoDao.getAlunoSelecionado().getEndereco().getNumero()));
+//        jTextComplemento.setText(AlunoDao.getAlunoSelecionado().getEndereco().getComplemento());
+//        jTextBairro.setText(AlunoDao.getAlunoSelecionado().getEndereco().getBairro());
+//        jTextMunicipio.setText(AlunoDao.getAlunoSelecionado().getEndereco().getMunicipio());
+//        jComboEstado.setSelectedItem(AlunoDao.getAlunoSelecionado().getEndereco().getEstado().getUf());
+//        jTextTelefone.setText(AlunoDao.getAlunoSelecionado().getTelefone());
+//        jTextCep.setText(AlunoDao.getAlunoSelecionado().getEndereco().getCep());
+//        
+        this.edicao = true;
+    }
+
+    private void setTurma(Turma turma) throws ParseException, Exception {
+
+//        aluno.setNome(jTextNome.getText().trim());
+//        aluno.setCpf(Utilitarios.formatString(jTextCPF.getText().trim()));
+//        aluno.setRg(jTextRG.getText().trim());
+//        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+//        aluno.setDataNascimento(data.parse(jTextDataNascimento.getText()));
+//        aluno.setEndereco(new Endereco());
+//        aluno.getEndereco().setNomeEndereco(jTextEndereco.getText().trim());
+//        aluno.getEndereco().setNumero(Integer.parseInt(jTextNumero.getText().trim()));
+//        aluno.getEndereco().setComplemento(jTextComplemento.getText().trim());
+//        aluno.getEndereco().setBairro(jTextBairro.getText().trim());
+//        aluno.getEndereco().setMunicipio(jTextMunicipio.getText().trim());
+//        aluno.getEndereco().setEstado(EstadoEnum.getEnum(jComboEstado.getSelectedItem().toString()));
+//        aluno.getEndereco().setCep(Utilitarios.formatString(jTextCep.getText().trim()));
+//        aluno.setTelefone(Utilitarios.formatString(jTextTelefone.getText().trim()));
+
+        turmaDao = new TurmaDao();
+
+
+        turmaDao.saveOrUpdate(turma);
     }
 
     @SuppressWarnings("unchecked")
@@ -65,7 +121,6 @@ public class CadastroTurmas extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        rbBuscarTurmaId = new javax.swing.JRadioButton();
         btBuscar = new javax.swing.JButton();
         cbSegundaFeira = new javax.swing.JCheckBox();
         cbTercaFeira = new javax.swing.JCheckBox();
@@ -98,13 +153,6 @@ public class CadastroTurmas extends javax.swing.JDialog {
 
         lbhorarioFim.setText("Fim");
 
-        rbBuscarTurmaId.setText("Codigo Turma");
-        rbBuscarTurmaId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbBuscarTurmaIdActionPerformed(evt);
-            }
-        });
-
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pesquisar.png"))); // NOI18N
         btBuscar.setText("Pesquisar");
         btBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,8 +174,6 @@ public class CadastroTurmas extends javax.swing.JDialog {
         cbSabado.setText("Sabado");
 
         cbDomingo.setText("Domingo");
-
-        cbProfessor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         tfhorarioInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
 
@@ -182,9 +228,7 @@ public class CadastroTurmas extends javax.swing.JDialog {
                         .addComponent(lbcodTurma)
                         .addGap(18, 18, 18)
                         .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(rbBuscarTurmaId)
-                        .addGap(30, 30, 30)
+                        .addGap(153, 153, 153)
                         .addComponent(btBuscar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbDescricao)
@@ -218,7 +262,6 @@ public class CadastroTurmas extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbcodTurma)
                     .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbBuscarTurmaId)
                     .addComponent(btBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -275,11 +318,11 @@ public class CadastroTurmas extends javax.swing.JDialog {
 
         String codprocurado = "";
 
-        if (this.rbBuscarTurmaId.isSelected()) {
-
-            turma.setId(Integer.parseInt(tfId.getText().trim()));
-            codprocurado = tfId.getText();
-        }
+//        if (this.rbBuscarTurmaId.isSelected()) {
+//
+//            turma.setId(Integer.parseInt(tfId.getText().trim()));
+//            codprocurado = tfId.getText();
+//        }
         try {
 //            new HibernateDao().retrieve(codprocurado);
         } catch (Exception ex) {
@@ -329,11 +372,6 @@ public class CadastroTurmas extends javax.swing.JDialog {
 
 
     }//GEN-LAST:event_btBuscarActionPerformed
-
-    private void rbBuscarTurmaIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBuscarTurmaIdActionPerformed
-        tfId.setEnabled(true);
-
-    }//GEN-LAST:event_rbBuscarTurmaIdActionPerformed
 
     private void btGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGravarActionPerformed
 
@@ -417,16 +455,16 @@ public class CadastroTurmas extends javax.swing.JDialog {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
+
                 try {
-                    new CadastroTurmas().setVisible(true);
+                    new CadastroTurmas(null, true).setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Exception ex) {
                     Logger.getLogger(CadastroTurmas.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-
             }
         });
     }
@@ -453,7 +491,6 @@ public class CadastroTurmas extends javax.swing.JDialog {
     private javax.swing.JLabel lbcodTurma;
     private javax.swing.JLabel lbhorarioFim;
     private javax.swing.JLabel lbhorarioInicio;
-    private javax.swing.JRadioButton rbBuscarTurmaId;
     private javax.swing.JTextField tfDescricao;
     private javax.swing.JTextField tfId;
     private javax.swing.JFormattedTextField tfhorarioFim;
@@ -482,35 +519,45 @@ public class CadastroTurmas extends javax.swing.JDialog {
 
     }
 
-    private void setTurma(Turma turma) {
-
-        //tfId.setText("1");
-        tfDescricao.setText(turma.getDescricao());
-
-        tfhorarioInicio.setValue(turma.getHorarioInicio());
-        tfhorarioFim.setValue(turma.getHorariofim());
-
-    }
-
+//    private void setTurma(Turma turma) {
+//
+//        //tfId.setText("1");
+//        tfDescricao.setText(turma.getDescricao());
+//
+//        tfhorarioInicio.setValue(turma.getHorarioInicio());
+//        tfhorarioFim.setValue(turma.getHorariofim());
+//
+//    }
     public void preencherProfessor() throws Exception {
-
-        String professor = "3";
-        FuncionarioDao f = new FuncionarioDao();
-
-        cbProfessor.addItem(f.filterByTipo(professor));
-
+//        String professor = "PROFESSOR";
+//        
+//        List<Funcionario> funcionarios = new ArrayList<Funcionario>();
+//        funcionarios = new FuncionarioDao().filterByTipo(TipoFuncionarioEnum.getTipos(""));
+//        for (Funcionario f : funcionarios) {
+////            if ("PROFESSOR".equals(f.getTipofuncionario())) {
+////                cbProfessor.addItem(f);
+////            }
+//            cbProfessor.addItem(f);
+//        }
+//        List<Funcionario> funcionarios = new ArrayList<Funcionario>();
+//        funcionarios = new FuncionarioDao().findAll();
+//        for (Funcionario funcionario : funcionarios) {
+//            if(funcionarioDao.filterByTipo("PROFESSOR").equals(funcionarios.)){
+//            cbProfessor.addItem(funcionario);}
+//            
+//        }
+    }
 //        List<Funcionario> funcionarios = new ArrayList<Funcionario>();
 //
-//        //funcionarios = FuncionarioDao.list();
+//        funcionarios = new FuncionarioDao().findAll();
+//
 //        funcionarios = new DaoGenerics<Funcionario>(Funcionario.class) {
 //        }.list();
-//
 //        for (Funcionario f : funcionarios) {
-//            if ("3".equals(f.getTipofuncionario())) {
+//            if ("PROFESSOR".equals(f.getTipofuncionario())) {
 //                cbProfessor.addItem(f);
 //            }
 //        }
-    }
 
     public void preencherPiscina() throws SQLException {
 

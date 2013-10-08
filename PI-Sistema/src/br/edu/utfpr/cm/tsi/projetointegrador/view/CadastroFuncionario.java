@@ -13,6 +13,7 @@ import br.edu.utfpr.cm.tsi.projetointegrador.util.Utilitarios;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.List;
 import javax.swing.JOptionPane;
 import br.edu.utfpr.cm.tsi.projetointegrador.enums.EstadoEnum;
 import br.edu.utfpr.cm.tsi.projetointegrador.enums.TipoFuncionarioEnum;
@@ -41,15 +42,17 @@ public class CadastroFuncionario extends javax.swing.JDialog {
         setResizable(false);// Trava o tamanho do painel.
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
+
     }
 
     private void aplicarMascaras() {
         MaskUtil mask = new MaskUtil();
         try {
+            mask.maskNumeroResidencia(tfNumero);
             mask.maskCep(tfCEP);
             mask.maskCpf(tfCPF);
             mask.maskTelFixo(tfTelefone);
-            mask.maskNumeroResidencia(tfNumero);
+
         } catch (ParseException ex) {
             Logger.getLogger(CadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -405,13 +408,14 @@ public class CadastroFuncionario extends javax.swing.JDialog {
         FuncionarioConsultas dialog = new FuncionarioConsultas(null, true);
         dialog.setLocation(getX() + 50, getY() + 50);
         dialog.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btPesquisarActionPerformed
 
     private void btGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGravarActionPerformed
 
         String cpfVal = tfCPF.getText().replace(".", "").replace("-", "");
 
-        if (Utilitarios.isCPF(cpfVal) || Utilitarios.isRG(tfRG.getText())) {
+        if (Utilitarios.isCPF(cpfVal)) {
             if (!edicao) {
                 try {
                     this.setFuncionario(new Funcionario());
@@ -424,6 +428,7 @@ public class CadastroFuncionario extends javax.swing.JDialog {
                 try {
 
                     this.setFuncionario(FuncionarioDao.getFuncionarioSelecionado());
+                    JOptionPane.showMessageDialog(null, "Cadastro Atualizado");
                 } catch (Exception ex) {
                     Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -525,7 +530,7 @@ public class CadastroFuncionario extends javax.swing.JDialog {
 
         funcionario.setEndereco(new Endereco());
         funcionario.getEndereco().setNomeEndereco(tfEndereco.getText().trim());
-        funcionario.getEndereco().setNumero(Integer.parseInt(tfNumero.getText().trim()));
+        funcionario.getEndereco().setNumero(Integer.parseInt(tfNumero.getText().trim().replaceAll("_","")));
         funcionario.getEndereco().setComplemento(tfComplemento.getText().trim());
         funcionario.getEndereco().setBairro(tfBairro.getText().trim());
         funcionario.getEndereco().setMunicipio(tfMunicipio.getText().trim());
